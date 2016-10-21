@@ -9,6 +9,8 @@ import Common.cDatosException;
 import Common.cTipo;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author administrator
@@ -57,6 +59,7 @@ public class pTipo extends pPersistencia{
                     super.cerrarConexion();
         }catch(SQLException e){
             throw new cDatosException("ERROR AL INTENTAR MODIFICAR TIPO:" + e.getMessage());
+           
         }
     }
 

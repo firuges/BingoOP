@@ -26,7 +26,7 @@ public class pPersistencia {
         return instancia;
     }
 
-    public void abrirConexion() throws cDatosException {
+    public void abrirConexion() throws Exception {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             distribuidora = DriverManager.getConnection("jdbc:mysql://localhost/admin?user=root&password=root");
@@ -38,7 +38,7 @@ public class pPersistencia {
         }
     }
 
-    public void cerrarConexion() throws cDatosException {
+    public void cerrarConexion() throws Exception {
         try {
             distribuidora.close();
         } catch (SQLException e1) {
@@ -58,12 +58,12 @@ public class pPersistencia {
         this.distribuidora = val;
     }
 
-    public void agregar(Object o) throws cDatosException {
+    public void agregar(Object o) throws Exception {
     }
 
-    public void modificar(Object o) throws cDatosException {
+    public void modificar(Object o) throws Exception {
     }
 
-    public void eliminar(Object o) throws cDatosException {
+    public void eliminar(Object o) throws Exception {
     }
 }

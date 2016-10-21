@@ -10,7 +10,7 @@ package Common;
  * @author Maxi
  */
 public class cAdmin extends cUsuario {
-    public cAdmin(String pNombre,String pApellido,String pEmail,String pPassword){
-        super(pNombre,pApellido,pEmail,pPassword);
+    public cAdmin(String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
+        super(pNombre,pApellido,pEmail,pPassword, pTipoUser);
     }
 }

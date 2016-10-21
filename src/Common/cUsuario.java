@@ -14,7 +14,7 @@ public class cUsuario {
     private String Apellido;
     private String Password;
     private String Email;
-
+    private Enums.Gerarquia TipoUser;
     /**
      * @return the Nombre
      */
@@ -73,10 +73,26 @@ public class cUsuario {
     public cUsuario(){
         
     }
-    public cUsuario(String pNombre,String pApellido,String pEmail,String pPassword){
+    public cUsuario(String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
         this.Nombre = pNombre;
         this.Apellido = pApellido;
         this.Email = pEmail;
         this.Password = pPassword;
+        this.TipoUser = pTipoUser;
+        
+    }
+
+    /**
+     * @return the TipoUser
+     */
+    public Enums.Gerarquia getTipoUser() {
+        return TipoUser;
+    }
+
+    /**
+     * @param TipoUser the TipoUser to set
+     */
+    public void setTipoUser(Enums.Gerarquia TipoUser) {
+        this.TipoUser = TipoUser;
     }
 }
