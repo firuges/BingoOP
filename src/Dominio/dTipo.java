@@ -14,29 +14,44 @@ import java.util.ArrayList;
  */
 public class dTipo {
 
-    public void guardar(cTipo pTipo) throws cDatosException {
-        if (pTipo.getId() != 0) {
-            pTipo pPersistencia = new pTipo();
-            pPersistencia.agregar(pTipo);
+    public void guardar(cTipo pTipo) throws Exception {
+        try{
+            if (pTipo.getId() != 0) {
+                pTipo pPersistencia = new pTipo();
+                pPersistencia.agregar(pTipo);
+            }
+        }catch(Exception ex){
+            throw new cDatosException("ERROR al Ingresar un Admin /pUsuario/agregar():" + ex.getMessage());
         }
     }
 
-    public void modificar(cTipo pTipo) throws cDatosException {
-        if (pTipo.getId() != 0) {
+    public void modificar(cTipo pTipo) throws Exception {
+        try{
+            if (pTipo.getId() != 0) {
             pTipo pPersistencia = new pTipo();
             pPersistencia.modificar(pTipo);
         }
+        }catch(Exception ex){
+            throw new cDatosException("ERROR al Ingresar un Admin /pUsuario/agregar():" + ex.getMessage());
+        }
+        
     }
 
-    public void eliminar(cTipo pTipo) throws cDatosException {
-        if (pTipo.getId() != 0) {
+    public void eliminar(cTipo pTipo) throws Exception {
+        try{
+            if (pTipo.getId() != 0) {
             pTipo pPersistencia = new pTipo();
             pPersistencia.eliminar(pTipo);
         }
+        }catch(Exception ex){
+            throw new cDatosException("ERROR al Ingresar un Admin /pUsuario/agregar():" + ex.getMessage());
+        }
+        
     }
 
-    public cTipo buscar(cTipo pTipo) throws cDatosException {
-        cTipo unTipo = new cTipo();
+    public cTipo buscar(cTipo pTipo) throws Exception {
+        try{
+            cTipo unTipo = new cTipo();
         if (pTipo.getId() != 0) {
             pTipo persistencia = new pTipo();
             unTipo = persistencia.buscarTipo(pTipo);
@@ -46,10 +61,15 @@ public class dTipo {
         } else {
             return null;
         }
+        }catch(Exception ex){
+            throw new cDatosException("ERROR al Ingresar un Admin /pUsuario/agregar():" + ex.getMessage());
+        }
+        
     }
 
-    public ArrayList buscarTodos() throws cDatosException {
-        ArrayList coleccion;
+    public ArrayList buscarTodos() throws Exception {
+        try{
+            ArrayList coleccion;
         coleccion = new ArrayList();
         pTipo persistencia = new pTipo();
         coleccion = persistencia.buscarTodos();
@@ -58,10 +78,15 @@ public class dTipo {
         } else {
             return null;
         }
+        }catch(Exception ex){
+            throw new cDatosException("ERROR al Ingresar un Admin /pUsuario/agregar():" + ex.getMessage());
+        }
+        
     }
 
-    public int generarId() throws cDatosException {
-        int id;
+    public int generarId() throws Exception {
+        try{
+            int id;
         pTipo persistencia = new pTipo();
         id = persistencia.generarId();
 
@@ -70,5 +95,9 @@ public class dTipo {
         } else {
             return 0;
         }
+        }catch(Exception ex){
+            throw new cDatosException("ERROR al Ingresar un Admin /pUsuario/agregar():" + ex.getMessage());
+        }
+        
     }
 }

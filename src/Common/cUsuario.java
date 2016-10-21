@@ -10,6 +10,7 @@ package Common;
  * @author Maxi
  */
 public class cUsuario {
+    private int id;
     private String Nombre;
     private String Apellido;
     private String Password;
@@ -73,7 +74,8 @@ public class cUsuario {
     public cUsuario(){
         
     }
-    public cUsuario(String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
+    public cUsuario(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
+        this.id = pId;
         this.Nombre = pNombre;
         this.Apellido = pApellido;
         this.Email = pEmail;
@@ -94,5 +96,19 @@ public class cUsuario {
      */
     public void setTipoUser(Enums.Gerarquia TipoUser) {
         this.TipoUser = TipoUser;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }

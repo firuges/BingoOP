@@ -10,7 +10,7 @@ package Common;
  * @author Maxi
  */
 public class cJugador extends cUsuario {
-    public cJugador(String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
-        super(pNombre,pApellido,pEmail,pPassword, pTipoUser);
+    public cJugador(int pId, String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
+        super(pId, pNombre,pApellido,pEmail,pPassword, pTipoUser);
     }
 }
