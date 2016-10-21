@@ -14,10 +14,15 @@ import Persistencia.pUsuario;
  * @author Maxi
  */
 public class dUsuario {
-    public void guardar(cUsuario pUser) throws cDatosException {
-        if (pUser.getEmail() != "") {
+    public void guardar(cUsuario pUser) throws Exception {
+        try{
+            if (pUser.getEmail() != "") {
             pUsuario pPersistencia = new pUsuario();
             pPersistencia.agregar(pUser);
         }
+        }catch(Exception ex){
+            throw new cDatosException("ERROR al Ingresar un Admin /pUsuario/agregar():" + ex.getMessage());
+        }
+        
     }
 }

@@ -31,7 +31,7 @@ public class pDatosException extends pPersistencia {
        
         //dd-MM-yyyy hh:mm:ss
      @Override
-      public void agregar(java.lang.Object o) throws cDatosException {
+      public void agregar(java.lang.Object o) throws Exception {
         try{
             if(Minutos.length() == 1){
                 Minutos = "0" + Minutos;

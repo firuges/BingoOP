@@ -22,7 +22,7 @@ public class pTipo extends pPersistencia{
       }
 
       @Override
-      public void agregar(java.lang.Object o) throws cDatosException {
+      public void agregar(java.lang.Object o) throws Exception {
         try{
             cTipo unTipo = (cTipo)o;
             super.abrirConexion();
@@ -43,7 +43,7 @@ public class pTipo extends pPersistencia{
 
 
       @Override
-   public void modificar(java.lang.Object o) throws cDatosException {
+   public void modificar(java.lang.Object o) throws Exception {
         try{
             cTipo unTipo = (cTipo)o;
             super.abrirConexion();
@@ -64,7 +64,7 @@ public class pTipo extends pPersistencia{
     }
 
       @Override
-   public void eliminar(java.lang.Object o) throws cDatosException {
+   public void eliminar(java.lang.Object o) throws Exception {
         try{
             cTipo unTipo = (cTipo)o;
             super.abrirConexion();
@@ -81,7 +81,7 @@ public class pTipo extends pPersistencia{
         }catch(SQLException e){throw new cDatosException("ERROR AL INTENTAR ELIMINAR TIPO:" + e.getMessage());}
     }
 
-   public cTipo buscarTipo(java.lang.Object o)throws cDatosException{
+   public cTipo buscarTipo(java.lang.Object o)throws Exception{
         try{
              cTipo unTipo = (cTipo)o;
 
@@ -120,7 +120,7 @@ public class pTipo extends pPersistencia{
         }catch(SQLException e){throw new cDatosException("Error al buscar accion:" + e.getMessage());}
     }
 
-   public int generarId()throws cDatosException{
+   public int generarId()throws Exception{
         try{
             int num;
             int id;
@@ -144,7 +144,7 @@ public class pTipo extends pPersistencia{
     }
 
 
-   public ArrayList buscarTodos()throws cDatosException{
+   public ArrayList buscarTodos()throws Exception{
         try{
             cTipo unTipo;
             ArrayList coleccion;
