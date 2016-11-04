@@ -22,13 +22,14 @@ import java.util.logging.Logger;
  * @author Maxi
  */
 public class pUsuario extends pPersistencia {
-    @Override
+        @Override
       public void agregar(java.lang.Object o) throws Exception {
         cUsuario unUser = (cUsuario)o;
-        if(unUser.getTipoUser().equals(Enums.Gerarquia.ADMIN)){
+        if(unUser.QueSoy().equals(String.valueOf(Enums.Gerarquia.ADMIN))){
             try {
                 cAdmin unAdmin = (cAdmin)o;
                 agregarAdmin(unAdmin);
+
             } catch (Exception ex) {
                 throw new cDatosException("ERROR al Ingresar un Admin /pUsuario/agregar():" + ex.getMessage());
                
@@ -47,7 +48,8 @@ public class pUsuario extends pPersistencia {
             // arma la sentencia sql
                String insertSql="INSERT INTO usarios(tid,tdesc)" +
                "VALUES(" + pAdmin.getNombre() + " ,'" + pAdmin.getApellido()+ " ,'" + pAdmin.getEmail()+ " ,'" + pAdmin.getPassword()
-                       + " ,'" + pAdmin.getTipoUser()+ "')";
+                       + " ,'" + pAdmin.QueSoy()+ "')";
+
                 // esto es solo para mostrar el sql que se va a ejecutar
                System.out.println(insertSql);
                // ejecuta la sentencia
@@ -69,7 +71,8 @@ public class pUsuario extends pPersistencia {
             // arma la sentencia sql
                String insertSql="INSERT INTO usarios(tid,tdesc)" +
                "VALUES(" + pJugador.getNombre() + " ,'" + pJugador.getApellido()+ " ,'" + pJugador.getEmail()+ " ,'" + pJugador.getPassword()
-                       + " ,'" + pJugador.getTipoUser()+ "')";
+                       + " ,'" + pJugador.QueSoy() + "')";
+
                 // esto es solo para mostrar el sql que se va a ejecutar
                System.out.println(insertSql);
                // ejecuta la sentencia
@@ -93,7 +96,8 @@ public class pUsuario extends pPersistencia {
                     "uapellido='" + unUser.getApellido() + "'" +
                     "uemail='" + unUser.getEmail()+ "'" +
                     "upassword='" + unUser.getPassword()+ "'"+
-                    "utipouser='" + unUser.getTipoUser()+ "'" +
+                    "utipouser='" + unUser.QueSoy()+ "'" +
+
                     " WHERE tid=" +  unUser.getId();
                     System.out.println(updateSql);
                     // ejecuta la sentencia
@@ -126,6 +130,7 @@ public class pUsuario extends pPersistencia {
    public cUsuario buscarUsuario(java.lang.Object o)throws Exception{
         try{
              cUsuario unUser = (cUsuario)o;
+             cUsuario unUsuario = null;
 
              super.abrirConexion();
             // Creo una nueva sentecia para ser ejecutada
@@ -156,16 +161,21 @@ public class pUsuario extends pPersistencia {
                 unUser.setPassword(rs.getString("upassword"));
                 String gerar = rs.getString("utipouser");
                 if(gerar.equals(Enums.Gerarquia.ADMIN)){
-                    unUser.setTipoUser(Enums.Gerarquia.ADMIN);
+                    unUsuario = new cAdmin();
+                    unUsuario = unUser;
+
                 }else{
-                    unUser.setTipoUser(Enums.Gerarquia.JUGADOR);
+                    unUsuario = new cJugador();
+                    unUsuario = unUser;
+
                 }
                 
             }
             super.cerrarConexion();
             // devuelve el objeto encontrado
-            if (unUser != null){
-                return unUser;
+            if (unUsuario != null){
+                return unUsuario;
+
             }else{
                 return null;
             }
@@ -199,6 +209,8 @@ public class pUsuario extends pPersistencia {
    public ArrayList buscarTodos()throws Exception{
         try{
             cUsuario unUser;
+            cUsuario unUsuario = null;
+
             ArrayList coleccion;
             coleccion = new ArrayList();
             super.abrirConexion();
@@ -223,11 +235,16 @@ public class pUsuario extends pPersistencia {
                 unUser.setPassword(rs.getString("upassword"));
                 String gerar = rs.getString("utipouser");
                 if(gerar.equals(Enums.Gerarquia.ADMIN)){
-                    unUser.setTipoUser(Enums.Gerarquia.ADMIN);
+                    unUsuario = new cAdmin();
+                    unUsuario = unUser;
+
                 }else{
-                    unUser.setTipoUser(Enums.Gerarquia.JUGADOR);
+                    unUsuario = new cJugador();
+                    unUsuario = unUser;
+
                 }
-                coleccion.add(unUser);
+                coleccion.add(unUsuario);
+
             }
             super.cerrarConexion();
             // devuelve el objeto encontrado
