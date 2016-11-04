@@ -5,12 +5,32 @@
  */
 package Common;
 
+import java.util.Date;
+
 /**
  *
  * @author Maxi
  */
-public class cAdmin extends cUsuario {
-    public cAdmin(int pId, String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
-        super(pId, pNombre,pApellido,pEmail,pPassword, pTipoUser);
+public class cAdmin extends cUsuario{
+     public static cAdmin unAdmin;
+    private Date Fechanacido;
+    public cAdmin(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido){
+        super(pId, pNombre, pApellido, pEmail, pPassword, pFechaNacido);
+    }
+    public cAdmin(){
+        super();
+    }
+    @Override
+    public cAdmin  getInstance()
+    {
+        if(unAdmin != null){
+            return unAdmin;
+        }
+        unAdmin = new cAdmin();
+        return unAdmin;
+    }
+    @Override
+    public String QueSoy(){
+        return "ADMIN";
     }
 }

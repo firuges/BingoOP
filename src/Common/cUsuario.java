@@ -5,6 +5,8 @@
  */
 package Common;
 
+import java.util.Date;
+
 /**
  *
  * @author Maxi
@@ -15,7 +17,7 @@ public class cUsuario {
     private String Apellido;
     private String Password;
     private String Email;
-    private Enums.Gerarquia TipoUser;
+    private Date Fechanacido;
     /**
      * @return the Nombre
      */
@@ -71,31 +73,35 @@ public class cUsuario {
     public void setEmail(String Email) {
         this.Email = Email;
     }
+    
+    public cUsuario  getInstance(){
+        cUsuario unUser = new cUsuario();
+        return unUser;
+    }
+    public cUsuario  getInstance(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido){
+        cUsuario unUser = new cUsuario();
+        unUser.setId(id);
+        unUser.setNombre(Nombre);
+        unUser.setApellido(Apellido);
+        unUser.setEmail(Email);
+        unUser.setPassword(Password);
+        unUser.setFechanacido(Fechanacido);
+        return unUser;
+    }
     public cUsuario(){
         
     }
-    public cUsuario(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
+    public cUsuario(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechanacido){
         this.id = pId;
         this.Nombre = pNombre;
         this.Apellido = pApellido;
         this.Email = pEmail;
         this.Password = pPassword;
-        this.TipoUser = pTipoUser;
+        this.Fechanacido = pFechanacido;
         
     }
-
-    /**
-     * @return the TipoUser
-     */
-    public Enums.Gerarquia getTipoUser() {
-        return TipoUser;
-    }
-
-    /**
-     * @param TipoUser the TipoUser to set
-     */
-    public void setTipoUser(Enums.Gerarquia TipoUser) {
-        this.TipoUser = TipoUser;
+    public String QueSoy(){
+        return "Soy un Simple Usuario No Identificado";
     }
 
     /**
@@ -110,5 +116,19 @@ public class cUsuario {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the Fechanacido
+     */
+    public Date getFechanacido() {
+        return Fechanacido;
+    }
+
+    /**
+     * @param Fechanacido the Fechanacido to set
+     */
+    public void setFechanacido(Date Fechanacido) {
+        this.Fechanacido = Fechanacido;
     }
 }

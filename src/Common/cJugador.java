@@ -5,12 +5,31 @@
  */
 package Common;
 
+import java.util.Date;
+
 /**
  *
  * @author Maxi
  */
-public class cJugador extends cUsuario {
-    public cJugador(int pId, String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
-        super(pId, pNombre,pApellido,pEmail,pPassword, pTipoUser);
+public class cJugador extends cUsuario{
+    public static cJugador unJugador;
+    public cJugador(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido){
+        super(pId, pNombre, pApellido, pEmail, pPassword, pFechaNacido);
+    }
+    public cJugador(){
+        super();
+    }
+    @Override
+    public cJugador  getInstance()
+    {
+        if(unJugador != null){
+            return unJugador;
+        }
+        unJugador = new cJugador();
+        return unJugador;
+    }
+    @Override
+    public String QueSoy(){
+        return "JUGADOR";
     }
 }

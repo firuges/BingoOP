@@ -11,6 +11,6 @@ package Common;
  */
 public class Enums {
     public enum Gerarquia{
-        ADMIN, JUGADOR;
+        ADMIN, JUGADOR, USUARIO;
     }
 }
