@@ -5,7 +5,7 @@
 package Main;
 
 import Dominio.dEmpresa;
-import Interfase.vPrincipal;
+import Interfase.vAdministrator;
 import Interfase.vLogin;
 
 public class main {

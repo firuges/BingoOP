@@ -10,16 +10,16 @@ import Dominio.dEmpresa;
  *
  * @author ezio
  */
-public class vPrincipal extends javax.swing.JFrame {
+public class vAdministrator extends javax.swing.JFrame {
     private dEmpresa empresa;
     /**
      * Creates new form vPrincipal
      */
-    public vPrincipal() {
+    public vAdministrator() {
         initComponents();
     }
    
-     public vPrincipal(dEmpresa pEmp) {
+     public vAdministrator(dEmpresa pEmp) {
         empresa = pEmp;
         initComponents();
     }
@@ -89,20 +89,21 @@ public class vPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vAdministrator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vAdministrator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vAdministrator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vAdministrator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vPrincipal().setVisible(true);
+                new vAdministrator().setVisible(true);
             }
         });
     }
