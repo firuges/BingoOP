@@ -5,19 +5,24 @@
  */
 package Interfase;
 
+import Dominio.dEmpresa;
+
 /**
  *
  * @author Maxi
  */
 public class vLogin extends javax.swing.JFrame {
-
+    private dEmpresa empresa;
     /**
      * Creates new form vLogin
      */
     public vLogin() {
         initComponents();
     }
-
+     public vLogin(dEmpresa pEmp) {
+        empresa = pEmp;
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,6 +101,11 @@ public class vLogin extends javax.swing.JFrame {
         jLabel3.setText("No estas Registrado?? ");
 
         btnRegistro.setText("REGISTRO");
+        btnRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegistroMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -143,6 +153,14 @@ public class vLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseClicked
+        // TODO add your handling code here:
+        vRegistro ventanaRegistro = new vRegistro(empresa);
+        //centra la ventana en la pantalla
+        ventanaRegistro.setLocationRelativeTo(null);
+        ventanaRegistro.setVisible(true);
+    }//GEN-LAST:event_btnRegistroMouseClicked
 
     /**
      * @param args the command line arguments

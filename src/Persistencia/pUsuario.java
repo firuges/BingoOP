@@ -46,7 +46,7 @@ public class pUsuario extends pPersistencia {
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
-               String insertSql="INSERT INTO usarios(tid,tdesc)" +
+               String insertSql="INSERT INTO usuarios(tid,tdesc)" +
                "VALUES(" + pAdmin.getNombre() + " ,'" + pAdmin.getApellido()+ " ,'" + pAdmin.getEmail()+ " ,'" + pAdmin.getPassword()
                        + " ,'" + pAdmin.QueSoy()+ "')";
 
@@ -69,9 +69,9 @@ public class pUsuario extends pPersistencia {
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
-               String insertSql="INSERT INTO usarios(tid,tdesc)" +
-               "VALUES(" + pJugador.getNombre() + " ,'" + pJugador.getApellido()+ " ,'" + pJugador.getEmail()+ " ,'" + pJugador.getPassword()
-                       + " ,'" + pJugador.QueSoy() + "')";
+               String insertSql="INSERT INTO usuarios(unombre,uapellido,uemail,upassword,utipouser)" +
+               "VALUES('" + pJugador.getNombre() + "' ,'" + pJugador.getApellido()+ "' ,'" + pJugador.getEmail()+ "' ,'" + pJugador.getPassword()
+                       + "' ,'" + pJugador.QueSoy() + "')";
 
                 // esto es solo para mostrar el sql que se va a ejecutar
                System.out.println(insertSql);
@@ -98,7 +98,7 @@ public class pUsuario extends pPersistencia {
                     "upassword='" + unUser.getPassword()+ "'"+
                     "utipouser='" + unUser.QueSoy()+ "'" +
 
-                    " WHERE tid=" +  unUser.getId();
+                    " WHERE idusuario=" +  unUser.getId();
                     System.out.println(updateSql);
                     // ejecuta la sentencia
                     st.executeUpdate(updateSql);

@@ -12,6 +12,8 @@ import java.util.Date;
  * @author Maxi
  */
 public class cUsuario {
+    public static cUsuario unUser;
+    
     private int id;
     private String Nombre;
     private String Apellido;
@@ -74,8 +76,11 @@ public class cUsuario {
         this.Email = Email;
     }
     
-    public cUsuario  getInstance(){
-        cUsuario unUser = new cUsuario();
+    public static cUsuario  getInstance(){
+        if(unUser != null){
+            return unUser;
+        }
+        unUser = new cUsuario();
         return unUser;
     }
     public cUsuario  getInstance(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido){
