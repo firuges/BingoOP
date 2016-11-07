@@ -6,6 +6,7 @@
 package Persistencia;
 
 import Common.Enums;
+import Common.Utilidades;
 import Common.cAdmin;
 import Common.cDatosException;
 import Common.cJugador;
@@ -227,12 +228,14 @@ public class pUsuario extends pPersistencia {
                 int num;
                 // recorre el Resultset y crea un objeto con los datos de
                 // cada linea.
-                num = rs.getInt("tid");
+                num = rs.getInt("idusuario");
                 unUser.setId(num);
                 unUser.setNombre(rs.getString("unombre"));
                 unUser.setApellido(rs.getString("uapellido"));
                 unUser.setEmail(rs.getString("uemail"));
                 unUser.setPassword(rs.getString("upassword"));
+                String Fecha = Utilidades.FormatearFechaToString(rs.getDate("ufecha"));
+                unUser.setFechanacido(Utilidades.FormatearFechaToDate(Fecha));
                 String gerar = rs.getString("utipouser");
                 if(gerar.equals(Enums.Gerarquia.ADMIN)){
                     unUsuario = new cAdmin();
