@@ -39,13 +39,16 @@ public class pDatosException extends pPersistencia {
             if(Segundos.length() == 1){
                 Segundos = "0" + Segundos;
             }
+            if(dia.length() == 1){
+                dia = "0" + dia;
+            }
              String Fecha = annio + "-" + mes + "-" + dia + " " + Hora + ":" + Minutos  + ":" + Segundos ;
             Exception exception = (Exception)o;
             super.abrirConexion();
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
-               String insertSql="INSERT INTO logException(eFecha,eMensaje)" +
+               String insertSql="INSERT INTO logexception(eFecha,eMensaje)" +
                "VALUES( '" + Fecha + "', '" + exception.getMessage() + "')";
                
                 // esto es solo para mostrar el sql que se va a ejecutar

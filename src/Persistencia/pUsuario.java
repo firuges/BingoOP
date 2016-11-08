@@ -6,6 +6,7 @@
 package Persistencia;
 
 import Common.Enums;
+import Common.Utilidades;
 import Common.cAdmin;
 import Common.cDatosException;
 import Common.cJugador;
@@ -46,7 +47,7 @@ public class pUsuario extends pPersistencia {
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
-               String insertSql="INSERT INTO usarios(tid,tdesc)" +
+               String insertSql="INSERT INTO usuarios(tid,tdesc)" +
                "VALUES(" + pAdmin.getNombre() + " ,'" + pAdmin.getApellido()+ " ,'" + pAdmin.getEmail()+ " ,'" + pAdmin.getPassword()
                        + " ,'" + pAdmin.QueSoy()+ "')";
 
@@ -69,9 +70,9 @@ public class pUsuario extends pPersistencia {
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
-               String insertSql="INSERT INTO usarios(tid,tdesc)" +
-               "VALUES(" + pJugador.getNombre() + " ,'" + pJugador.getApellido()+ " ,'" + pJugador.getEmail()+ " ,'" + pJugador.getPassword()
-                       + " ,'" + pJugador.QueSoy() + "')";
+               String insertSql="INSERT INTO usuarios(unombre,uapellido,uemail,upassword,utipouser)" +
+               "VALUES('" + pJugador.getNombre() + "' ,'" + pJugador.getApellido()+ "' ,'" + pJugador.getEmail()+ "' ,'" + pJugador.getPassword()
+                       + "' ,'" + pJugador.QueSoy() + "')";
 
                 // esto es solo para mostrar el sql que se va a ejecutar
                System.out.println(insertSql);
@@ -98,7 +99,7 @@ public class pUsuario extends pPersistencia {
                     "upassword='" + unUser.getPassword()+ "'"+
                     "utipouser='" + unUser.QueSoy()+ "'" +
 
-                    " WHERE tid=" +  unUser.getId();
+                    " WHERE idusuario=" +  unUser.getId();
                     System.out.println(updateSql);
                     // ejecuta la sentencia
                     st.executeUpdate(updateSql);
@@ -227,12 +228,14 @@ public class pUsuario extends pPersistencia {
                 int num;
                 // recorre el Resultset y crea un objeto con los datos de
                 // cada linea.
-                num = rs.getInt("tid");
+                num = rs.getInt("idusuario");
                 unUser.setId(num);
                 unUser.setNombre(rs.getString("unombre"));
                 unUser.setApellido(rs.getString("uapellido"));
                 unUser.setEmail(rs.getString("uemail"));
                 unUser.setPassword(rs.getString("upassword"));
+                String Fecha = Utilidades.FormatearFechaToString(rs.getDate("ufecha"));
+                unUser.setFechanacido(Utilidades.FormatearFechaToDate(Fecha));
                 String gerar = rs.getString("utipouser");
                 if(gerar.equals(Enums.Gerarquia.ADMIN)){
                     unUsuario = new cAdmin();

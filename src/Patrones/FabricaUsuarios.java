@@ -17,16 +17,15 @@ import Common.cUsuario;
 public class FabricaUsuarios{
     
     private cUsuario elUser;
-    public cUsuario getFactoryInstance(Enums.Gerarquia Choice){
-        String choice = Choice.toString();
-        if(Choice.equals(Enums.Gerarquia.JUGADOR)){
-            cJugador unJugador = (cJugador) elUser.getInstance();
+    public cUsuario getFactoryInstance(String Choice){
+        if(Choice.equals(String.valueOf(Enums.Gerarquia.JUGADOR))){
+            cJugador unJugador = cJugador.getInstance();
             return unJugador;
-        }else if(Choice.equals(Enums.Gerarquia.ADMIN)){
-            cAdmin unAdmin = (cAdmin) elUser.getInstance();
+        }else if(Choice.equals(String.valueOf(Enums.Gerarquia.ADMIN))){
+            cAdmin unAdmin = cAdmin.getInstance();
             return unAdmin;
         }else{
-            cUsuario unUser = elUser.getInstance();
+            cUsuario unUser = cUsuario.getInstance();
             return unUser;
         }
         

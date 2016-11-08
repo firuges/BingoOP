@@ -19,8 +19,8 @@ public class cJugador extends cUsuario{
     public cJugador(){
         super();
     }
-    @Override
-    public cJugador  getInstance()
+    
+    public static cJugador  getInstance()
     {
         if(unJugador != null){
             return unJugador;

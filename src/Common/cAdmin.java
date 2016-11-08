@@ -20,8 +20,7 @@ public class cAdmin extends cUsuario{
     public cAdmin(){
         super();
     }
-    @Override
-    public cAdmin  getInstance()
+    public static cAdmin  getInstance()
     {
         if(unAdmin != null){
             return unAdmin;
