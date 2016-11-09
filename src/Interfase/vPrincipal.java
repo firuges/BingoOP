@@ -73,7 +73,7 @@ public class vPrincipal extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(310, 20, 170, 50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Downloads\\bingo-1 (1).jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bingo-1 (1).jpg"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
 
