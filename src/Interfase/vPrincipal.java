@@ -6,6 +6,7 @@
 package Interfase;
 
 import Dominio.dEmpresa;
+import javax.swing.JFrame;
 
 /**
  *
@@ -39,7 +40,7 @@ public class vPrincipal extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnJugar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu7 = new javax.swing.JMenu();
@@ -62,18 +63,23 @@ public class vPrincipal extends javax.swing.JFrame {
 
         jMenu6.setText("jMenu6");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Downloads\\boton (1).png")); // NOI18N
-        jPanel1.add(jButton1);
-        jButton1.setBounds(310, 20, 170, 50);
+        btnJugar.setBackground(new java.awt.Color(255, 255, 255));
+        btnJugar.setForeground(new java.awt.Color(255, 255, 255));
+        btnJugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/boton (1).png"))); // NOI18N
+        btnJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJugarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnJugar);
+        btnJugar.setBounds(310, 20, 170, 50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Downloads\\bingo-1 (1).jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bingo-1 (1).jpg"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
 
@@ -89,12 +95,27 @@ public class vPrincipal extends javax.swing.JFrame {
         jMenu7.add(menuItemRegistro);
         jMenu7.add(jSeparator3);
 
-        MenuItemAdministracion.setText("Administracion");
+        MenuItemAdministracion.setText("Login");
+        MenuItemAdministracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemAdministracionActionPerformed(evt);
+            }
+        });
         jMenu7.add(MenuItemAdministracion);
         jMenu7.add(jSeparator2);
         jMenu7.add(jSeparator1);
 
         MenuItemSalir.setText("Salir");
+        MenuItemSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuItemSalirMouseClicked(evt);
+            }
+        });
+        MenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemSalirActionPerformed(evt);
+            }
+        });
         jMenu7.add(MenuItemSalir);
 
         jMenuBar1.add(jMenu7);
@@ -123,6 +144,34 @@ public class vPrincipal extends javax.swing.JFrame {
         ventanaRegistro.setVisible(true);
     }//GEN-LAST:event_menuItemRegistroActionPerformed
 
+    private void MenuItemAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAdministracionActionPerformed
+        // TODO add your handling code here:
+        vLogin ventanaLogin = new vLogin(Dominio.dEmpresa.getInstancia());
+        //centra la ventana
+        ventanaLogin.setLocationRelativeTo(null);
+        //mostramos la ventana
+        ventanaLogin.setVisible(true);
+        
+    }//GEN-LAST:event_MenuItemAdministracionActionPerformed
+
+    private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
+        // TODO add your handling code here:
+        vBingoGame ventanaGame = new vBingoGame(empresa);
+        //centra la ventana en la pantalla
+        ventanaGame.setLocationRelativeTo(null);
+        ventanaGame.setVisible(true);
+    }//GEN-LAST:event_btnJugarActionPerformed
+
+    private void MenuItemSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuItemSalirMouseClicked
+        // TODO add your handling code here:   
+      
+    }//GEN-LAST:event_MenuItemSalirMouseClicked
+
+    private void MenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_MenuItemSalirActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -161,7 +210,7 @@ public class vPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuItemAdministracion;
     private javax.swing.JMenuItem MenuItemSalir;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnJugar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

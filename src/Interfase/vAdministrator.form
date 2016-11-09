@@ -24,9 +24,6 @@
       </SubComponents>
     </Menu>
   </NonVisualComponents>
-  <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
-  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBar"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -236,9 +233,6 @@
               </Border>
             </Property>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Cartones por Jugador"/>
-          </AccessibilityProperties>
 
           <Layout>
             <DimensionLayout dim="0">
