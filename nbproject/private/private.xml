@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vRegistro.java</file>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vLogin.java</file>
-=======
-			
-           
-=======
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Persistencia/pUsuario.java</file>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vAdministrator.java</file>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vRegistro.java</file>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vLogin.java</file>
-=======
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Dominio/dUsuario.java</file>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vPrincipal.java</file>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Dominio/dEmpresa.java</file>
->>>>>>> 12c0e1b18c3ae2348041b3e65c3509514e3fe5bb
- 	    <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vLogin.java</file>
->>>>>>> 376e82b805b2c6718d617ad41c2e328962c8e33f
->>>>>>> 347212f8d3c8cf74853581c8bdd039ebbb0c0c1f
-        </group>
+        <group/>
     </open-files>
 </project-private>
