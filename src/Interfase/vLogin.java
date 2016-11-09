@@ -10,6 +10,7 @@ import Dominio.dEmpresa;
 import Patrones.Proxy.ProxyWall;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -45,7 +46,6 @@ public class vLogin extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 153, 255));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -67,19 +67,19 @@ public class vLogin extends javax.swing.JFrame {
         txtPassword.setBounds(180, 390, 210, 30);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Downloads\\email-logo.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/email-logo.png"))); // NOI18N
         jPanel4.add(jLabel1);
         jLabel1.setBounds(110, 280, 50, 60);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Downloads\\password-icono.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/password-icono.png"))); // NOI18N
         jPanel4.add(jLabel2);
         jLabel2.setBounds(110, 370, 50, 60);
         jPanel4.add(lblMensajeLogin);
         lblMensajeLogin.setBounds(0, 0, 0, 0);
 
         btnLogin.setBackground(new java.awt.Color(255, 255, 255));
-        btnLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Downloads\\ingresar.png")); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ingresar.png"))); // NOI18N
         btnLogin.setToolTipText("");
         btnLogin.setBorder(null);
         btnLogin.setBorderPainted(false);
@@ -91,7 +91,7 @@ public class vLogin extends javax.swing.JFrame {
         jPanel4.add(btnLogin);
         btnLogin.setBounds(220, 450, 110, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Downloads\\online-bingo.jpg")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/online-bingo.jpg"))); // NOI18N
         jPanel4.add(jLabel3);
         jLabel3.setBounds(0, 0, 550, 290);
 

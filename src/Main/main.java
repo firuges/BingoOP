@@ -7,6 +7,7 @@ package Main;
 import Dominio.dEmpresa;
 import Interfase.vAdministrator;
 import Interfase.vLogin;
+import Interfase.vPrincipal;
 
 public class main {
 
@@ -19,11 +20,11 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        vLogin ventanaLogin = new vLogin(Dominio.dEmpresa.getInstancia());
+        vPrincipal ventanaPrincipal = new vPrincipal(Dominio.dEmpresa.getInstancia());
         //centra la ventana
-        ventanaLogin.setLocationRelativeTo(null);
+        ventanaPrincipal.setLocationRelativeTo(null);
         //mostramos la ventana
-        ventanaLogin.setVisible(true);
+        ventanaPrincipal.setVisible(true);
     }
 
     public dEmpresa getEmpresa() {
