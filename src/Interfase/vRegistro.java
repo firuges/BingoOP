@@ -369,9 +369,9 @@ public class vRegistro extends javax.swing.JFrame {
             if(Utilidades.passLengthTrust(this.txtPassword.getText(), this.txtPassword1.getText())){
                 if(Utilidades.pass1pass2Trust(this.txtPassword.getText(), this.txtPassword1.getText())){
                     if(Utilidades.camposCompletos(this.txtNombre.getText(), this.txtApellido.getText(), this.txtEmail.getText(), this.txtPassword.getText(), this.txtPassword1.getText())){
-                        if(Utilidades.validarFecha(Utilidades.FormatearFechaToString(this.dFecha.getDate()))){
+                        if(Utilidades.validarFecha(Utilidades.FormatearFechaToString(this.FechaNacido.getDate()))){
                         String ID = this.txtId.getText();
-                        Date Fecha = Utilidades.FormatearFechaToDate(Utilidades.FormatearFechaToString(this.dFecha.getDate()));
+                        Date Fecha = Utilidades.FormatearFechaToDate(Utilidades.FormatearFechaToString(this.FechaNacido.getDate()));
                         //**************************/
                         
                         user = fu.getFactoryInstance(String.valueOf(Enums.Gerarquia.JUGADOR));
@@ -452,7 +452,7 @@ public class vRegistro extends javax.swing.JFrame {
         this.txtApellido.setText(pUser.getApellido());
         this.txtPassword.setText(pUser.getPassword());
         this.txtEmail.setText(pUser.getEmail());
-        this.dFecha.setDate(pUser.getFechanacido());
+        this.FechaNacido.setDate(pUser.getFechanacido());
     }
     private void LimpiarCampos(){
         this.txtId.setText("");
@@ -461,7 +461,7 @@ public class vRegistro extends javax.swing.JFrame {
         this.txtPassword.setText("");
         this.txtPassword1.setText("");
         this.txtEmail.setText("");
-        this.dFecha.cleanup();
+        this.FechaNacido.cleanup();
         this.txtNombre.setFocusable(true);
     }
     /**
