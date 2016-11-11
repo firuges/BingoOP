@@ -24,6 +24,7 @@ public class main {
         //centra la ventana
         ventanaPrincipal.setLocationRelativeTo(null);
         //mostramos la ventana
+        ventanaPrincipal.setTitle("Pantalla Principal");
         ventanaPrincipal.setVisible(true);
     }
 

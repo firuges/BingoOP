@@ -7,6 +7,9 @@ package Interfase;
 
 import Dominio.dEmpresa;
 import Patrones.Observer.ClaseObservador;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -29,6 +32,12 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         laEmpresa = pEmpresa;
         observer = Observador;
     }
+    public vPlayer1 (ClaseObservador Observador){
+        
+        initComponents();
+        observer = Observador;
+        setTitle("Jugador Numero 1");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,23 +51,28 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(409, 639));
         jPanel1.setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Documents\\BingoOP\\src\\Images\\fondoVerde.jpg")); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(4, -6, 400, 590);
+        jLabel1.setBounds(4, -6, 415, 640);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
         );
+
+        jPanel1.getAccessibleContext().setAccessibleName("");
+        jPanel1.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
