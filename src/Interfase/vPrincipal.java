@@ -6,6 +6,10 @@
 package Interfase;
 
 import Dominio.dEmpresa;
+import Patrones.Observer.ClaseObservador;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
@@ -156,10 +160,36 @@ public class vPrincipal extends javax.swing.JFrame {
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
-        vBingoGame ventanaGame = new vBingoGame(empresa);
-        //centra la ventana en la pantalla
-        ventanaGame.setLocationRelativeTo(null);
-        ventanaGame.setVisible(true);
+        
+        ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
+        dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
+        vBingoGame ventanaJuego = new vBingoGame(Empresa, Observador);
+        vPlayer1 ventanaPlayer1 = new vPlayer1();
+        vPlayer2 ventanaPlayer2 = new vPlayer2();
+        //centra la ventana
+        ventanaJuego.setLocationRelativeTo(null);
+        ventanaPlayer1.setLocationRelativeTo(null);
+        ventanaPlayer2.setLocationRelativeTo(null);
+        ///
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Point middle = new Point(screenSize.width / 2, screenSize.height / 2);
+        Point newLocation = new Point(middle.x - (ventanaJuego.getWidth() / 2), 
+                                      middle.y - (ventanaJuego.getHeight() / 2));
+        ventanaPlayer1.setLocation(newLocation);
+        ventanaPlayer1.setSize(415, 655);
+        ///
+        ///
+        Dimension screenSize2 = Toolkit.getDefaultToolkit().getScreenSize();
+        Point middle2 = new Point(screenSize2.width / 2, screenSize2.height / 2);
+        Point newLocation2 = new Point(middle2.x, 
+                                      middle2.y - (ventanaJuego.getHeight() / 2));
+        ventanaPlayer2.setLocation(newLocation2);
+        ventanaPlayer2.setSize(415, 655);
+        ///
+        //mostramos la ventana
+        ventanaJuego.setVisible(true);
+        ventanaPlayer1.setVisible(true);
+        ventanaPlayer2.setVisible(true);
     }//GEN-LAST:event_btnJugarActionPerformed
 
     private void MenuItemSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuItemSalirMouseClicked

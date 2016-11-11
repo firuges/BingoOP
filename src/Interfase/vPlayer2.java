@@ -7,9 +7,6 @@ package Interfase;
 
 import Dominio.dEmpresa;
 import Patrones.Observer.ClaseObservador;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -17,30 +14,20 @@ import java.util.Observer;
  *
  * @author Maxi
  */
-public class vBingoGame extends javax.swing.JFrame implements Observer{
-    private dEmpresa empresa;
+public class vPlayer2 extends javax.swing.JFrame implements Observer {
+    private dEmpresa laEmpresa;
     private ClaseObservador observer;
-    private vPlayer1 Iplayer1;
-    private vPlayer2 Iplayer2;
     /**
-     * Creates new form BingoGame
+     * Creates new form vPlayer2
      */
-    public vBingoGame() {
+    public vPlayer2() {
         initComponents();
     }
-    public vBingoGame(dEmpresa pEmp, ClaseObservador pObservador) {
-        empresa = pEmp;
-        observer = pObservador;
-        Iplayer1 = new vPlayer1(empresa, observer);
-        Iplayer2 = new vPlayer2(empresa, observer);
+    public vPlayer2 (dEmpresa pEmpresa ,ClaseObservador Observador){
         
-        observer.addObserver(Iplayer1);
-        observer.addObserver(Iplayer2);
         initComponents();
-    }
-    public vBingoGame(dEmpresa pEmp) {
-        empresa = pEmp;
-        initComponents();
+        laEmpresa = pEmpresa;
+        observer = Observador;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,23 +39,25 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Documents\\BingoOP\\src\\Images\\fondomesa.jpg")); // NOI18N
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1070, 670);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Documents\\BingoOP\\src\\Images\\fondoVerde.jpg")); // NOI18N
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(4, -6, 400, 590);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1069, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -91,28 +80,26 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vBingoGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vPlayer2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vBingoGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vPlayer2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vBingoGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vPlayer2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vBingoGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vPlayer2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vBingoGame().setVisible(true);
+                new vPlayer2().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
