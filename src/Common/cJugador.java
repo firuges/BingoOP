@@ -5,6 +5,7 @@
  */
 package Common;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,11 +14,14 @@ import java.util.Date;
  */
 public class cJugador extends cUsuario{
     public static cJugador unJugador;
+    private ArrayList<cCarton> Cartones;
     public cJugador(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido){
         super(pId, pNombre, pApellido, pEmail, pPassword, pFechaNacido);
+        this.Cartones = new ArrayList<cCarton>();
     }
     public cJugador(){
         super();
+        this.Cartones = new ArrayList<cCarton>();
     }
     
     public static cJugador  getInstance()
@@ -31,5 +35,19 @@ public class cJugador extends cUsuario{
     @Override
     public String QueSoy(){
         return "JUGADOR";
+    }
+
+    /**
+     * @return the Cartones
+     */
+    public ArrayList<cCarton> getCartones() {
+        return Cartones;
+    }
+
+    /**
+     * @param Cartones the Cartones to set
+     */
+    public void setCartones(ArrayList<cCarton> Cartones) {
+        this.Cartones = Cartones;
     }
 }
