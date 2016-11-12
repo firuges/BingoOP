@@ -29,7 +29,6 @@ public class pPersistencia {
     public void abrirConexion() throws Exception {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            distribuidora = DriverManager.getConnection("jdbc:mysql://localhost/bingoop?user=root&password=1234");
             distribuidora.setAutoCommit(true);
         } catch (ClassNotFoundException e) {
             throw new cDatosException("Problemas con el driver:" + e.getMessage());

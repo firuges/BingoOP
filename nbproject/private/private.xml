@@ -14,11 +14,7 @@
         
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; f40c5cb13fcd21b94c7bf459d4ad846781e1a7f1
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; 8ae5bf7d83c681a951f16a0132cd44c8095a6f07
-    <group>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vAdministrator.java</file>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vBingoGame.java</file>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vLogin.java</file>
-        </group>
+    
         <group>
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vPlayer1.java</file>
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vPlayer2.java</file>
@@ -28,5 +24,6 @@
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vBingoGame.java</file>
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vLogin.java</file>
         </group>
+        <group/>
     </open-files>
 </project-private>

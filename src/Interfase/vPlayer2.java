@@ -52,7 +52,7 @@ public class vPlayer2 extends javax.swing.JFrame implements Observer {
 
         jPanel1.setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Documents\\BingoOP\\src\\Images\\fondoVerde.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoVerde.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 410, 660);
 
