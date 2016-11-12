@@ -129,9 +129,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jPanel1.add(jPanel2);
         jPanel2.setBounds(210, 10, 730, 100);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Documents\\BingoOP\\src\\Images\\fondomesa.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondomesa.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1075, 670);
+        jLabel2.setBounds(0, 0, 1070, 670);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
