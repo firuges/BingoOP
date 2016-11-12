@@ -6,6 +6,10 @@
 package Interfase;
 
 import Dominio.dEmpresa;
+import Patrones.Observer.ClaseObservador;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
@@ -156,10 +160,19 @@ public class vPrincipal extends javax.swing.JFrame {
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
-        vBingoGame ventanaGame = new vBingoGame(empresa);
-        //centra la ventana en la pantalla
-        ventanaGame.setLocationRelativeTo(null);
-        ventanaGame.setVisible(true);
+        
+        ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
+        dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
+        vBingoGame ventanaJuego = new vBingoGame(Empresa, Observador);
+        vPlayer1 ventanaPlayer1 = new vPlayer1(Observador);
+        vPlayer2 ventanaPlayer2 = new vPlayer2(Observador);
+        Observador.addObserver(ventanaJuego);
+        Observador.addObserver(ventanaPlayer1);
+        Observador.addObserver(ventanaPlayer2);
+        ventanaJuego.setLocation(300, 150);
+        
+        ventanaJuego.setTitle("Ventana del Juego");
+        ventanaJuego.setVisible(true);
     }//GEN-LAST:event_btnJugarActionPerformed
 
     private void MenuItemSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuItemSalirMouseClicked
