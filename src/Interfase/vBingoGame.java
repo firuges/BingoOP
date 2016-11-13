@@ -103,11 +103,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblPozo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(403, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(300, 40, 460, 580);
+        jPanel2.setBounds(300, 180, 460, 440);
 
         comboColores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Negro", "Amarillo" }));
         comboColores.addItemListener(new java.awt.event.ItemListener() {
