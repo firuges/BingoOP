@@ -20,6 +20,7 @@ import java.util.Observer;
 public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private dEmpresa laEmpresa;
     private ClaseObservador observer;
+    private String color;
     /**
      * Creates new form vPlayer1
      */
@@ -36,7 +37,6 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         
         initComponents();
         observer = Observador;
-        setTitle("Jugador Numero 1");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,6 +48,7 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        lblColor = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,6 +56,10 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
 
         jPanel1.setPreferredSize(new java.awt.Dimension(409, 639));
         jPanel1.setLayout(null);
+
+        lblColor.setText("jLabel2");
+        jPanel1.add(lblColor);
+        lblColor.setBounds(190, 310, 34, 14);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoVerde.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -103,7 +108,6 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
             java.util.logging.Logger.getLogger(vPlayer1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -115,10 +119,13 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblColor;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void update(Observable o, Object arg) {
+        color = observer.getAccion();
+        this.lblColor.setText(color);
         /*String accion = observer.getAccion();
         acciones.add(accion);
         cargar();*/

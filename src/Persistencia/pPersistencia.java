@@ -29,6 +29,7 @@ public class pPersistencia {
     public void abrirConexion() throws Exception {
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            distribuidora = DriverManager.getConnection("jdbc:mysql://localhost/admin?user=root&password=root");
             distribuidora.setAutoCommit(true);
         } catch (ClassNotFoundException e) {
             throw new cDatosException("Problemas con el driver:" + e.getMessage());
