@@ -165,10 +165,8 @@ public class vPrincipal extends javax.swing.JFrame {
         dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
         vBingoGame ventanaJuego = new vBingoGame(Empresa, Observador);
         vPlayer1 ventanaPlayer1 = new vPlayer1(Observador);
-        vPlayer2 ventanaPlayer2 = new vPlayer2(Observador);
         Observador.addObserver(ventanaJuego);
-        Observador.addObserver(ventanaPlayer1);
-        Observador.addObserver(ventanaPlayer2);
+        
         ventanaJuego.setLocation(300, 150);
         
         ventanaJuego.setTitle("Ventana del Juego");

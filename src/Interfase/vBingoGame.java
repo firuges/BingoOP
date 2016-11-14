@@ -5,6 +5,7 @@
  */
 package Interfase;
 
+import Common.cJuego;
 import Dominio.dEmpresa;
 import Patrones.Observer.ClaseObservador;
 import java.awt.Dimension;
@@ -21,7 +22,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private dEmpresa empresa;
     private ClaseObservador observer;
     private vPlayer1 Iplayer1;
-    private vPlayer2 Iplayer2;
+    private static cJuego JuegoActivo;
     /**
      * Creates new form BingoGame
      */
@@ -32,10 +33,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         empresa = pEmp;
         observer = pObservador;
         Iplayer1 = new vPlayer1(empresa, observer);
-        Iplayer2 = new vPlayer2(empresa, observer);
         
         observer.addObserver(Iplayer1);
-        observer.addObserver(Iplayer2);
         initComponents();
     }
     public vBingoGame(ClaseObservador pObservador) {
@@ -58,26 +57,76 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        lblPozo = new javax.swing.JLabel();
+        comboColores = new javax.swing.JComboBox();
+        panelSeleccion = new javax.swing.JPanel();
+        lblPlayer1 = new javax.swing.JLabel();
+        comboPlayer1 = new javax.swing.JComboBox();
+        lblPlayer2 = new javax.swing.JLabel();
+        comboPlayer2 = new javax.swing.JComboBox();
         btnPlayGame = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        comboSelect = new javax.swing.JComboBox();
+        comboPlayer3 = new javax.swing.JComboBox();
+        lblPlayer3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setLayout(null);
 
-        jPanel2.setOpaque(false);
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel1.setText("POZO:");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Player 1: ");
+        lblPozo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Player 2:");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(lblPozo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(203, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblPozo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(543, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(300, 40, 460, 580);
+
+        comboColores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Negro", "Amarillo" }));
+        comboColores.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboColoresItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(comboColores);
+        comboColores.setBounds(110, 10, 56, 20);
+
+        panelSeleccion.setOpaque(false);
+
+        lblPlayer1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblPlayer1.setForeground(new java.awt.Color(255, 255, 255));
+        lblPlayer1.setText("Player 1: ");
+
+        lblPlayer2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblPlayer2.setForeground(new java.awt.Color(255, 255, 255));
+        lblPlayer2.setText("Player 2:");
 
         btnPlayGame.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         btnPlayGame.setText("Play!");
@@ -91,47 +140,73 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Carga los Jugadores de la Partida");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        comboSelect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3" }));
+        comboSelect.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboSelectItemStateChanged(evt);
+            }
+        });
+
+        lblPlayer3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblPlayer3.setForeground(new java.awt.Color(255, 255, 255));
+        lblPlayer3.setText("Player 1: ");
+
+        javax.swing.GroupLayout panelSeleccionLayout = new javax.swing.GroupLayout(panelSeleccion);
+        panelSeleccion.setLayout(panelSeleccionLayout);
+        panelSeleccionLayout.setHorizontalGroup(
+            panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSeleccionLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelSeleccionLayout.createSequentialGroup()
+                        .addComponent(lblPlayer1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3))
-                    .addComponent(jLabel5))
+                        .addComponent(comboPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(lblPlayer2))
+                    .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelSeleccionLayout.createSequentialGroup()
+                            .addGap(93, 93, 93)
+                            .addComponent(comboSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5)))
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(btnPlayGame, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addComponent(comboPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(lblPlayer3)
+                .addGap(18, 18, 18)
+                .addComponent(comboPlayer3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSeleccionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnPlayGame, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelSeleccionLayout.setVerticalGroup(
+            panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSeleccionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPlayGame, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPlayer2)
+                    .addComponent(comboPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPlayer1)
+                    .addComponent(lblPlayer3)
+                    .addComponent(comboPlayer3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(btnPlayGame, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(210, 10, 730, 100);
+        jPanel1.add(panelSeleccion);
+        panelSeleccion.setBounds(160, 10, 730, 180);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maxi\\Documents\\BingoOP\\src\\Images\\fondomesa.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondomesa.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1075, 670);
+        jLabel2.setBounds(0, 0, 1070, 670);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,8 +227,14 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
         dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
         vBingoGame ventanaJuego = new vBingoGame(Empresa, Observador);
+        //Ventana Player 1
         vPlayer1 ventanaPlayer1 = new vPlayer1(Observador);
-        vPlayer2 ventanaPlayer2 = new vPlayer2(Observador);
+        vPlayer1 ventanaPlayer2 = new vPlayer1(Observador);
+        vPlayer1 ventanaPlayer3 = null;
+        //los agrego al observador
+        Observador.addObserver(ventanaPlayer1);
+        Observador.addObserver(ventanaPlayer2);
+        
         //centra la ventana
         ventanaJuego.setLocationRelativeTo(null);
         ventanaPlayer1.setLocationRelativeTo(null);
@@ -176,16 +257,75 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         ventanaPlayer2.setSize(415, 655);
         ///
         //mostramos la ventana
-        
+        ventanaPlayer1.setTitle("Jugador Numero 1");
+        ventanaPlayer2.setTitle("Jugador Numero 2");
+        if(this.comboSelect.getSelectedIndex() == 1){
+            ventanaPlayer3 = new vPlayer1(Observador);
+            Observador.addObserver(ventanaPlayer1);
+            ventanaPlayer3.setLocationRelativeTo(null);
+            ///
+        Dimension screenSize3 = Toolkit.getDefaultToolkit().getScreenSize();
+        Point middle3 = new Point(screenSize3.width / 2, screenSize3.height / 2);
+        Point newLocation3 = new Point(middle3.x - (ventanaJuego.getWidth() / 2 + 100), 
+                                      middle3.y - (ventanaJuego.getHeight() / 2));
+        ventanaPlayer3.setLocation(newLocation3);
+        ventanaPlayer3.setSize(415, 655);
+        ventanaPlayer3.setTitle("Jugador Numero 3");
+        ///
+        }
         ventanaPlayer1.setVisible(true);
         ventanaPlayer2.setVisible(true);
+        if(ventanaPlayer3 != null)
+            ventanaPlayer3.setVisible(true);
+        this.panelSeleccion.setVisible(false);
     }//GEN-LAST:event_btnPlayGameActionPerformed
+    
+    private void comboSelectItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSelectItemStateChanged
+        // TODO add your handling code here:
+        if(this.comboSelect.getSelectedIndex() == 0){
+            this.lblPlayer1.setVisible(true);
+            this.lblPlayer2.setVisible(true);
+            this.lblPlayer3.setVisible(false);
+            
+            this.comboPlayer1.setVisible(true);
+            this.comboPlayer2.setVisible(true);
+            this.comboPlayer3.setVisible(false);
+        }else if(this.comboSelect.getSelectedIndex() == 1){
+            this.lblPlayer1.setVisible(true);
+            this.lblPlayer2.setVisible(true);
+            this.lblPlayer3.setVisible(true);
+            
+            this.comboPlayer1.setVisible(true);
+            this.comboPlayer2.setVisible(true);
+            this.comboPlayer3.setVisible(true);
+        }
+    }//GEN-LAST:event_comboSelectItemStateChanged
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        this.lblPlayer1.setVisible(true);
+        this.lblPlayer2.setVisible(true);
+        this.lblPlayer3.setVisible(false);
+        
+        this.comboPlayer1.setVisible(true);
+        this.comboPlayer2.setVisible(true);
+        this.comboPlayer3.setVisible(false);
+        
+        this.btnPlayGame.setVisible(true);
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void comboColoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboColoresItemStateChanged
+        // TODO add your handling code here:
+        this.observer.setChang(this.comboColores.getSelectedItem().toString());
+    }//GEN-LAST:event_comboColoresItemStateChanged
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -220,14 +360,21 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPlayGame;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox comboColores;
+    private javax.swing.JComboBox comboPlayer1;
+    private javax.swing.JComboBox comboPlayer2;
+    private javax.swing.JComboBox comboPlayer3;
+    private javax.swing.JComboBox comboSelect;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblPlayer1;
+    private javax.swing.JLabel lblPlayer2;
+    private javax.swing.JLabel lblPlayer3;
+    private javax.swing.JLabel lblPozo;
+    private javax.swing.JPanel panelSeleccion;
     // End of variables declaration//GEN-END:variables
 
     @Override
