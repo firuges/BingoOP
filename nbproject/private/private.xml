@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         
 =======
@@ -11,6 +10,8 @@
         
         
     
+<<<<<<< HEAD
+=======
         
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; f40c5cb13fcd21b94c7bf459d4ad846781e1a7f1
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; 8ae5bf7d83c681a951f16a0132cd44c8095a6f07
@@ -20,7 +21,7 @@
 =======
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; f96f2cbf271f5fbe7bedb25ad215008c8d001d66
         
-        
+        <group/>
         <group>
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vPlayer1.java</file>
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Persistencia/pPersistencia.java</file>
@@ -29,6 +30,7 @@
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vPrincipal.java</file>
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vBingoGame.java</file>
         </group>
+>>>>>>> 642309c803a771d69ed36cb30f37986adb320e9f
         <group>
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vPlayer1.java</file>
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Common/cJuego.java</file>
@@ -36,11 +38,10 @@
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vPrincipal.java</file>
             <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vBingoGame.java</file>
         </group>
-        <group>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vPlayer1.java</file>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Common/cJuego.java</file>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Main/main.java</file>
-            <file>file:/C:/Users/Maxi/Documents/BingoOP/src/Interfase/vBingoGame.java</file>
-        </group>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; f40c5cb13fcd21b94c7bf459d4ad846781e1a7f1
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 8ae5bf7d83c681a951f16a0132cd44c8095a6f07
+    <group/>
+=======
+>>>>>>> 642309c803a771d69ed36cb30f37986adb320e9f
     </open-files>
 </project-private>
