@@ -66,6 +66,12 @@ public class vRegistro extends javax.swing.JFrame {
         txtApellido = new javax.swing.JTextField();
         FechaNacido = new com.toedter.calendar.JDateChooser();
 
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
         jPanel6.setBackground(new java.awt.Color(204, 204, 204));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Alta de Clientes"));
 
@@ -347,6 +353,16 @@ public class vRegistro extends javax.swing.JFrame {
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            cargarUsuarios();
+        } catch (ParseException ex) {
+            Logger.getLogger(vRegistro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(vRegistro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowOpened
     private void ChangeBoton(boolean bool)
     {
         if(bool == false){
@@ -383,7 +399,7 @@ public class vRegistro extends javax.swing.JFrame {
                         user.setPassword(this.txtPassword.getText());
                         user.setFechanacido(Fecha);
                         laEmpresa.agregarUsuario(user);
-                        this.cargarClientes();
+                        this.cargarUsuarios();
                         this.LimpiarCampos();
                         //this.miObservador.setChang("Se Agrego Nuevo Cliente.");
                         JOptionPane.showMessageDialog(this, "Se dado de alta correctamente", "Tipo", JOptionPane.INFORMATION_MESSAGE);
@@ -414,7 +430,7 @@ public class vRegistro extends javax.swing.JFrame {
                     unUsuario = new cUsuario();
                     unUsuario.setId(num);
                     laEmpresa.eliminarUsuario(unUsuario);
-                    this.cargarClientes();
+                    this.cargarUsuarios();
                     this.LimpiarCampos();
                     ChangeBoton(false);
                     JOptionPane.showMessageDialog(this, "Se ha Eliminado Correctamente!", "Tipo", JOptionPane.INFORMATION_MESSAGE);
@@ -427,7 +443,7 @@ public class vRegistro extends javax.swing.JFrame {
         }
 
     }
-    public void cargarClientes() throws cDatosException, ParseException, Exception{
+    public void cargarUsuarios() throws cDatosException, ParseException, Exception{
         ArrayList <cUsuario> losUsuarios = new ArrayList();
         losUsuarios = laEmpresa.buscarTodosUsuarios();
         try {
