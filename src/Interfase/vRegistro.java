@@ -356,8 +356,9 @@ public class vRegistro extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            this.txtId.setText("" +laEmpresa.generarIdUsuario());
-            this.cargarUsuarios();
+            cargarUsuarios();
+        } catch (ParseException ex) {
+            Logger.getLogger(vRegistro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             Logger.getLogger(vRegistro.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -386,7 +387,7 @@ public class vRegistro extends javax.swing.JFrame {
                     if(Utilidades.camposCompletos(this.txtNombre.getText(), this.txtApellido.getText(), this.txtEmail.getText(), this.txtPassword.getText(), this.txtPassword1.getText())){
                         if(Utilidades.validarFecha(Utilidades.FormatearFechaToString(this.FechaNacido.getDate()))){
                         String ID = this.txtId.getText();
-                        Date Fecha = this.FechaNacido.getDate();
+                        Date Fecha = Utilidades.FormatearFechaToDate(Utilidades.FormatearFechaToString(this.FechaNacido.getDate()));
                         //**************************/
                         
                         user = fu.getFactoryInstance(String.valueOf(Enums.Gerarquia.JUGADOR));
