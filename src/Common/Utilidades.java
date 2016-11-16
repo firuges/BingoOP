@@ -24,6 +24,7 @@ public class Utilidades {
     }
 
     //metodo para validar si la fecha es correcta
+    //metodo para validar si la fecha es correcta
     public static boolean validarFecha(String fechax) {
         try {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
