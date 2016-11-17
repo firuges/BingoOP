@@ -58,7 +58,7 @@ public class pDatosException extends pPersistencia {
                super.cerrarConexion();
         }catch(SQLException e){
             try {
-                throw new cDatosException("ERROR AL INTENTAR INGRESAR la Excepcion:" + e.getMessage());
+                throw e;
             } catch (Exception ex) {
                 Logger.getLogger(pDatosException.class.getName()).log(Level.SEVERE, null, ex);
             }
