@@ -47,9 +47,9 @@ public class pUsuario extends pPersistencia {
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
-               String insertSql="INSERT INTO usuarios(tid,tdesc)" +
-               "VALUES(" + pAdmin.getNombre() + " ,'" + pAdmin.getApellido()+ " ,'" + pAdmin.getEmail()+ " ,'" + pAdmin.getPassword()
-                       + " ,'" + pAdmin.QueSoy()+ "')";
+               String insertSql="INSERT INTO usuarios(unombre,uapellido,uemail,upassword,utipouser, ufecha)" +
+               "VALUES('" + pAdmin.getNombre() + "' ,'" + pAdmin.getApellido()+ "', '" + pAdmin.getEmail()+ "', '" + pAdmin.getPassword()
+                       + "', '" + pAdmin.QueSoy()+ "', '"+ Utilidades.FormatearFechaToStringSQL(pAdmin.getFechanacido()) +"')";
 
                 // esto es solo para mostrar el sql que se va a ejecutar
                System.out.println(insertSql);
@@ -70,9 +70,9 @@ public class pUsuario extends pPersistencia {
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
-               String insertSql="INSERT INTO usuarios(unombre,uapellido,uemail,upassword,utipouser)" +
-               "VALUES('" + pJugador.getNombre() + "' ,'" + pJugador.getApellido()+ "' ,'" + pJugador.getEmail()+ "' ,'" + pJugador.getPassword()
-                       + "' ,'" + pJugador.QueSoy() + "')";
+               String insertSql="INSERT INTO usuarios(unombre,uapellido,uemail,upassword,utipouser, ufecha)" +
+               "VALUES('" + pJugador.getNombre() + "' ,'" + pJugador.getApellido()+ "' ,'" + pJugador.getEmail()+ "' ,'" + pJugador.getPassword() + "' ,'" + pJugador.QueSoy() + "', '"+Utilidades.FormatearFechaToStringSQL(pJugador.getFechanacido())+"')";
+
 
                 // esto es solo para mostrar el sql que se va a ejecutar
                System.out.println(insertSql);
@@ -98,7 +98,7 @@ public class pUsuario extends pPersistencia {
                     "uemail='" + unUser.getEmail()+ "'" +
                     "upassword='" + unUser.getPassword()+ "'"+
                     "utipouser='" + unUser.QueSoy()+ "'" +
-
+                    "ufecha='" + Utilidades.FormatearFechaToStringSQL(unUser.getFechanacido())+ "'" +
                     " WHERE idusuario=" +  unUser.getId();
                     System.out.println(updateSql);
                     // ejecuta la sentencia
@@ -119,7 +119,8 @@ public class pUsuario extends pPersistencia {
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
             String deleteSql="DELETE FROM usuarios " +
-                    " WHERE uid=" +  unUser.getId();
+            " WHERE idusuario=" +  unUser.getId();
+
             // esto es solo para mostrar el sql que se va a ejecutar
             System.out.println(deleteSql);
             // ejecuta la sentencia
@@ -140,7 +141,8 @@ public class pUsuario extends pPersistencia {
             String selectSql="SELECT * FROM usuarios ";
             if (unUser.getId() !=0){
                 // si pasaron el registro busco solo por eso
-                selectSql=selectSql + " WHERE tid=" + unUser.getId();
+                selectSql=selectSql + " WHERE idusuario=" + unUser.getId();
+
             }
             // esto es solo para mostrar el sql que se va a ejecutar
             System.out.println(selectSql);
@@ -154,7 +156,7 @@ public class pUsuario extends pPersistencia {
                 int num;
                 // recorre el Resultset y crea un objeto con los datos de
                 // cada linea.
-                num = rs.getInt("tid");
+                num = rs.getInt("idusuario");
                 unUser.setId(num);
                 unUser.setNombre(rs.getString("unombre"));
                 unUser.setApellido(rs.getString("uapellido"));
@@ -192,13 +194,14 @@ public class pUsuario extends pPersistencia {
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
-            String selectSql="SELECT MAX(tid) FROM ttipo";
+            String selectSql="SELECT MAX(idusuario) FROM usuarios";
+
             // esto es solo para mostrar el sql que se va a ejecutar
             System.out.println(selectSql);
             // ejecuta la sentencia
             ResultSet rs=st.executeQuery(selectSql);
             while(rs.next()){
-                num = rs.getInt("MAX(tid)");
+                num = rs.getInt("MAX(idusuario)");
                 num = num +1;
             }
             super.cerrarConexion();

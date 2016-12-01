@@ -15,9 +15,11 @@ import java.util.Date;
 public class cJugador extends cUsuario{
     public static cJugador unJugador;
     private ArrayList<cCarton> Cartones;
-    public cJugador(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido){
+    private int fichas;
+    public cJugador(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido, int pFichas){
         super(pId, pNombre, pApellido, pEmail, pPassword, pFechaNacido);
         this.Cartones = new ArrayList<cCarton>();
+        fichas = pFichas;
     }
     public cJugador(){
         super();
@@ -49,5 +51,19 @@ public class cJugador extends cUsuario{
      */
     public void setCartones(ArrayList<cCarton> Cartones) {
         this.Cartones = Cartones;
+    }
+
+    /**
+     * @return the fichas
+     */
+    public int getFichas() {
+        return fichas;
+    }
+
+    /**
+     * @param fichas the fichas to set
+     */
+    public void setFichas(int fichas) {
+        this.fichas = fichas;
     }
 }
