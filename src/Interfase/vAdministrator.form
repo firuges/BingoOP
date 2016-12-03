@@ -335,11 +335,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar Configuracion"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnRestablecer">
           <Properties>
             <Property name="text" type="java.lang.String" value="Restablecer por defecto"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRestablecerActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

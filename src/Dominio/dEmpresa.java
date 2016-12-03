@@ -136,7 +136,7 @@ public class dEmpresa {
     }
 
     
-    public boolean modificarUsuario(cConfiguracion pConfig) throws Exception {
+    public boolean modificarConfiguracion(cConfiguracion pConfig) throws Exception {
         if (pConfig != null) {
             try {
                 empresaConfiguracion.modificar(pConfig);

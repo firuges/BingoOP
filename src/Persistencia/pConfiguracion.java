@@ -5,13 +5,8 @@
  */
 package Persistencia;
 
-import Common.Enums;
-import Common.Utilidades;
-import Common.cAdmin;
 import Common.cConfiguracion;
 import Common.cDatosException;
-import Common.cJugador;
-import Common.cUsuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

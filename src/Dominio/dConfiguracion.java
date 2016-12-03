@@ -27,10 +27,20 @@ public class dConfiguracion {
         
     }
      public cConfiguracion traer(int pId) throws Exception {
+         cConfiguracion laConfig =null;
         try{
+            if(pId==1){
+            laConfig.setId(2);
+            laConfig.setFilasCarton(3);
+            laConfig.setColumnasCarton(2);
+            laConfig.setCartonesXJugador(2);
+            laConfig.setValorCarton(10);
+            this.modificar(laConfig);
+            }else{
             pConfiguracion persistencia = new pConfiguracion();
-            cConfiguracion laConfig = persistencia.traerConfig(pId);
-        if (laConfig != null) {
+            laConfig = persistencia.traerConfig(pId);
+            }
+            if (laConfig != null) {
             return laConfig;
         } else {
             return null;

@@ -152,8 +152,18 @@ public class vAdministrator extends javax.swing.JFrame {
         );
 
         btnGuardar.setText("Guardar Configuracion");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnRestablecer.setText("Restablecer por defecto");
+        btnRestablecer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestablecerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -236,7 +246,12 @@ public class vAdministrator extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cConfiguracion laConfig;
+       
+        this.CargarConfiguracion();
+        
+    }//GEN-LAST:event_formWindowOpened
+    private void CargarConfiguracion(){
+     cConfiguracion laConfig;
         try {
             JComboBox comboFilas = this.jFilas;
             JComboBox comboColumnas = this.jColumnas;
@@ -249,13 +264,35 @@ public class vAdministrator extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(vAdministrator.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-    }//GEN-LAST:event_formWindowOpened
-
+    }
     private void jCartonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCartonesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCartonesActionPerformed
+
+    private void btnRestablecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestablecerActionPerformed
+        try {
+            cConfiguracion laConfig = empresa.traerConfiguracion(1);
+            this.CargarConfiguracion();
+        } catch (Exception ex) {
+            Logger.getLogger(vAdministrator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnRestablecerActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+
+        cConfiguracion laConfig = null;
+        laConfig.setId(2);
+        laConfig.setFilasCarton((int) this.jFilas.getItemAt(this.jFilas.getSelectedIndex()));
+        laConfig.setColumnasCarton((int) this.jColumnas.getItemAt(this.jColumnas.getSelectedIndex()));
+        laConfig.setCartonesXJugador((int) this.jCartones.getItemAt(this.jColumnas.getSelectedIndex()));
+        laConfig.setValorCarton(Integer.parseInt(this.jValor.getText()));
+        try {
+            empresa.modificarConfiguracion(laConfig);
+        } catch (Exception ex) {
+            Logger.getLogger(vAdministrator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
