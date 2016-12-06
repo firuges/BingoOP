@@ -48,6 +48,8 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         panelCartones = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCarton1 = new javax.swing.JTable();
@@ -63,6 +65,17 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
 
         jPanel1.setPreferredSize(new java.awt.Dimension(409, 639));
         jPanel1.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(350, 10, 50, 30);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Saldo Disponible:");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(220, 20, 120, 17);
 
         panelCartones.setOpaque(false);
 
@@ -136,6 +149,8 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         jPanel1.add(lblColor);
         lblColor.setBounds(10, 610, 34, 14);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoVerde.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(-6, -6, 420, 640);
@@ -193,6 +208,8 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

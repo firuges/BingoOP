@@ -13,10 +13,11 @@ import java.util.Observable;
  */
 public class ClaseObservador extends Observable{
     private String accion;
-	
+
 	public ClaseObservador(){
 		
 	}
+        
 	// <editor-fold defaultstate="collapsed" desc=" Inctancia ">
     private static ClaseObservador instancia;
 

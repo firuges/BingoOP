@@ -320,7 +320,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    // <editor-fold defaultstate="collapsed" desc=" Boton de Play ">
+       
     private void btnPlayGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayGameActionPerformed
         // TODO add your handling code here:
         ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
@@ -381,6 +382,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.panelSeleccion.setVisible(false);
         this.PanelJuego.setVisible(true);
     }//GEN-LAST:event_btnPlayGameActionPerformed
+     // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc=" Combo de Seleccion Jugadores ">
     
     private void comboSelectItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSelectItemStateChanged
         // TODO add your handling code here:
@@ -402,7 +405,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.comboPlayer3.setVisible(true);
         }
     }//GEN-LAST:event_comboSelectItemStateChanged
-
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc=" Al Abrir Ventana WindowsOpened ">
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         this.lblPlayer1.setVisible(true);
@@ -420,7 +424,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         si = 0;
         no=0;
     }//GEN-LAST:event_formWindowOpened
-
+    // </editor-fold>
     private void comboColoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboColoresItemStateChanged
         // TODO add your handling code here:
         this.observer.setChang(this.comboColores.getSelectedItem().toString());
@@ -476,9 +480,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         }catch(Exception ex){
             throw new cDatosException("ERROR al Traer Configuracion del Juego /vBingoGame: " + ex.getMessage());
         }
-        /// Cantidad de Cartones * Columnas y todo esto * Cantidad de Cartones en total
-        int CanNumeros = (config.getFilasCarton() * config.getColumnasCarton() ) * (config.getCartonesXJugador()*pCantJugadores);
-        
+        /// Cantidad de fila * Columna y todo esto * Cantidad de Cartones en total
+        int CantNumeros = (config.getFilasCarton() * config.getColumnasCarton() ) * (config.getCartonesXJugador()*pCantJugadores);
+        Numeros = new Integer[CantNumeros];
     }
     /**
      * @param args the command line arguments
