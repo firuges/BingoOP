@@ -139,11 +139,10 @@ public class pUsuario extends pPersistencia {
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
             String selectSql="SELECT * FROM usuarios ";
-            if (unUser.getId() !=0){
-                // si pasaron el registro busco solo por eso
-                selectSql=selectSql + " WHERE idusuario=" + unUser.getId();
+            
+            selectSql=selectSql + " WHERE uemail= '" + unUser.getEmail()+ "'&& upassword= '" +unUser.getPassword() + "'";
 
-            }
+            
             // esto es solo para mostrar el sql que se va a ejecutar
             System.out.println(selectSql);
             // ejecuta la sentencia

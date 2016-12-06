@@ -9,17 +9,21 @@ import Common.Utilidades;
 import Common.cConfiguracion;
 import Common.cDatosException;
 import Common.cJuego;
+import Common.cJugador;
+import Common.cUsuario;
 import Dominio.dEmpresa;
 import Patrones.Observer.ClaseObservador;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,11 +34,12 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private dEmpresa empresa;
     private ClaseObservador observer;
     private vPlayer1 Iplayer1;
-    private static cJuego JuegoActivo;
+    private static cJuego elJuego;
     private Integer[] Numeros;
     public static int clicks;
     public static int si;
     public static int no;
+    
     /**
      * Creates new form BingoGame
      */
@@ -86,22 +91,22 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel3 = new javax.swing.JLabel();
         panelLogin1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtEmail1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         btnLogin1 = new javax.swing.JButton();
+        txtPassword1 = new javax.swing.JPasswordField();
         panelLogin2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtEmail2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         btnLogin2 = new javax.swing.JButton();
+        txtPassword2 = new javax.swing.JPasswordField();
         panelLogin3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtEmail3 = new javax.swing.JTextField();
         btnLogin3 = new javax.swing.JButton();
+        txtPassword3 = new javax.swing.JPasswordField();
         lblEstado1 = new javax.swing.JLabel();
         lblEstado2 = new javax.swing.JLabel();
         lblEstado3 = new javax.swing.JLabel();
@@ -248,9 +253,19 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelSeleccion.add(btnPlayGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 189, 26));
 
         comboSelect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3" }));
+        comboSelect.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                comboSelectMouseClicked(evt);
+            }
+        });
         comboSelect.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboSelectItemStateChanged(evt);
+            }
+        });
+        comboSelect.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                comboSelectFocusGained(evt);
             }
         });
         panelSeleccion.add(comboSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 47, -1));
@@ -267,12 +282,17 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         panelLogin1.setPreferredSize(new java.awt.Dimension(187, 106));
 
-        jLabel4.setText("Usuario");
+        jLabel4.setText("Email");
 
         jLabel6.setText("Password");
 
         btnLogin1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLogin1.setText("Login");
+        btnLogin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogin1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLogin1Layout = new javax.swing.GroupLayout(panelLogin1);
         panelLogin1.setLayout(panelLogin1Layout);
@@ -283,12 +303,12 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLogin1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(txtEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLogin1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPassword1)))
                 .addContainerGap())
             .addGroup(panelLogin1Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
@@ -301,24 +321,29 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 .addContainerGap()
                 .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
+                    .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogin1)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         panelSeleccion.add(panelLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, 110));
 
-        jLabel8.setText("Usuario");
+        jLabel8.setText("Email");
 
         jLabel7.setText("Password");
 
         btnLogin2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLogin2.setText("Login");
+        btnLogin2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogin2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
         panelLogin2.setLayout(panelLogin2Layout);
@@ -327,19 +352,17 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             .addGroup(panelLogin2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtPassword2)
+                    .addComponent(txtEmail2, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
                 .addGap(13, 13, 13))
             .addGroup(panelLogin2Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(btnLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         panelLogin2Layout.setVerticalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,11 +370,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 .addContainerGap()
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogin2)
                 .addContainerGap(13, Short.MAX_VALUE))
@@ -363,10 +386,15 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         jLabel9.setText("Password");
 
-        jLabel10.setText("Usuario");
+        jLabel10.setText("Email");
 
         btnLogin3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLogin3.setText("Login");
+        btnLogin3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogin3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLogin3Layout = new javax.swing.GroupLayout(panelLogin3);
         panelLogin3.setLayout(panelLogin3Layout);
@@ -377,12 +405,12 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 .addGroup(panelLogin3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLogin3Layout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(txtEmail3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLogin3Layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPassword3)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -395,14 +423,14 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 .addContainerGap()
                 .addGroup(panelLogin3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelLogin3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogin3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         panelSeleccion.add(panelLogin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
@@ -586,6 +614,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         clicks = 0;
         si = 0;
         no=0;
+        elJuego = new cJuego();
     }//GEN-LAST:event_formWindowOpened
     // </editor-fold>
     private void comboColoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboColoresItemStateChanged
@@ -599,6 +628,150 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.lblNum.setText(String.valueOf(clicks++));
         ElegirNumero();
     }//GEN-LAST:event_btnGirarActionPerformed
+
+    private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            LoginUser(evt);
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnLogin1ActionPerformed
+
+    private void btnLogin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            LoginUser(evt);
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnLogin2ActionPerformed
+
+    private void btnLogin3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin3ActionPerformed
+        try {
+            // TODO add your handling code here:
+            LoginUser(evt);
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnLogin3ActionPerformed
+
+    private void comboSelectFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboSelectFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSelectFocusGained
+
+    private void comboSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboSelectMouseClicked
+        // TODO add your handling code here:
+        if(!this.comboSelect.isEnabled()){
+            JOptionPane.showMessageDialog(this, "Deben salir todos los usuarios Antes de Cambiar de Seleccion", "Combo Seleccion", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_comboSelectMouseClicked
+    public void LoginUser(ActionEvent evento) throws Exception{
+        String email, password;
+        boolean yaLogeado = false;
+        if(this.btnLogin1 == evento.getSource()){
+            email = this.txtEmail1.getText();
+            password = this.txtPassword1.getText();
+            if(!"".equals(email) || !"".equalsIgnoreCase(password)){
+                cUsuario jugador1 = new cJugador();
+                
+                jugador1.setEmail(email);
+                jugador1.setPassword(password);
+                jugador1 = empresa.buscarUsuario(jugador1);
+                if(jugador1.getId() < 1){
+                    JOptionPane.showMessageDialog(this, "Login Incorrecto, por Favor Verifique su Usuario y Contraseña", "Login", JOptionPane.INFORMATION_MESSAGE);
+                }else
+                {
+                    for (cUsuario u : elJuego.getJugadores()) {
+                    if (u.getEmail().equalsIgnoreCase(jugador1.getEmail())) {
+                        yaLogeado = true;
+                    }
+    }
+                    if(!yaLogeado){
+                        elJuego.getJugadores().add(jugador1);
+                        this.panelLogin1.setVisible(false);
+                        this.lblEstado1.setText("ONLINE");
+                        this.lblPlayer1.setText(jugador1.getNombre());
+                        this.comboSelect.enable(false);
+                        this.btnLogout1.setVisible(true);
+                    }else{
+                            JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Completa todos los Campos...", "Login", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+        }else if(this.btnLogin2 == evento.getSource()){
+            email = this.txtEmail2.getText();
+            password = this.txtPassword2.getText();
+            if(!"".equals(email) || !"".equalsIgnoreCase(password)){
+                cUsuario jugador2 = new cJugador();
+                
+                jugador2.setEmail(email);
+                jugador2.setPassword(password);
+                jugador2 = empresa.buscarUsuario(jugador2);
+                if(jugador2.getId() < 1){
+                    JOptionPane.showMessageDialog(this, "Login Incorrecto, por Favor Verifique su Usuario y Contraseña", "Login", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else
+                {
+                    
+                    for (cUsuario u : elJuego.getJugadores()) {
+                    if (u.getEmail().equalsIgnoreCase(jugador2.getEmail())) {
+                        yaLogeado = true;
+                    }
+    }
+                    if(!yaLogeado){
+                        this.panelLogin2.setVisible(false);
+                        this.lblEstado2.setText("ONLINE");
+                        this.lblPlayer2.setText(jugador2.getNombre());
+                        this.comboSelect.enable(false);
+                        this.btnLogout2.setVisible(true);
+                    }else{
+                            JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Completa todos los Campos...", "Login", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+        }else{
+            email = this.txtEmail3.getText();
+            password = this.txtPassword3.getText();
+            if(!"".equals(email) || !"".equalsIgnoreCase(password)){
+                cUsuario jugador3 = new cJugador();
+                
+                jugador3.setEmail(email);
+                jugador3.setPassword(password);
+                jugador3 = empresa.buscarUsuario(jugador3);
+                if(jugador3.getId() < 1){
+                    JOptionPane.showMessageDialog(this, "Login Incorrecto, por Favor Verifique su Usuario y Contraseña", "Login", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else
+                {
+                    for (cUsuario u : elJuego.getJugadores()) {
+                    if (u.getEmail().equalsIgnoreCase(jugador3.getEmail())) {
+                        yaLogeado = true;
+                    }
+    }
+                    if(!yaLogeado){
+                        this.panelLogin3.setVisible(false);
+                        this.lblEstado3.setText("ONLINE");
+                        this.lblPlayer3.setText(jugador3.getNombre());
+                        this.comboSelect.enable(false);
+                        this.btnLogout3.setVisible(true);
+                    }else{
+                            JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Completa todos los Campos...", "Login", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+        }
+    }
     private void cargarNumerosTablero(){
         if(this.Numeros == null){
             this.Numeros = new Integer[100]; 
@@ -708,12 +881,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JLabel label1010;
     private javax.swing.JLabel label123;
     private javax.swing.JLabel label12313;
@@ -732,6 +899,12 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JPanel panelLogin3;
     private javax.swing.JPanel panelSeleccion;
     private javax.swing.JTable tableSorteo;
+    private javax.swing.JTextField txtEmail1;
+    private javax.swing.JTextField txtEmail2;
+    private javax.swing.JTextField txtEmail3;
+    private javax.swing.JPasswordField txtPassword1;
+    private javax.swing.JPasswordField txtPassword2;
+    private javax.swing.JPasswordField txtPassword3;
     // End of variables declaration//GEN-END:variables
 
     @Override

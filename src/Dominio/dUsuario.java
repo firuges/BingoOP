@@ -51,10 +51,9 @@ public class dUsuario {
     public cUsuario buscar(cUsuario pUsuario) throws Exception {
         try{
             cUsuario unUsuario = new cUsuario();
-        if (pUsuario.getId() != 0) {
             pUsuario persistencia = new pUsuario();
             unUsuario = persistencia.buscarUsuario(pUsuario);
-        }
+        
         if (unUsuario != null) {
             return unUsuario;
         } else {

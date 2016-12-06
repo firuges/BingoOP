@@ -13,8 +13,10 @@ import java.util.Date;
  * @author Maxi
  */
 public class cJugador extends cUsuario{
-    public static cJugador unJugador;
+    public static cJugador unJugador;//singlenton
     private ArrayList<cCarton> Cartones;
+    
+    private boolean ready;
     private int fichas;
     public cJugador(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido, int pFichas){
         super(pId, pNombre, pApellido, pEmail, pPassword, pFechaNacido);
@@ -65,5 +67,19 @@ public class cJugador extends cUsuario{
      */
     public void setFichas(int fichas) {
         this.fichas = fichas;
+    }
+
+    /**
+     * @return the ready
+     */
+    public boolean isReady() {
+        return ready;
+    }
+
+    /**
+     * @param ready the ready to set
+     */
+    public void setReady(boolean ready) {
+        this.ready = ready;
     }
 }

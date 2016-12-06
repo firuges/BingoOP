@@ -13,10 +13,18 @@ import java.util.ArrayList;
  */
 public class cJuego {
     private int Id;
-    private ArrayList<cJugador> Jugadores;
+    private ArrayList<cUsuario> Jugadores;
     private int Pozo;
     private int[] Bolillero;
     private int numeroSorteado;
+    private boolean juegoActivo;
+    
+     public cJuego(){
+        juegoActivo = false;
+        numeroSorteado = -1;
+        Pozo = 0;
+        Jugadores = new ArrayList();
+    }
     /**
      * @return the Id
      */
@@ -34,14 +42,14 @@ public class cJuego {
     /**
      * @return the Jugadores
      */
-    public ArrayList<cJugador> getJugadores() {
+    public ArrayList<cUsuario> getJugadores() {
         return Jugadores;
     }
 
     /**
      * @param Jugadores the Jugadores to set
      */
-    public void setJugadores(ArrayList<cJugador> Jugadores) {
+    public void setJugadores(ArrayList<cUsuario> Jugadores) {
         this.Jugadores = Jugadores;
     }
 
@@ -86,4 +94,20 @@ public class cJuego {
     public void setNumeroSorteado(int numeroSorteado) {
         this.numeroSorteado = numeroSorteado;
     }
+
+    /**
+     * @return the juegoActivo
+     */
+    public boolean isJuegoActivo() {
+        return juegoActivo;
+    }
+
+    /**
+     * @param juegoActivo the juegoActivo to set
+     */
+    public void setJuegoActivo(boolean juegoActivo) {
+        this.juegoActivo = juegoActivo;
+    }
+    
+    
 }
