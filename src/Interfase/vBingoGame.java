@@ -78,12 +78,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         lblNoEncontro = new javax.swing.JLabel();
         comboColores = new javax.swing.JComboBox();
         panelSeleccion = new javax.swing.JPanel();
-        lblPlayer1 = new javax.swing.JLabel();
-        lblPlayer2 = new javax.swing.JLabel();
+        label1010 = new javax.swing.JLabel();
+        label123 = new javax.swing.JLabel();
         btnPlayGame = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         comboSelect = new javax.swing.JComboBox();
-        lblPlayer3 = new javax.swing.JLabel();
+        label12313 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         panelLogin1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -106,6 +105,12 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         lblEstado1 = new javax.swing.JLabel();
         lblEstado2 = new javax.swing.JLabel();
         lblEstado3 = new javax.swing.JLabel();
+        btnLogout1 = new javax.swing.JButton();
+        btnLogout2 = new javax.swing.JButton();
+        btnLogout3 = new javax.swing.JButton();
+        lblPlayer1 = new javax.swing.JLabel();
+        lblPlayer2 = new javax.swing.JLabel();
+        lblPlayer3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setResizable(false);
@@ -221,14 +226,17 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         comboColores.setBounds(110, 10, 56, 20);
 
         panelSeleccion.setOpaque(false);
+        panelSeleccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblPlayer1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblPlayer1.setForeground(new java.awt.Color(255, 255, 255));
-        lblPlayer1.setText("Player 1: ");
+        label1010.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        label1010.setForeground(new java.awt.Color(255, 255, 255));
+        label1010.setText("Player 1: ");
+        panelSeleccion.add(label1010, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        lblPlayer2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblPlayer2.setForeground(new java.awt.Color(255, 255, 255));
-        lblPlayer2.setText("Player 2:");
+        label123.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        label123.setForeground(new java.awt.Color(255, 255, 255));
+        label123.setText("Player 2:");
+        panelSeleccion.add(label123, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
         btnPlayGame.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         btnPlayGame.setText("Play!");
@@ -237,10 +245,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 btnPlayGameActionPerformed(evt);
             }
         });
-
-        jLabel5.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Carga los Jugadores de la Partida");
+        panelSeleccion.add(btnPlayGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 189, 26));
 
         comboSelect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3" }));
         comboSelect.addItemListener(new java.awt.event.ItemListener() {
@@ -248,14 +253,19 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 comboSelectItemStateChanged(evt);
             }
         });
+        panelSeleccion.add(comboSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 47, -1));
 
-        lblPlayer3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblPlayer3.setForeground(new java.awt.Color(255, 255, 255));
-        lblPlayer3.setText("Player 3: ");
+        label12313.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        label12313.setForeground(new java.awt.Color(255, 255, 255));
+        label12313.setText("Player 3: ");
+        panelSeleccion.add(label12313, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cantidad de Jugadores");
+        panelSeleccion.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        panelLogin1.setPreferredSize(new java.awt.Dimension(187, 106));
 
         jLabel4.setText("Usuario");
 
@@ -277,7 +287,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLogin1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(panelLogin1Layout.createSequentialGroup()
@@ -298,8 +308,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addComponent(btnLogin1)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
+
+        panelSeleccion.add(panelLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, 110));
 
         jLabel8.setText("Usuario");
 
@@ -342,8 +354,12 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogin2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
+
+        panelSeleccion.add(panelLogin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
+
+        panelLogin3.setPreferredSize(new java.awt.Dimension(187, 106));
 
         jLabel9.setText("Password");
 
@@ -365,7 +381,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLogin3Layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin3Layout.createSequentialGroup()
@@ -386,96 +402,49 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogin3)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        panelSeleccion.add(panelLogin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
 
         lblEstado1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblEstado1.setForeground(new java.awt.Color(0, 204, 51));
         lblEstado1.setText("OFFLINE");
+        panelSeleccion.add(lblEstado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
 
         lblEstado2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblEstado2.setForeground(new java.awt.Color(0, 204, 51));
         lblEstado2.setText("OFFLINE");
+        panelSeleccion.add(lblEstado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, -1, -1));
 
         lblEstado3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblEstado3.setForeground(new java.awt.Color(0, 204, 51));
         lblEstado3.setText("OFFLINE");
+        panelSeleccion.add(lblEstado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, -1, -1));
 
-        javax.swing.GroupLayout panelSeleccionLayout = new javax.swing.GroupLayout(panelSeleccion);
-        panelSeleccion.setLayout(panelSeleccionLayout);
-        panelSeleccionLayout.setHorizontalGroup(
-            panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSeleccionLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelSeleccionLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(71, 71, 71)
-                        .addComponent(comboSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 381, Short.MAX_VALUE))
-                    .addGroup(panelSeleccionLayout.createSequentialGroup()
-                        .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelSeleccionLayout.createSequentialGroup()
-                                .addComponent(lblPlayer1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblEstado1))
-                            .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47)
-                        .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelSeleccionLayout.createSequentialGroup()
-                                .addComponent(btnPlayGame, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(panelSeleccionLayout.createSequentialGroup()
-                                .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(panelSeleccionLayout.createSequentialGroup()
-                                        .addComponent(lblPlayer2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblEstado2)
-                                        .addGap(47, 47, 47))
-                                    .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelSeleccionLayout.createSequentialGroup()
-                                        .addComponent(lblPlayer3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblEstado3))
-                                    .addComponent(panelLogin3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18))))))
-            .addGroup(panelSeleccionLayout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelSeleccionLayout.setVerticalGroup(
-            panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSeleccionLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPlayer2)
-                    .addComponent(lblPlayer1)
-                    .addComponent(lblPlayer3)
-                    .addComponent(lblEstado1)
-                    .addComponent(lblEstado2)
-                    .addComponent(lblEstado3))
-                .addGap(18, 18, 18)
-                .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelLogin3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelSeleccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(panelLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelLogin2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(btnPlayGame, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        btnLogout1.setText("Logout");
+        panelSeleccion.add(btnLogout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
+
+        btnLogout2.setText("Logout");
+        panelSeleccion.add(btnLogout2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
+
+        btnLogout3.setText("Logout");
+        panelSeleccion.add(btnLogout3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, -1, -1));
+
+        lblPlayer1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblPlayer1.setForeground(new java.awt.Color(255, 255, 255));
+        panelSeleccion.add(lblPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 80, 23));
+
+        lblPlayer2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblPlayer2.setForeground(new java.awt.Color(255, 255, 255));
+        panelSeleccion.add(lblPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 80, 23));
+
+        lblPlayer3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblPlayer3.setForeground(new java.awt.Color(255, 255, 255));
+        panelSeleccion.add(lblPlayer3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 80, 30));
 
         jPanel1.add(panelSeleccion);
-        panelSeleccion.setBounds(160, 10, 730, 300);
+        panelSeleccion.setBounds(160, 10, 730, 310);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondomesa.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
@@ -562,38 +531,58 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private void comboSelectItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSelectItemStateChanged
         // TODO add your handling code here:
         if(this.comboSelect.getSelectedIndex() == 0){
-            this.lblPlayer1.setVisible(true);
-            this.lblPlayer2.setVisible(true);
-            this.lblPlayer3.setVisible(false);
+            this.label1010.setVisible(true);//label Player1 Titulo
+            this.label123.setVisible(true);//label Player2 Titulo
+            this.label12313.setVisible(false); //label Player3 Titulo
+            this.lblPlayer1.setVisible(true); //label User name
+            this.lblPlayer2.setVisible(true);//label User name
+            this.lblPlayer3.setVisible(false);//label User name
             
-            this.btnLogin1.setVisible(true);
-            this.btnLogin2.setVisible(true);
-            this.btnLogin3.setVisible(false);
+            this.lblEstado3.setVisible(false);
+            
+            this.panelLogin1.setVisible(true);
+            this.panelLogin2.setVisible(true);
+            this.panelLogin3.setVisible(false);
         }else if(this.comboSelect.getSelectedIndex() == 1){
+            this.label1010.setVisible(true);
+            this.label123.setVisible(true);
+            this.label12313.setVisible(true);
             this.lblPlayer1.setVisible(true);
             this.lblPlayer2.setVisible(true);
             this.lblPlayer3.setVisible(true);
             
-            this.btnLogin1.setVisible(true);
-            this.btnLogin2.setVisible(true);
-            this.btnLogin3.setVisible(true);
+            this.lblEstado3.setVisible(true);
+            
+            this.panelLogin1.setVisible(true);
+            this.panelLogin2.setVisible(true);
+            this.panelLogin3.setVisible(true);
         }
     }//GEN-LAST:event_comboSelectItemStateChanged
     // </editor-fold>
+    
     // <editor-fold defaultstate="collapsed" desc=" Al Abrir Ventana WindowsOpened ">
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        this.lblPlayer1.setVisible(true);
-        this.lblPlayer2.setVisible(true);
-        this.lblPlayer3.setVisible(false);
+        this.label1010.setVisible(true);
+        this.label123.setVisible(true);
+        this.label12313.setVisible(false);
+        this.lblPlayer1.setVisible(true); //label User name
+        this.lblPlayer2.setVisible(true);//label User name
+        this.lblPlayer3.setVisible(false);//label User name
         
-        this.btnLogin1.setVisible(true);
-        this.btnLogin2.setVisible(true);
-        this.btnLogin3.setVisible(false);
+        this.panelLogin1.setVisible(true);
+        this.panelLogin2.setVisible(true);
+        this.panelLogin3.setVisible(false);
         
         this.btnPlayGame.setVisible(true);
         this.tableSorteo.getTableHeader().setVisible(false);
         this.PanelJuego.setVisible(false);
+        
+        this.lblEstado3.setVisible(false);
+        
+        this.btnLogout1.setVisible(false);
+        this.btnLogout2.setVisible(false);
+        this.btnLogout3.setVisible(false);
         clicks = 0;
         si = 0;
         no=0;
@@ -702,6 +691,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JButton btnLogin1;
     private javax.swing.JButton btnLogin2;
     private javax.swing.JButton btnLogin3;
+    private javax.swing.JButton btnLogout1;
+    private javax.swing.JButton btnLogout2;
+    private javax.swing.JButton btnLogout3;
     private javax.swing.JButton btnPlayGame;
     private javax.swing.JComboBox comboColores;
     private javax.swing.JComboBox comboSelect;
@@ -710,7 +702,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -723,6 +714,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel label1010;
+    private javax.swing.JLabel label123;
+    private javax.swing.JLabel label12313;
     private javax.swing.JLabel lblEncontro;
     private javax.swing.JLabel lblEstado1;
     private javax.swing.JLabel lblEstado2;
