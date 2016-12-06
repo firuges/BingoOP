@@ -18,8 +18,8 @@ public class cJugador extends cUsuario{
     
     private boolean ready;
     private int fichas;
-    public cJugador(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido, int pFichas){
-        super(pId, pNombre, pApellido, pEmail, pPassword, pFechaNacido);
+    public cJugador(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido, int pFichas, String pUserName){
+        super(pId, pNombre, pApellido, pEmail, pPassword, pFechaNacido, pUserName);
         this.Cartones = new ArrayList<cCarton>();
         fichas = pFichas;
     }

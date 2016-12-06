@@ -5,7 +5,11 @@
         <group>
             <file>file:/C:/BingoOP/src/Interfase/vAdministrator.java</file>
             <file>file:/C:/BingoOP/src/Interfase/vBingoGame.java</file>
+            <file>file:/C:/BingoOP/src/Patrones/Observer/ClaseObservador.java</file>
             <file>file:/C:/BingoOP/src/Interfase/vRegistro.java</file>
+            <file>file:/C:/BingoOP/src/Interfase/vPlayer1.java</file>
+            <file>file:/C:/BingoOP/src/Common/cCarton.java</file>
+            <file>file:/C:/BingoOP/src/Common/cJuego.java</file>
         </group>
     </open-files>
 </project-private>

@@ -72,6 +72,8 @@ public class vRegistro extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtUserName = new javax.swing.JTextField();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -81,6 +83,7 @@ public class vRegistro extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(204, 204, 204));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Alta de Clientes"));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtId.setEditable(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -88,16 +91,20 @@ public class vRegistro extends javax.swing.JFrame {
                 txtIdActionPerformed(evt);
             }
         });
+        jPanel6.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 32, -1));
 
         jLabel1.setText("Id: ");
+        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 36, 49, -1));
 
         jLabel2.setText("Nombre:");
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 95, 50, -1));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
+        jPanel6.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 115, 175, -1));
 
         btnAgregar.setText("Registrarme");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,16 +112,21 @@ public class vRegistro extends javax.swing.JFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
+        jPanel6.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 348, -1, -1));
 
         jLabel3.setText("Password:");
+        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 153, 72, -1));
+        jPanel6.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 174, 175, -1));
 
         jLabel4.setText("Repeat Pass:");
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 153, 72, -1));
 
         txtPassword1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPassword1ActionPerformed(evt);
             }
         });
+        jPanel6.add(txtPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 174, 175, -1));
 
         tableAltaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,7 +143,11 @@ public class vRegistro extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tableAltaCliente);
 
+        jPanel6.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 377, 416, 143));
+
         jLabel5.setText("Fecha Nacimiento:");
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 204, -1, -1));
+        jPanel6.add(lblCant2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +155,7 @@ public class vRegistro extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
+        jPanel6.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 313, -1, -1));
 
         btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
@@ -146,29 +163,37 @@ public class vRegistro extends javax.swing.JFrame {
                 btnResetActionPerformed(evt);
             }
         });
+        jPanel6.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 313, -1, -1));
 
         jLabel6.setText("Email:");
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 204, 50, -1));
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
+        jPanel6.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 224, 175, -1));
 
         jLabel7.setText("Apellido");
         jLabel7.setMaximumSize(new java.awt.Dimension(50, 14));
         jLabel7.setMinimumSize(new java.awt.Dimension(50, 14));
         jLabel7.setName(""); // NOI18N
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 95, 50, -1));
 
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
             }
         });
+        jPanel6.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 115, 175, -1));
+        jPanel6.add(FechaNacido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 224, -1, -1));
 
         jLabel11.setText("SALDO:");
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 20, 40, -1));
 
         lblSaldo.setText("jLabel12");
+        jPanel6.add(lblSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Comprar Fichas: ");
@@ -210,118 +235,11 @@ public class vRegistro extends javax.swing.JFrame {
                 .addGap(4, 4, 4))
         );
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(219, 219, 219)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addComponent(lblSaldo))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(191, 191, 191)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
-                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(169, 169, 169)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
-                        .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(190, 190, 190)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(389, 389, 389)
-                        .addComponent(btnAgregar))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(305, 305, 305)
-                                .addComponent(btnModificar)
-                                .addGap(39, 39, 39)
-                                .addComponent(btnReset))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(65, 65, 65)
-                                .addComponent(FechaNacido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel11)
-                    .addComponent(lblSaldo))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FechaNacido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnModificar)
-                    .addComponent(btnReset))
-                .addGap(12, 12, 12)
-                .addComponent(btnAgregar)
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 262, -1, -1));
+
+        jLabel12.setText("Usuario");
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 36, -1, -1));
+        jPanel6.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 61, 175, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -459,22 +377,28 @@ public class vRegistro extends javax.swing.JFrame {
                         user.setApellido(this.txtApellido.getText());
                         user.setEmail(this.txtEmail.getText());
                         user.setPassword(this.txtPassword.getText());
+                        user.setUserName(this.txtUserName.getText());
                         user.setFechanacido(Fecha);
-                        laEmpresa.agregarUsuario(user);
-                        this.cargarUsuarios();
-                        this.LimpiarCampos();
-                        //this.miObservador.setChang("Se Agrego Nuevo Cliente.");
-                        JOptionPane.showMessageDialog(this, "Se dado de alta correctamente", "Tipo", JOptionPane.INFORMATION_MESSAGE);
+                        boolean Agregado = laEmpresa.agregarUsuario(user);
+                        if(Agregado){
+                            this.cargarUsuarios();
+                            this.LimpiarCampos();
+                            //this.miObservador.setChang("Se Agrego Nuevo Cliente.");
+                            JOptionPane.showMessageDialog(this, "Se dado de alta correctamente", "Registro", JOptionPane.INFORMATION_MESSAGE);
+                        }else{
+                            JOptionPane.showMessageDialog(this, "Ocurrio un Error al Agregar Usuario nuevo", "Registro", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        
                     }
 
                     }else{
-                        JOptionPane.showMessageDialog(this, "Debes Completar todos los Campos /n antes de proseguir.", "Tipo", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Debes Completar todos los Campos /n antes de proseguir.", "Registro", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }else{
-                    JOptionPane.showMessageDialog(this, "Las Contraseñas no Coinciden. \n Por Favor Verifica", "Tipo", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Las Contraseñas no Coinciden. \n Por Favor Verifica", "Registro", JOptionPane.INFORMATION_MESSAGE);
                 }
             }else{
-                JOptionPane.showMessageDialog(this, "El Largo de tu contraeña " + "/n debe ser de 6 o mas.", "Tipo", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El Largo de tu contraeña " + "/n debe ser de 6 o mas.", "Registro", JOptionPane.INFORMATION_MESSAGE);
             }
         }catch(Exception ex){
             Logger.getLogger(pDatosException.class.getName()).log(Level.SEVERE, null, ex);
@@ -587,6 +511,7 @@ public class vRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -607,5 +532,6 @@ public class vRegistro extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtPassword1;
+    private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

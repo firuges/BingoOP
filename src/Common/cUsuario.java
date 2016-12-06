@@ -20,6 +20,7 @@ public class cUsuario {
     private String Password;
     private String Email;
     private Date Fechanacido;
+    private String UserName;
     /**
      * @return the Nombre
      */
@@ -83,26 +84,31 @@ public class cUsuario {
         unUser = new cUsuario();
         return unUser;
     }
-    public cUsuario  getInstance(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido){
-        cUsuario unUser = new cUsuario();
-        unUser.setId(id);
-        unUser.setNombre(Nombre);
-        unUser.setApellido(Apellido);
-        unUser.setEmail(Email);
-        unUser.setPassword(Password);
-        unUser.setFechanacido(Fechanacido);
+    public cUsuario  getInstance(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido, String pUserName){
+        if(unUser == null){
+            cUsuario unUser = new cUsuario();
+            unUser.setId(pId);
+            unUser.setNombre(pNombre);
+            unUser.setApellido(pApellido);
+            unUser.setEmail(pEmail);
+            unUser.setPassword(pPassword);
+            unUser.setFechanacido(pFechaNacido);
+            unUser.setUserName(pUserName);
+        }
+        
         return unUser;
     }
     public cUsuario(){
         
     }
-    public cUsuario(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechanacido){
+    public cUsuario(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechanacido, String pUserName){
         this.id = pId;
         this.Nombre = pNombre;
         this.Apellido = pApellido;
         this.Email = pEmail;
         this.Password = pPassword;
         this.Fechanacido = pFechanacido;
+        this.UserName = pUserName;
         
     }
     public String QueSoy(){
@@ -135,5 +141,19 @@ public class cUsuario {
      */
     public void setFechanacido(Date Fechanacido) {
         this.Fechanacido = Fechanacido;
+    }
+
+    /**
+     * @return the UserName
+     */
+    public String getUserName() {
+        return UserName;
+    }
+
+    /**
+     * @param UserName the UserName to set
+     */
+    public void setUserName(String UserName) {
+        this.UserName = UserName;
     }
 }

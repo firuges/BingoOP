@@ -14,8 +14,8 @@ import java.util.Date;
 public class cAdmin extends cUsuario{
      public static cAdmin unAdmin;
     private Date Fechanacido;
-    public cAdmin(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido){
-        super(pId, pNombre, pApellido, pEmail, pPassword, pFechaNacido);
+    public cAdmin(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido, String pUserName){
+        super(pId, pNombre, pApellido, pEmail, pPassword, pFechaNacido, pUserName);
     }
     public cAdmin(){
         super();
