@@ -15,7 +15,8 @@ public class cJuego {
     private int Id;
     private ArrayList<cJugador> Jugadores;
     private int Pozo;
-
+    private int[] Bolillero;
+    private int numeroSorteado;
     /**
      * @return the Id
      */
@@ -56,5 +57,33 @@ public class cJuego {
      */
     public void setPozo(int Pozo) {
         this.Pozo = Pozo;
+    }
+
+    /**
+     * @return the Bolillero
+     */
+    public int[] getBolillero() {
+        return Bolillero;
+    }
+
+    /**
+     * @param Bolillero the Bolillero to set
+     */
+    public void setBolillero(int[] Bolillero) {
+        this.Bolillero = Bolillero;
+    }
+
+    /**
+     * @return the numeroSorteado
+     */
+    public int getNumeroSorteado() {
+        return numeroSorteado;
+    }
+
+    /**
+     * @param numeroSorteado the numeroSorteado to set
+     */
+    public void setNumeroSorteado(int numeroSorteado) {
+        this.numeroSorteado = numeroSorteado;
     }
 }

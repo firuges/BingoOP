@@ -6,6 +6,7 @@
 package Interfase;
 
 import Common.Utilidades;
+import Common.cConfiguracion;
 import Common.cDatosException;
 import Common.cJuego;
 import Dominio.dEmpresa;
@@ -319,7 +320,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    // <editor-fold defaultstate="collapsed" desc=" Boton de Play ">
+       
     private void btnPlayGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayGameActionPerformed
         // TODO add your handling code here:
         ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
@@ -359,7 +361,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         ventanaPlayer2.setTitle("Jugador Numero 2");
         if(this.comboSelect.getSelectedIndex() == 1){
             ventanaPlayer3 = new vPlayer1(Observador);
-            Observador.addObserver(ventanaPlayer1);
+            Observador.addObserver(ventanaPlayer3);
             ventanaPlayer3.setLocationRelativeTo(null);
             ///
         Dimension screenSize3 = Toolkit.getDefaultToolkit().getScreenSize();
@@ -371,6 +373,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         ventanaPlayer3.setTitle("Jugador Numero 3");
         ///
         }
+        
         ventanaPlayer1.setVisible(true);
         ventanaPlayer2.setVisible(true);
         if(ventanaPlayer3 != null)
@@ -379,19 +382,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.panelSeleccion.setVisible(false);
         this.PanelJuego.setVisible(true);
     }//GEN-LAST:event_btnPlayGameActionPerformed
-    private void cargarNumerosTablero(){
-        if(this.Numeros == null){
-            this.Numeros = new Integer[100]; 
-            DefaultTableModel tm = (DefaultTableModel) this.tableSorteo.getModel();
-            //Vacio las Rows
-            tm.setRowCount(0);
-            for(int i = 1; i < 92; i+=10){
-                tm.addRow(new Object[]{new Integer(i), new Integer(i+1), new Integer(i+2), new Integer(i+3), new Integer(i+4), new Integer(i+5)
-                , new Integer(i+6), new Integer(i+7), new Integer(i+8), new Integer(i+9)});
-                tableSorteo.setModel(tm);
-            }
-        }
-    }
+     // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc=" Combo de Seleccion Jugadores ">
+    
     private void comboSelectItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSelectItemStateChanged
         // TODO add your handling code here:
         if(this.comboSelect.getSelectedIndex() == 0){
@@ -412,7 +405,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.comboPlayer3.setVisible(true);
         }
     }//GEN-LAST:event_comboSelectItemStateChanged
-
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc=" Al Abrir Ventana WindowsOpened ">
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         this.lblPlayer1.setVisible(true);
@@ -430,18 +424,31 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         si = 0;
         no=0;
     }//GEN-LAST:event_formWindowOpened
-
+    // </editor-fold>
     private void comboColoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboColoresItemStateChanged
         // TODO add your handling code here:
         this.observer.setChang(this.comboColores.getSelectedItem().toString());
     }//GEN-LAST:event_comboColoresItemStateChanged
-
+    
     private void btnGirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGirarActionPerformed
         // TODO add your handling code here:
         int numeroAleatorio = (int) (Math.random()*Numeros.length+1);
         this.lblNum.setText(String.valueOf(clicks++));
         ElegirNumero();
     }//GEN-LAST:event_btnGirarActionPerformed
+    private void cargarNumerosTablero(){
+        if(this.Numeros == null){
+            this.Numeros = new Integer[100]; 
+            DefaultTableModel tm = (DefaultTableModel) this.tableSorteo.getModel();
+            //Vacio las Rows
+            tm.setRowCount(0);
+            for(int i = 1; i < 92; i+=10){
+                tm.addRow(new Object[]{new Integer(i), new Integer(i+1), new Integer(i+2), new Integer(i+3), new Integer(i+4), new Integer(i+5)
+                , new Integer(i+6), new Integer(i+7), new Integer(i+8), new Integer(i+9)});
+                tableSorteo.setModel(tm);
+            }
+        }
+    }
     public void ElegirNumero(){
         int numeroAleatorio = (int) (Math.random()*Numeros.length+1);
         boolean encontro = false;
@@ -465,6 +472,17 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         }
         
         
+    }
+    public void CargarParametrosJuego(int pCantJugadores) throws cDatosException{
+        cConfiguracion config = new cConfiguracion();
+        try{
+            config = empresa.traerConfiguracion(2);
+        }catch(Exception ex){
+            throw new cDatosException("ERROR al Traer Configuracion del Juego /vBingoGame: " + ex.getMessage());
+        }
+        /// Cantidad de fila * Columna y todo esto * Cantidad de Cartones en total
+        int CantNumeros = (config.getFilasCarton() * config.getColumnasCarton() ) * (config.getCartonesXJugador()*pCantJugadores);
+        Numeros = new Integer[CantNumeros];
     }
     /**
      * @param args the command line arguments

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class dEmpresa {
 
-    // <editor-fold defaultstate="collapsed" desc=" Inctancia ">
+    // <editor-fold defaultstate="collapsed" desc=" Instancia ">
     private static dEmpresa instancia;
 
     public static dEmpresa getInstancia() {
@@ -27,96 +27,10 @@ public class dEmpresa {
     }
 // </editor-fold>
     
-    private dTipo empresaTipo = new dTipo();
+
     private dUsuario empresaUsuario = new dUsuario();
-
-    // <editor-fold defaultstate="collapsed" desc=" Tipo ">
-    public cTipo buscarTipo(cTipo pTipo) throws Exception {
-        cTipo unTipo = new cTipo();
-        if (pTipo != null) {
-            if (pTipo.getId() != 0) {
-                try {
-                    unTipo = empresaTipo.buscar(pTipo);
-                } catch (Exception ex) {
-                    throw new cDatosException("Error al buscar tipo:" + ex.getMessage());
-                }
-            }
-        }
-        if (unTipo != null) {
-            return unTipo;
-        } else {
-            return null;
-        }
-    }
-
-    public ArrayList buscarTodosTipos() throws Exception {
-        dTipo unTipo = new dTipo();
-        ArrayList coleccion;
-        coleccion = new ArrayList();
-        try {
-            coleccion = unTipo.buscarTodos();
-        } catch (Exception ex) {
-            throw new cDatosException("Error al buscar todos los tipos:" + ex.getMessage());
-        }
-        if (coleccion != null) {
-            return coleccion;
-        } else {
-            return null;
-        }
-    }
-
-    public int generarIdTipo() throws Exception {
-        dTipo unTipo = new dTipo();
-        int num = 0;
-        try {
-            num = unTipo.generarId();
-        } catch (Exception ex) {
-            throw new cDatosException("Error al buscar el tipo:" + ex.getMessage());
-        }
-        return num;
-    }
-
-    public boolean agregarTipo(cTipo tipo) throws Exception {
-        if (tipo != null) {
-            try {
-                empresaTipo.guardar(tipo);
-                return true;
-            } catch (Exception ex) {
-                throw new cDatosException("Error al ingresar el tipo:" + ex.getMessage());
-            }
-
-
-        } else {
-            return false;
-        }
-    }
-
-    public boolean modificarTipo(cTipo tipo) throws Exception {
-        if (tipo != null) {
-            try {
-                empresaTipo.modificar(tipo);
-                return true;
-            } catch (Exception ex) {
-                throw new cDatosException("Error al modificar tipo:" + ex.getMessage());
-            }
-        } else {
-            return false;
-        }
-    }
-
-    public boolean eliminarTipo(cTipo tipo) throws Exception {
-        if (tipo != null) {
-            try {
-                empresaTipo.eliminar(tipo);
-                return true;
-            } catch (Exception ex) {
-                throw new cDatosException("Error al eliminar tipo:" + ex.getMessage());
-            }
-        } else {
-            return false;
-        }
-    }
-// </editor-fold>
+    private dConfiguracion empresaConfiguracion = new dConfiguracion();
+   
     // <editor-fold defaultstate="collapsed" desc=" Usuario ">
     public cUsuario buscarUsuario(cUsuario pUsuario) throws Exception {
         cUsuario unUsuario = new cUsuario();
@@ -202,5 +116,39 @@ public class dEmpresa {
             return false;
         }
     }
+// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc=" Configuracion ">
+    public cConfiguracion traerConfiguracion(int pId) throws Exception {
+        cConfiguracion laConfig = new cConfiguracion();
+        if (pId != 0) {
+            try {
+                laConfig = empresaConfiguracion.traer(pId);
+            } catch (Exception ex) {
+                throw new cDatosException("Error al buscar Configuracion:" + ex.getMessage());
+            }
+            
+        }
+        if (laConfig != null) {
+            return laConfig;
+        } else {
+            return null;
+        }
+    }
+
+    
+    public boolean modificarConfiguracion(cConfiguracion pConfig) throws Exception {
+        if (pConfig != null) {
+            try {
+                empresaConfiguracion.modificar(pConfig);
+                return true;
+            } catch (Exception ex) {
+                throw new cDatosException("Error al modificar Configuracion:" + ex.getMessage());
+            }
+        } else {
+            return false;
+        }
+    }
+
+ 
 // </editor-fold>
 }
