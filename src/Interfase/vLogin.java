@@ -119,7 +119,7 @@ public class vLogin extends javax.swing.JFrame {
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         // TODO add your handling code here:
         cUsuario unUser = new cUsuario();
-        unUser.setEmail(this.txtEmail.getText());
+        unUser.setUserName(this.txtEmail.getText());
         unUser.setPassword(this.txtPassword.getText());
         
         try {

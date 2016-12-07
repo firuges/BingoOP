@@ -1137,7 +1137,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.btnLogout2.setVisible(true);
                         this.panelPosLogin2.setVisible(true);
                         this.lblSaldo2.setText(String.valueOf(jugador2.getFichas()));
-                        this.lblReady1.setText("Por Favor Compra tus Cartones");
+                        this.lblReady2.setText("Por Favor Compra tus Cartones");
                         JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
         
                         
@@ -1177,7 +1177,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.btnLogout3.setVisible(true);
                         this.panelPosLogin3.setVisible(true);
                         this.lblSaldo3.setText(String.valueOf(jugador3.getFichas()));
-                        this.lblReady1.setText("Por Favor Compra tus Cartones");
+                        this.lblReady3.setText("Por Favor Compra tus Cartones");
                         JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
                         
                     }else{

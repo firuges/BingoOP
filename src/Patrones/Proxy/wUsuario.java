@@ -17,9 +17,9 @@ public class wUsuario implements IWall {
     @Override
     public void ejecutarProxy()
     {
-        vBingoGame ventanaGame = new vBingoGame(empresa);
+        /*vBingoGame ventanaGame = new vBingoGame(empresa);
         //centra la ventana en la pantalla
         ventanaGame.setLocationRelativeTo(null);
-        ventanaGame.setVisible(true);
+        ventanaGame.setVisible(true);*/
     }
 }
