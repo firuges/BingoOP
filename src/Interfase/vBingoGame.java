@@ -1229,6 +1229,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         }
         
     }
+    
     public int CalcularValorFichas(int cantidad){
         int unidad = 2;
         return cantidad * 2;

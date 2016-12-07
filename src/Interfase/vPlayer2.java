@@ -55,9 +55,9 @@ public class vPlayer2 extends javax.swing.JFrame implements Observer{
         boxCartones = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        boxFichas2 = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblValor2 = new javax.swing.JLabel();
         btnComprar = new javax.swing.JButton();
         btnComprarCartones = new javax.swing.JButton();
         btnRetirarse = new javax.swing.JButton();
@@ -96,15 +96,25 @@ public class vPlayer2 extends javax.swing.JFrame implements Observer{
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Comprar Fichas: ");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "50", "100", "150", "200", "250" }));
+        boxFichas2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        boxFichas2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "50", "100", "150", "200", "250" }));
+        boxFichas2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                boxFichas2ItemStateChanged(evt);
+            }
+        });
+        boxFichas2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxFichas2ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Valor: ");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("200");
-        jLabel10.setFocusable(false);
+        lblValor2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblValor2.setText("200");
+        lblValor2.setFocusable(false);
 
         btnComprar.setText("Comprar");
 
@@ -116,11 +126,11 @@ public class vPlayer2 extends javax.swing.JFrame implements Observer{
                 .addGap(30, 30, 30)
                 .addComponent(jLabel8)
                 .addGap(6, 6, 6)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boxFichas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addGap(11, 11, 11)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblValor2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnComprar)
                 .addContainerGap())
@@ -131,10 +141,10 @@ public class vPlayer2 extends javax.swing.JFrame implements Observer{
                 .addGap(9, 9, 9)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxFichas2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel10)
+                        .addComponent(lblValor2)
                         .addComponent(btnComprar)))
                 .addGap(1, 1, 1))
         );
@@ -265,6 +275,18 @@ public class vPlayer2 extends javax.swing.JFrame implements Observer{
         // TODO add your handling code here:
         
     }//GEN-LAST:event_formWindowOpened
+
+    private void boxFichas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxFichas2ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_boxFichas2ActionPerformed
+
+    private void boxFichas2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxFichas2ItemStateChanged
+        // TODO add your handling code here:
+        String value = this.boxFichas2.getSelectedItem().toString();
+        int valor = CalcularValorFichas(Integer.parseInt(value));
+        this.lblValor2.setText(String.valueOf(valor));
+    }//GEN-LAST:event_boxFichas2ItemStateChanged
     public void cerrar(){
         Object [] opciones ={"Aceptar","Cancelar"};
         int eleccion = JOptionPane.showOptionDialog(rootPane,"En realidad desea salir de la Partida?","Mensaje de Confirmacion",
@@ -277,6 +299,11 @@ public class vPlayer2 extends javax.swing.JFrame implements Observer{
         }else{
             
         }
+    }
+    
+    public int CalcularValorFichas(int cantidad){
+        int unidad = 2;
+        return cantidad * 2;
     }
     /**
      * @param args the command line arguments
@@ -354,12 +381,11 @@ public class vPlayer2 extends javax.swing.JFrame implements Observer{
     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox boxCartones;
+    private javax.swing.JComboBox boxFichas2;
     private javax.swing.JButton btnComprar;
     private javax.swing.JButton btnComprarCartones;
     private javax.swing.JButton btnRetirarse;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -370,6 +396,7 @@ public class vPlayer2 extends javax.swing.JFrame implements Observer{
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblColor;
+    private javax.swing.JLabel lblValor2;
     private javax.swing.JPanel panelCartones;
     private javax.swing.JTable tableCarton1;
     private javax.swing.JTable tableCarton2;
