@@ -166,8 +166,9 @@ public class pUsuario extends pPersistencia {
                 String Fecha = Utilidades.FormatearFechaToString(rs.getDate("ufecha"));
                 unUser.setFechanacido(Utilidades.FormatearFechaToDate(Fecha));
                 String gerar = rs.getString("utipouser");
+                
                 unUser.setUserName(rs.getString("uusername"));
-                if(gerar.equals(Enums.Gerarquia.ADMIN)){
+                if(gerar.equals(String.valueOf(Enums.Gerarquia.ADMIN))){
                     unAdmin = new cAdmin(unUser.getId(),unUser.getNombre(),unUser.getApellido(),unUser.getEmail(),unUser.getPassword(),unUser.getFechanacido(),unUser.getUserName());
 
                 }else{
