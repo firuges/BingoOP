@@ -839,6 +839,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                     this.btnLogout1.setVisible(false);
                     this.lblEstado1.setText("OFFLINE");
                     this.lblPlayer1.setText("");
+                    break;
                 }
             }
         }else if(this.btnLogout2 == evento.getSource()){
@@ -849,6 +850,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                     this.btnLogout2.setVisible(false);
                     this.lblEstado2.setText("OFFLINE");
                     this.lblPlayer2.setText("");
+                    break;
                 }
             }
         }else{
@@ -859,6 +861,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                     this.btnLogout3.setVisible(false);
                     this.lblEstado3.setText("OFFLINE");
                     this.lblPlayer3.setText("");
+                    break;
                 }
             }
         }
