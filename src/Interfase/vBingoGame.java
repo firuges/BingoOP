@@ -969,6 +969,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             comprarCartones(evt);
         } catch (InterruptedException ex) {
             Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_btnComprarCartones1MouseClicked
@@ -979,6 +981,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             comprarCartones(evt);
         } catch (InterruptedException ex) {
             Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnComprarCartones2MouseClicked
 
@@ -987,6 +991,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             // TODO add your handling code here:
             comprarCartones(evt);
         } catch (InterruptedException ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnComprarCartones3MouseClicked
@@ -1015,7 +1021,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         int valor = CalcularValorFichas(Integer.parseInt(value));
         this.lblValor3.setText(String.valueOf(valor));
     }//GEN-LAST:event_boxFichas3ItemStateChanged
-    public void comprarCartones(MouseEvent evento) throws InterruptedException{
+    public void comprarCartones(MouseEvent evento) throws InterruptedException, Exception{
+        cConfiguracion laConfig = empresa.traerConfiguracion(2);
         cJugador jugador = null;
         String cantidad = this.comboSelect.getSelectedItem().toString();
         if(evento.getSource() == this.btnComprarCartones1){
@@ -1025,7 +1032,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.lblReady1.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones1.setVisible(false);
             this.boxCartones1.setVisible(false);
-            this.lblSaldo1.setText(String.valueOf(jugador.getFichas() - Integer.parseInt(this.lblValor1.getText())));
+            this.lblSaldo1.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones1.getSelectedItem().toString())));
         }else if(evento.getSource() == this.btnComprarCartones2){
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer2.getText());
             jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones2.getSelectedItem()));
@@ -1033,7 +1040,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.lblReady2.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones2.setVisible(false);
             this.boxCartones2.setVisible(false);
-            this.lblSaldo2.setText(String.valueOf(jugador.getFichas() - Integer.parseInt(this.lblValor2.getText())));
+            this.lblSaldo2.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones2.getSelectedItem().toString())));
         }else{
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer3.getText());
             jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones3.getSelectedItem()));
@@ -1041,7 +1048,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.lblReady3.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones3.setVisible(false);
             this.boxCartones3.setVisible(false);
-            this.lblSaldo3.setText(String.valueOf(jugador.getFichas() - Integer.parseInt(this.lblValor3.getText())));
+            this.lblSaldo3.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones3.getSelectedItem().toString())));
         }
         if(checkReadyAll(cantidad)){
             CargarVentanasJugadores();
