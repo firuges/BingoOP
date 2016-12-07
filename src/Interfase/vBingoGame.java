@@ -1079,7 +1079,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 unUser.setUserName(username);
                 unUser.setPassword(password);
                 jugador1 = (cJugador)empresa.buscarUsuario(unUser);
-                if(jugador1.getId() < 1){
+                if(jugador1 == null){
                     JOptionPane.showMessageDialog(this, "Login Incorrecto, por Favor Verifique su Usuario y Contraseña", "Login", JOptionPane.INFORMATION_MESSAGE);
                 }else
                 {
