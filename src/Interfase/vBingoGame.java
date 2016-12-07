@@ -105,7 +105,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel23 = new javax.swing.JLabel();
         lblValor1 = new javax.swing.JLabel();
         btnComprar = new javax.swing.JButton();
-        jLabel25 = new javax.swing.JLabel();
+        lblTituloCantCartones1 = new javax.swing.JLabel();
         boxCartones1 = new javax.swing.JComboBox();
         btnComprarCartones1 = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
@@ -117,7 +117,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel28 = new javax.swing.JLabel();
         lblValor2 = new javax.swing.JLabel();
         btnComprar1 = new javax.swing.JButton();
-        jLabel30 = new javax.swing.JLabel();
+        lblTituloCantCartones2 = new javax.swing.JLabel();
         boxCartones2 = new javax.swing.JComboBox();
         btnComprarCartones2 = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
@@ -129,7 +129,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel33 = new javax.swing.JLabel();
         lblValor3 = new javax.swing.JLabel();
         btnComprar2 = new javax.swing.JButton();
-        jLabel35 = new javax.swing.JLabel();
+        lblTituloCantCartones3 = new javax.swing.JLabel();
         boxCartones3 = new javax.swing.JComboBox();
         btnComprarCartones3 = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
@@ -423,10 +423,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         btnComprar.setText("Comprar");
         panelPosLogin1.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("Cantidad de Cartones: ");
-        panelPosLogin1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        lblTituloCantCartones1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTituloCantCartones1.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloCantCartones1.setText("Cantidad de Cartones: ");
+        panelPosLogin1.add(lblTituloCantCartones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         boxCartones1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         boxCartones1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
@@ -448,7 +448,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelPosLogin1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         lblReady1.setForeground(new java.awt.Color(51, 204, 0));
-        panelPosLogin1.add(lblReady1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 20));
+        panelPosLogin1.add(lblReady1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 20));
 
         lblSaldo1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblSaldo1.setForeground(new java.awt.Color(255, 255, 255));
@@ -487,10 +487,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         btnComprar1.setText("Comprar");
         panelPosLogin2.add(btnComprar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("Cantidad de Cartones: ");
-        panelPosLogin2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        lblTituloCantCartones2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTituloCantCartones2.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloCantCartones2.setText("Cantidad de Cartones: ");
+        panelPosLogin2.add(lblTituloCantCartones2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         boxCartones2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         boxCartones2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
@@ -512,7 +512,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelPosLogin2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         lblReady2.setForeground(new java.awt.Color(51, 204, 0));
-        panelPosLogin2.add(lblReady2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 20));
+        panelPosLogin2.add(lblReady2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 20));
 
         lblSaldo2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblSaldo2.setForeground(new java.awt.Color(255, 255, 255));
@@ -551,10 +551,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         btnComprar2.setText("Comprar");
         panelPosLogin3.add(btnComprar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
-        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setText("Cantidad de Cartones: ");
-        panelPosLogin3.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        lblTituloCantCartones3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTituloCantCartones3.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloCantCartones3.setText("Cantidad de Cartones: ");
+        panelPosLogin3.add(lblTituloCantCartones3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         boxCartones3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         boxCartones3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
@@ -581,7 +581,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelPosLogin3.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         lblReady3.setForeground(new java.awt.Color(51, 204, 0));
-        panelPosLogin3.add(lblReady3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 20));
+        panelPosLogin3.add(lblReady3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 20));
 
         lblSaldo3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblSaldo3.setForeground(new java.awt.Color(255, 255, 255));
@@ -1032,6 +1032,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.lblReady1.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones1.setVisible(false);
             this.boxCartones1.setVisible(false);
+            this.lblTituloCantCartones1.setVisible(false);
             this.lblSaldo1.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones1.getSelectedItem().toString())));
         }else if(evento.getSource() == this.btnComprarCartones2){
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer2.getText());
@@ -1040,6 +1041,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.lblReady2.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones2.setVisible(false);
             this.boxCartones2.setVisible(false);
+            this.lblTituloCantCartones2.setVisible(false);
             this.lblSaldo2.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones2.getSelectedItem().toString())));
         }else{
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer3.getText());
@@ -1048,6 +1050,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.lblReady3.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones3.setVisible(false);
             this.boxCartones3.setVisible(false);
+            this.lblTituloCantCartones3.setVisible(false);
             this.lblSaldo3.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones3.getSelectedItem().toString())));
         }
         if(checkReadyAll(cantidad)){
@@ -1094,6 +1097,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.btnLogout1.setVisible(true);
                         this.panelPosLogin1.setVisible(true);
                         this.lblSaldo1.setText(String.valueOf(jugador1.getFichas()));
+                        this.lblReady1.setText("Por Favor Compra tus Cartones");
                         JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
         
                         
@@ -1133,6 +1137,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.btnLogout2.setVisible(true);
                         this.panelPosLogin2.setVisible(true);
                         this.lblSaldo2.setText(String.valueOf(jugador2.getFichas()));
+                        this.lblReady1.setText("Por Favor Compra tus Cartones");
                         JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
         
                         
@@ -1172,6 +1177,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.btnLogout3.setVisible(true);
                         this.panelPosLogin3.setVisible(true);
                         this.lblSaldo3.setText(String.valueOf(jugador3.getFichas()));
+                        this.lblReady1.setText("Por Favor Compra tus Cartones");
                         JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
                         
                     }else{
@@ -1199,7 +1205,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                     this.panelPosLogin1.setVisible(false);
                     this.btnComprarCartones1.setVisible(true);
                     this.boxCartones1.setVisible(true);
+                    this.lblTituloCantCartones1.setVisible(true);
                     this.lblSaldo1.setText("0");
+                    this.lblReady1.setText("Por Favor Compra tus Cartones");
                     break;
                 }
             }
@@ -1215,6 +1223,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                     this.btnComprarCartones2.setVisible(true);
                     this.boxCartones2.setVisible(true);
                     this.lblSaldo2.setText("0");
+                    this.lblTituloCantCartones2.setVisible(true);
+                    this.lblReady1.setText("Por Favor Compra tus Cartones");
                     break;
                 }
             }
@@ -1229,7 +1239,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                     this.panelPosLogin3.setVisible(false);
                     this.btnComprarCartones3.setVisible(true);
                     this.boxCartones3.setVisible(true);
+                    this.lblTituloCantCartones3.setVisible(true);
                     this.lblSaldo3.setText("0");
+                    
+                    this.lblReady1.setText("Por Favor Compra tus Cartones");
                     break;
                 }
             }
@@ -1329,16 +1342,13 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1366,6 +1376,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel lblSaldo1;
     private javax.swing.JLabel lblSaldo2;
     private javax.swing.JLabel lblSaldo3;
+    private javax.swing.JLabel lblTituloCantCartones1;
+    private javax.swing.JLabel lblTituloCantCartones2;
+    private javax.swing.JLabel lblTituloCantCartones3;
     private javax.swing.JLabel lblValor1;
     private javax.swing.JLabel lblValor2;
     private javax.swing.JLabel lblValor3;
