@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Maxi
  */
-public class vPlayer1 extends javax.swing.JFrame implements Observer{
+public class vPlayer2 extends javax.swing.JFrame implements Observer{
     private dEmpresa laEmpresa;
     private ClaseObservador observer;
     private String Accion;
@@ -28,16 +28,16 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     /**
      * Creates new form vPlayer1
      */
-    public vPlayer1() {
+    public vPlayer2() {
         initComponents();
     }
-    public vPlayer1 (dEmpresa pEmpresa , ClaseObservador Observador){
+    public vPlayer2 (dEmpresa pEmpresa , ClaseObservador Observador){
         
         initComponents();
         laEmpresa = pEmpresa;
         observer = Observador;
     }
-    public vPlayer1 (ClaseObservador Observador){
+    public vPlayer2 (ClaseObservador Observador){
         
         initComponents();
         observer = Observador;
@@ -378,13 +378,10 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         Accion = observer.getAccion();
-        if(Accion.equalsIgnoreCase("ESPERANDO")){
-            
-        }
+        
         this.lblColor.setText(Accion);
         /*String accion = observer.getAccion();
         acciones.add(accion);
         cargar();*/
     }
-    
 }

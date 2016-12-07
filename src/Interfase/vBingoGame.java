@@ -73,6 +73,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        comboColores = new javax.swing.JComboBox();
         PanelJuego = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblPozo = new javax.swing.JLabel();
@@ -89,7 +90,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        comboColores = new javax.swing.JComboBox();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         panelSeleccion = new javax.swing.JPanel();
         label1010 = new javax.swing.JLabel();
         label123 = new javax.swing.JLabel();
@@ -135,62 +137,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         jPanel1.setLayout(null);
 
-        PanelJuego.setOpaque(false);
-        PanelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("POZO:");
-        PanelJuego.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 11, -1, -1));
-
-        lblPozo.setBackground(new java.awt.Color(255, 0, 51));
-        lblPozo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblPozo.setOpaque(true);
-        PanelJuego.add(lblPozo, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 11, 39, 26));
-
-        lblNum.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblNum.setForeground(new java.awt.Color(255, 255, 255));
-        PanelJuego.add(lblNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(648, 103, 40, 36));
-
-        lblBolilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/amarilla.png"))); // NOI18N
-        PanelJuego.add(lblBolilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 294, 285));
-
-        btnSortear.setText("Sortear");
-        PanelJuego.add(btnSortear, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 11, -1, -1));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/1.png"))); // NOI18N
-        PanelJuego.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/6.png"))); // NOI18N
-        PanelJuego.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/19.png"))); // NOI18N
-        PanelJuego.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/100.png"))); // NOI18N
-        PanelJuego.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/27.png"))); // NOI18N
-        PanelJuego.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, -1, -1));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/20.png"))); // NOI18N
-        PanelJuego.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/28.png"))); // NOI18N
-        PanelJuego.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, -1, -1));
-
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/43.png"))); // NOI18N
-        PanelJuego.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
-
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/33.png"))); // NOI18N
-        PanelJuego.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, -1, -1));
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/50.png"))); // NOI18N
-        PanelJuego.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
-
-        jPanel1.add(PanelJuego);
-        PanelJuego.setBounds(190, 230, 700, 420);
-
         comboColores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Negro", "Amarillo" }));
         comboColores.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -199,6 +145,68 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         });
         jPanel1.add(comboColores);
         comboColores.setBounds(110, 10, 56, 20);
+
+        PanelJuego.setOpaque(false);
+        PanelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("POZO:");
+        PanelJuego.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
+
+        lblPozo.setBackground(new java.awt.Color(255, 0, 51));
+        lblPozo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblPozo.setOpaque(true);
+        PanelJuego.add(lblPozo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 39, 26));
+
+        lblNum.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNum.setForeground(new java.awt.Color(255, 255, 255));
+        PanelJuego.add(lblNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(648, 103, 40, 36));
+
+        lblBolilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/amarilla.png"))); // NOI18N
+        PanelJuego.add(lblBolilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 294, 285));
+
+        btnSortear.setText("Sortear");
+        PanelJuego.add(btnSortear, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/1.png"))); // NOI18N
+        PanelJuego.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/74.png"))); // NOI18N
+        PanelJuego.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/19.png"))); // NOI18N
+        PanelJuego.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/100.png"))); // NOI18N
+        PanelJuego.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, -1, -1));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/27.png"))); // NOI18N
+        PanelJuego.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 120, -1, -1));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/20.png"))); // NOI18N
+        PanelJuego.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/28.png"))); // NOI18N
+        PanelJuego.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 480, -1, -1));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/59.png"))); // NOI18N
+        PanelJuego.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 220, -1, -1));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/33.png"))); // NOI18N
+        PanelJuego.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 420, -1, -1));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/50.png"))); // NOI18N
+        PanelJuego.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 160, -1, -1));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/6.png"))); // NOI18N
+        PanelJuego.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/43.png"))); // NOI18N
+        PanelJuego.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 310, -1, -1));
+
+        jPanel1.add(PanelJuego);
+        PanelJuego.setBounds(0, 10, 1070, 640);
 
         panelSeleccion.setOpaque(false);
         panelSeleccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -246,6 +254,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         jLabel4.setText("Usuario");
 
+        txtUserName1.setText("firuges");
+
         jLabel6.setText("Password");
 
         btnLogin1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -255,6 +265,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 btnLogin1ActionPerformed(evt);
             }
         });
+
+        txtPassword1.setText("elfacha");
 
         javax.swing.GroupLayout panelLogin1Layout = new javax.swing.GroupLayout(panelLogin1);
         panelLogin1.setLayout(panelLogin1Layout);
@@ -297,6 +309,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         jLabel8.setText("Usuario");
 
+        txtUserName2.setText("firu");
+
         jLabel7.setText("Password");
 
         btnLogin2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -306,6 +320,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 btnLogin2ActionPerformed(evt);
             }
         });
+
+        txtPassword2.setText("elfacha");
 
         javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
         panelLogin2.setLayout(panelLogin2Layout);
@@ -349,6 +365,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel9.setText("Password");
 
         jLabel10.setText("Usuario");
+
+        txtUserName3.setText("redik");
 
         btnLogin3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLogin3.setText("Login");
@@ -482,8 +500,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         //Ventana Player 1
         vPlayer1 ventanaPlayer1 = new vPlayer1(Observador);
-        vPlayer1 ventanaPlayer2 = new vPlayer1(Observador);
-        vPlayer1 ventanaPlayer3 = null;
+        vPlayer2 ventanaPlayer2 = new vPlayer2(Observador);
+        vPlayer3 ventanaPlayer3 = null;
         //los agrego al observador
         Observador.addObserver(ventanaPlayer1);
         Observador.addObserver(ventanaPlayer2);
@@ -495,35 +513,35 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         ///
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        /**************/
         Point middle = new Point(screenSize.width / 2, screenSize.height / 2);
+        /****************/
         Point newLocation = new Point(middle.x - (ventanaJuego.getWidth() / 2), 
                                       middle.y - (ventanaJuego.getHeight() / 2));
         ventanaPlayer1.setLocation(newLocation);
         ventanaPlayer1.setSize(415, 655);
         ///
         ///
-        Dimension screenSize2 = Toolkit.getDefaultToolkit().getScreenSize();
-        Point middle2 = new Point(screenSize2.width / 2, screenSize2.height / 2);
-        Point newLocation2 = new Point(middle2.x, 
-                                      middle2.y - (ventanaJuego.getHeight() / 2));
+        Point newLocation2 = new Point(middle.x, 
+                                      middle.y - (ventanaJuego.getHeight() / 2));
         ventanaPlayer2.setLocation(newLocation2);
         ventanaPlayer2.setSize(415, 655);
         ///
         //mostramos la ventana
-        ventanaPlayer1.setTitle(elJuego.getJugadores().get(0).getUserName());
-        ventanaPlayer2.setTitle(elJuego.getJugadores().get(1).getUserName());
+        ventanaPlayer1.setTitle(this.lblPlayer1.getText());
+        ventanaPlayer2.setTitle(this.lblPlayer2.getText());
+        
         if(this.comboSelect.getSelectedIndex() == 1){
-            ventanaPlayer3 = new vPlayer1(Observador);
+            ventanaPlayer3 = new vPlayer3(Observador);
             Observador.addObserver(ventanaPlayer3);
             ventanaPlayer3.setLocationRelativeTo(null);
             ///
-            Dimension screenSize3 = Toolkit.getDefaultToolkit().getScreenSize();
-            Point middle3 = new Point(screenSize3.width / 2, screenSize3.height / 2);
-            Point newLocation3 = new Point(middle3.x - (ventanaJuego.getWidth() / 2 + 100), 
-                                          middle3.y - (ventanaJuego.getHeight() / 2));
+            
+            Point newLocation3 = new Point(middle.x - (ventanaJuego.getWidth() / 2 + 100), 
+                                          middle.y - (ventanaJuego.getHeight() / 2));
             ventanaPlayer3.setLocation(newLocation3);
             ventanaPlayer3.setSize(415, 655);
-            ventanaPlayer3.setTitle(elJuego.getJugadores().get(2).getUserName());
+            ventanaPlayer3.setTitle(this.lblPlayer3.getText());
         ///
         }
 
@@ -719,9 +737,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.lblEstado1.setText("ONLINE");
                         this.lblPlayer1.setText(jugador1.getUserName());
                         this.btnLogout1.setVisible(true);
-                        if(checkAllOnline(cantidad)){
-                            CargarVentanasJugadores();
-                        }
+                        
                     }else{
                             JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -756,9 +772,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.lblEstado2.setText("ONLINE");
                         this.lblPlayer2.setText(jugador2.getUserName());
                         this.btnLogout2.setVisible(true);
-                        if(checkAllOnline(cantidad)){
-                            CargarVentanasJugadores();
-                        }
+                        
                     }else{
                             JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -793,9 +807,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.lblEstado3.setText("ONLINE");
                         this.lblPlayer3.setText(jugador3.getUserName());
                         this.btnLogout3.setVisible(true);
-                        if(checkAllOnline(cantidad)){
-                            CargarVentanasJugadores();
-                        }
+                        
                     }else{
                             JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -804,6 +816,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 JOptionPane.showMessageDialog(this, "Completa todos los Campos...", "Login", JOptionPane.INFORMATION_MESSAGE);
             }
             
+        }
+        if(checkAllOnline(cantidad)){
+            CargarVentanasJugadores();
         }
     }
     public void LogoutUser(ActionEvent evento){
@@ -915,9 +930,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

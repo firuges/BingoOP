@@ -5,6 +5,7 @@
  */
 package Patrones.Observer;
 
+import Common.cJuego;
 import java.util.Observable;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Observable;
  */
 public class ClaseObservador extends Observable{
     private String accion;
-
+    private cJuego elJuego;
 	public ClaseObservador(){
 		
 	}
@@ -46,5 +47,19 @@ public class ClaseObservador extends Observable{
      */
     public void setAccion(String accion) {
         this.accion = accion;
+    }
+
+    /**
+     * @return the elJuego
+     */
+    public cJuego getElJuego() {
+        return elJuego;
+    }
+
+    /**
+     * @param elJuego the elJuego to set
+     */
+    public void setElJuego(cJuego elJuego) {
+        this.elJuego = elJuego;
     }
 }

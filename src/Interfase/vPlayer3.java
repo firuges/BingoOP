@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Maxi
  */
-public class vPlayer1 extends javax.swing.JFrame implements Observer{
+public class vPlayer3 extends javax.swing.JFrame implements Observer{
     private dEmpresa laEmpresa;
     private ClaseObservador observer;
     private String Accion;
@@ -28,16 +28,16 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     /**
      * Creates new form vPlayer1
      */
-    public vPlayer1() {
+    public vPlayer3() {
         initComponents();
     }
-    public vPlayer1 (dEmpresa pEmpresa , ClaseObservador Observador){
+    public vPlayer3 (dEmpresa pEmpresa , ClaseObservador Observador){
         
         initComponents();
         laEmpresa = pEmpresa;
         observer = Observador;
     }
-    public vPlayer1 (ClaseObservador Observador){
+    public vPlayer3 (ClaseObservador Observador){
         
         initComponents();
         observer = Observador;
@@ -295,19 +295,19 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vPlayer1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vPlayer3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vPlayer1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vPlayer3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vPlayer1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vPlayer3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vPlayer1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vPlayer3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vPlayer1().setVisible(true);
+                new vPlayer3().setVisible(true);
             }
         });
     }
@@ -378,13 +378,10 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         Accion = observer.getAccion();
-        if(Accion.equalsIgnoreCase("ESPERANDO")){
-            
-        }
+        
         this.lblColor.setText(Accion);
         /*String accion = observer.getAccion();
         acciones.add(accion);
         cargar();*/
     }
-    
 }
