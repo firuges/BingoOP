@@ -74,24 +74,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         jPanel1 = new javax.swing.JPanel();
         comboColores = new javax.swing.JComboBox();
-        PanelJuego = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lblPozo = new javax.swing.JLabel();
-        lblNum = new javax.swing.JLabel();
-        lblBolilla = new javax.swing.JLabel();
-        btnSortear = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
         panelSeleccion = new javax.swing.JPanel();
         label1010 = new javax.swing.JLabel();
         label123 = new javax.swing.JLabel();
@@ -126,6 +108,24 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         lblPlayer2 = new javax.swing.JLabel();
         lblPlayer3 = new javax.swing.JLabel();
         lblMensajeCombo = new javax.swing.JLabel();
+        PanelJuego = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblPozo = new javax.swing.JLabel();
+        lblNum = new javax.swing.JLabel();
+        lblBolilla = new javax.swing.JLabel();
+        btnSortear = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setResizable(false);
@@ -145,68 +145,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         });
         jPanel1.add(comboColores);
         comboColores.setBounds(110, 10, 56, 20);
-
-        PanelJuego.setOpaque(false);
-        PanelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("POZO:");
-        PanelJuego.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
-
-        lblPozo.setBackground(new java.awt.Color(255, 0, 51));
-        lblPozo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblPozo.setOpaque(true);
-        PanelJuego.add(lblPozo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 39, 26));
-
-        lblNum.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblNum.setForeground(new java.awt.Color(255, 255, 255));
-        PanelJuego.add(lblNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(648, 103, 40, 36));
-
-        lblBolilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/amarilla.png"))); // NOI18N
-        PanelJuego.add(lblBolilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 294, 285));
-
-        btnSortear.setText("Sortear");
-        PanelJuego.add(btnSortear, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, -1, -1));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/1.png"))); // NOI18N
-        PanelJuego.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/74.png"))); // NOI18N
-        PanelJuego.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/19.png"))); // NOI18N
-        PanelJuego.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/100.png"))); // NOI18N
-        PanelJuego.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, -1, -1));
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/27.png"))); // NOI18N
-        PanelJuego.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 120, -1, -1));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/20.png"))); // NOI18N
-        PanelJuego.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/28.png"))); // NOI18N
-        PanelJuego.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 480, -1, -1));
-
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/59.png"))); // NOI18N
-        PanelJuego.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 220, -1, -1));
-
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/33.png"))); // NOI18N
-        PanelJuego.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 420, -1, -1));
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/50.png"))); // NOI18N
-        PanelJuego.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 160, -1, -1));
-
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/6.png"))); // NOI18N
-        PanelJuego.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
-
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/43.png"))); // NOI18N
-        PanelJuego.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 310, -1, -1));
-
-        jPanel1.add(PanelJuego);
-        PanelJuego.setBounds(0, 10, 1070, 640);
 
         panelSeleccion.setOpaque(false);
         panelSeleccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -472,6 +410,68 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         jPanel1.add(panelSeleccion);
         panelSeleccion.setBounds(160, 10, 730, 220);
+
+        PanelJuego.setOpaque(false);
+        PanelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("POZO:");
+        PanelJuego.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
+
+        lblPozo.setBackground(new java.awt.Color(255, 0, 51));
+        lblPozo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblPozo.setOpaque(true);
+        PanelJuego.add(lblPozo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 39, 26));
+
+        lblNum.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNum.setForeground(new java.awt.Color(255, 255, 255));
+        PanelJuego.add(lblNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(648, 103, 40, 36));
+
+        lblBolilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/amarilla.png"))); // NOI18N
+        PanelJuego.add(lblBolilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 294, 285));
+
+        btnSortear.setText("Sortear");
+        PanelJuego.add(btnSortear, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/1.png"))); // NOI18N
+        PanelJuego.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/74.png"))); // NOI18N
+        PanelJuego.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/19.png"))); // NOI18N
+        PanelJuego.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/100.png"))); // NOI18N
+        PanelJuego.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, -1, -1));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/27.png"))); // NOI18N
+        PanelJuego.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 120, -1, -1));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/20.png"))); // NOI18N
+        PanelJuego.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/28.png"))); // NOI18N
+        PanelJuego.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 480, -1, -1));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/59.png"))); // NOI18N
+        PanelJuego.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 220, -1, -1));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/33.png"))); // NOI18N
+        PanelJuego.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 420, -1, -1));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/50.png"))); // NOI18N
+        PanelJuego.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 160, -1, -1));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/6.png"))); // NOI18N
+        PanelJuego.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/43.png"))); // NOI18N
+        PanelJuego.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 310, -1, -1));
+
+        jPanel1.add(PanelJuego);
+        PanelJuego.setBounds(0, 10, 1070, 640);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondomesa.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
