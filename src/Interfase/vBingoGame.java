@@ -1118,7 +1118,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 unUser.setUserName(username);
                 unUser.setPassword(password);
                 jugador2 = (cJugador)empresa.buscarUsuario(unUser);
-                if(jugador2.getId() < 1){
+                if(jugador2 == null){
                     JOptionPane.showMessageDialog(this, "Login Incorrecto, por Favor Verifique su Usuario y Contraseña", "Login", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else
@@ -1159,7 +1159,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 unUser.setUserName(username);
                 unUser.setPassword(password);
                 jugador3 = (cJugador)empresa.buscarUsuario(unUser);
-                if(jugador3.getId() < 1){
+                if(jugador3 == null){
                     JOptionPane.showMessageDialog(this, "Login Incorrecto, por Favor Verifique su Usuario y Contraseña", "Login", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else
