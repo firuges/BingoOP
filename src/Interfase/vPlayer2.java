@@ -263,7 +263,7 @@ public class vPlayer2 extends javax.swing.JFrame implements Observer{
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Por Favor, Elije la cantidad de Cartones con los que Jugaras", "Game", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_formWindowOpened
     public void cerrar(){
         Object [] opciones ={"Aceptar","Cancelar"};

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class cJuego {
     private int Id;
-    private ArrayList<cUsuario> Jugadores;
+    private ArrayList<cJugador> Jugadores;
     private int Pozo;
     private int[] Bolillero;
     private int numeroSorteado;
@@ -42,14 +42,14 @@ public class cJuego {
     /**
      * @return the Jugadores
      */
-    public ArrayList<cUsuario> getJugadores() {
+    public ArrayList<cJugador> getJugadores() {
         return Jugadores;
     }
 
     /**
      * @param Jugadores the Jugadores to set
      */
-    public void setJugadores(ArrayList<cUsuario> Jugadores) {
+    public void setJugadores(ArrayList<cJugador> Jugadores) {
         this.Jugadores = Jugadores;
     }
 

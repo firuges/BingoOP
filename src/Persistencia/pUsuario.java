@@ -134,7 +134,8 @@ public class pUsuario extends pPersistencia {
         try{
              cUsuario unUser = (cUsuario)o;
              cUsuario unUsuario = null;
-
+             cJugador unJugador = null;
+             cAdmin unAdmin = null;
              super.abrirConexion();
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
@@ -162,24 +163,26 @@ public class pUsuario extends pPersistencia {
                 unUser.setApellido(rs.getString("uapellido"));
                 unUser.setEmail(rs.getString("uemail"));
                 unUser.setPassword(rs.getString("upassword"));
-                unUser.setUserName(rs.getString("uusername"));
+                String Fecha = Utilidades.FormatearFechaToString(rs.getDate("ufecha"));
+                unUser.setFechanacido(Utilidades.FormatearFechaToDate(Fecha));
                 String gerar = rs.getString("utipouser");
+                unUser.setUserName(rs.getString("uusername"));
                 if(gerar.equals(Enums.Gerarquia.ADMIN)){
-                    unUsuario = new cAdmin();
-                    unUsuario = unUser;
+                    unAdmin = new cAdmin(unUser.getId(),unUser.getNombre(),unUser.getApellido(),unUser.getEmail(),unUser.getPassword(),unUser.getFechanacido(),unUser.getUserName());
 
                 }else{
-                    unUsuario = new cJugador();
-                    unUsuario = unUser;
+                    int fichas = rs.getInt("fichas");
+                    unJugador = new cJugador(unUser.getId(),unUser.getNombre(), unUser.getApellido(),unUser.getEmail(),unUser.getPassword(),unUser.getFechanacido(),fichas,unUser.getUserName());
 
                 }
                 
             }
             super.cerrarConexion();
             // devuelve el objeto encontrado
-            if (unUsuario != null){
-                return unUsuario;
-
+            if(unAdmin != null){
+                return unAdmin;
+            }else if(unJugador != null){
+                return unJugador;
             }else{
                 return null;
             }

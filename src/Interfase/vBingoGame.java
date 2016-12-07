@@ -17,6 +17,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import static java.lang.Thread.sleep;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -98,6 +99,42 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         txtUserName3 = new javax.swing.JTextField();
         btnLogin3 = new javax.swing.JButton();
         txtPassword3 = new javax.swing.JPasswordField();
+        panelPosLogin1 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        boxFichas1 = new javax.swing.JComboBox();
+        jLabel23 = new javax.swing.JLabel();
+        lblValor1 = new javax.swing.JLabel();
+        btnComprar = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        boxCartones1 = new javax.swing.JComboBox();
+        btnComprarCartones1 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        lblReady1 = new javax.swing.JLabel();
+        lblSaldo1 = new javax.swing.JLabel();
+        panelPosLogin2 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        boxFichas2 = new javax.swing.JComboBox();
+        jLabel28 = new javax.swing.JLabel();
+        lblValor2 = new javax.swing.JLabel();
+        btnComprar1 = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        boxCartones2 = new javax.swing.JComboBox();
+        btnComprarCartones2 = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        lblReady2 = new javax.swing.JLabel();
+        lblSaldo2 = new javax.swing.JLabel();
+        panelPosLogin3 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        boxFichas3 = new javax.swing.JComboBox();
+        jLabel33 = new javax.swing.JLabel();
+        lblValor3 = new javax.swing.JLabel();
+        btnComprar2 = new javax.swing.JButton();
+        jLabel35 = new javax.swing.JLabel();
+        boxCartones3 = new javax.swing.JComboBox();
+        btnComprarCartones3 = new javax.swing.JButton();
+        jLabel36 = new javax.swing.JLabel();
+        lblReady3 = new javax.swing.JLabel();
+        lblSaldo3 = new javax.swing.JLabel();
         lblEstado1 = new javax.swing.JLabel();
         lblEstado2 = new javax.swing.JLabel();
         lblEstado3 = new javax.swing.JLabel();
@@ -314,6 +351,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             }
         });
 
+        txtPassword3.setText("elfacha");
+
         javax.swing.GroupLayout panelLogin3Layout = new javax.swing.GroupLayout(panelLogin3);
         panelLogin3.setLayout(panelLogin3Layout);
         panelLogin3Layout.setHorizontalGroup(
@@ -352,6 +391,203 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         );
 
         panelSeleccion.add(panelLogin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
+
+        panelPosLogin1.setOpaque(false);
+        panelPosLogin1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Comprar Fichas: ");
+        panelPosLogin1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+
+        boxFichas1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        boxFichas1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "50", "100", "150", "200", "250" }));
+        boxFichas1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                boxFichas1ItemStateChanged(evt);
+            }
+        });
+        panelPosLogin1.add(boxFichas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Valor: ");
+        panelPosLogin1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+
+        lblValor1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblValor1.setForeground(new java.awt.Color(255, 255, 255));
+        lblValor1.setText("100");
+        lblValor1.setFocusable(false);
+        panelPosLogin1.add(lblValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+
+        btnComprar.setText("Comprar");
+        panelPosLogin1.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("Cantidad de Cartones: ");
+        panelPosLogin1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+
+        boxCartones1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        boxCartones1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
+        boxCartones1.setSelectedIndex(1);
+        boxCartones1.setToolTipText("");
+        panelPosLogin1.add(boxCartones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        btnComprarCartones1.setText("Comprar");
+        btnComprarCartones1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnComprarCartones1MouseClicked(evt);
+            }
+        });
+        panelPosLogin1.add(btnComprarCartones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Saldo Disponible:");
+        panelPosLogin1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        lblReady1.setForeground(new java.awt.Color(51, 204, 0));
+        panelPosLogin1.add(lblReady1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 20));
+
+        lblSaldo1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblSaldo1.setForeground(new java.awt.Color(255, 255, 255));
+        panelPosLogin1.add(lblSaldo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 40, 20));
+
+        panelSeleccion.add(panelPosLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 190, 240));
+
+        panelPosLogin2.setOpaque(false);
+        panelPosLogin2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Comprar Fichas: ");
+        panelPosLogin2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+
+        boxFichas2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        boxFichas2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "50", "100", "150", "200", "250" }));
+        boxFichas2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                boxFichas2ItemStateChanged(evt);
+            }
+        });
+        panelPosLogin2.add(boxFichas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setText("Valor: ");
+        panelPosLogin2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+
+        lblValor2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblValor2.setForeground(new java.awt.Color(255, 255, 255));
+        lblValor2.setText("100");
+        lblValor2.setFocusable(false);
+        panelPosLogin2.add(lblValor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+
+        btnComprar1.setText("Comprar");
+        panelPosLogin2.add(btnComprar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+
+        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setText("Cantidad de Cartones: ");
+        panelPosLogin2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+
+        boxCartones2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        boxCartones2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
+        boxCartones2.setSelectedIndex(1);
+        boxCartones2.setToolTipText("");
+        panelPosLogin2.add(boxCartones2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        btnComprarCartones2.setText("Comprar");
+        btnComprarCartones2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnComprarCartones2MouseClicked(evt);
+            }
+        });
+        panelPosLogin2.add(btnComprarCartones2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setText("Saldo Disponible:");
+        panelPosLogin2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        lblReady2.setForeground(new java.awt.Color(51, 204, 0));
+        panelPosLogin2.add(lblReady2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 20));
+
+        lblSaldo2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblSaldo2.setForeground(new java.awt.Color(255, 255, 255));
+        panelPosLogin2.add(lblSaldo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 40, 20));
+
+        panelSeleccion.add(panelPosLogin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 190, 240));
+
+        panelPosLogin3.setOpaque(false);
+        panelPosLogin3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel32.setText("Comprar Fichas: ");
+        panelPosLogin3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+
+        boxFichas3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        boxFichas3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "50", "100", "150", "200", "250" }));
+        boxFichas3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                boxFichas3ItemStateChanged(evt);
+            }
+        });
+        panelPosLogin3.add(boxFichas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
+
+        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel33.setText("Valor: ");
+        panelPosLogin3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+
+        lblValor3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblValor3.setForeground(new java.awt.Color(255, 255, 255));
+        lblValor3.setText("100");
+        lblValor3.setFocusable(false);
+        panelPosLogin3.add(lblValor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+
+        btnComprar2.setText("Comprar");
+        panelPosLogin3.add(btnComprar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+
+        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel35.setText("Cantidad de Cartones: ");
+        panelPosLogin3.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+
+        boxCartones3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        boxCartones3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
+        boxCartones3.setSelectedIndex(1);
+        boxCartones3.setToolTipText("");
+        panelPosLogin3.add(boxCartones3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        btnComprarCartones3.setText("Comprar");
+        btnComprarCartones3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnComprarCartones3MouseClicked(evt);
+            }
+        });
+        btnComprarCartones3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprarCartones3ActionPerformed(evt);
+            }
+        });
+        panelPosLogin3.add(btnComprarCartones3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
+
+        jLabel36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setText("Saldo Disponible:");
+        panelPosLogin3.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        lblReady3.setForeground(new java.awt.Color(51, 204, 0));
+        panelPosLogin3.add(lblReady3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 20));
+
+        lblSaldo3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblSaldo3.setForeground(new java.awt.Color(255, 255, 255));
+        panelPosLogin3.add(lblSaldo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 40, 20));
+
+        panelSeleccion.add(panelPosLogin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 190, 240));
 
         lblEstado1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblEstado1.setForeground(new java.awt.Color(0, 204, 51));
@@ -409,7 +645,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelSeleccion.add(lblMensajeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 360, 30));
 
         jPanel1.add(panelSeleccion);
-        panelSeleccion.setBounds(160, 10, 730, 220);
+        panelSeleccion.setBounds(160, 10, 730, 570);
 
         PanelJuego.setOpaque(false);
         PanelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -429,10 +665,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         PanelJuego.add(lblNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(648, 103, 40, 36));
 
         lblBolilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/amarilla.png"))); // NOI18N
-        PanelJuego.add(lblBolilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 294, 285));
+        PanelJuego.add(lblBolilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 294, 285));
 
         btnSortear.setText("Sortear");
-        PanelJuego.add(btnSortear, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, -1, -1));
+        PanelJuego.add(btnSortear, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, -1, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/1.png"))); // NOI18N
         PanelJuego.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
@@ -491,8 +727,13 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // <editor-fold defaultstate="collapsed" desc=" Boton de Play ">
-    public void CargarVentanasJugadores(){
-        
+    public void CargarVentanasJugadores() throws InterruptedException{
+        boolean tirar = false;
+        while (!tirar){
+            MensajeDeInicioPartida();
+            sleep(4000);
+            tirar = true;
+        }
         
         ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
         dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
@@ -552,26 +793,34 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.panelSeleccion.setVisible(false);
         this.PanelJuego.setVisible(true);
     }     // </editor-fold>
-    public boolean checkAllOnline(String cantidad){
-        boolean bandera = false;
-        switch(cantidad){
-            case "2":
-                if(this.lblEstado1.getText().equalsIgnoreCase("ONLINE") && this.lblEstado2.getText().equalsIgnoreCase("ONLINE")){
-                    bandera = true;
-                }
-                break;
-            case "3":
-                if(this.lblEstado1.getText().equalsIgnoreCase("ONLINE") && this.lblEstado2.getText().equalsIgnoreCase("ONLINE") && this.lblEstado3.getText().equalsIgnoreCase("ONLINE")){
-                    bandera = true;
-                }
-                break;
-            default:
-                break;
+    public boolean checkReadyAll(String cantidad){
+        boolean bandera = true;
+        int cant = Integer.parseInt(cantidad);
+        int contador = 0;
+        for(cJugador u: elJuego.getJugadores()){
+            if(!u.isReady()){
+                bandera = false;
+            }
+            contador ++;
         }
-        return bandera;
+        if(cant == contador && bandera == true){
+            return bandera;
+        }
+        return false;
     }
     // <editor-fold defaultstate="collapsed" desc=" Combo de Seleccion Jugadores ">
-    
+    public void MensajeDeInicioPartida(){
+        Object [] opciones ={"Aceptar"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane,"La Partida comenzara en unos Segundos","Mensaje de Confirmacion",
+        JOptionPane.YES_NO_OPTION,
+        JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
+        if (eleccion == JOptionPane.YES_OPTION)
+        {
+            
+        }else{
+            
+        }
+    }
     private void comboSelectItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSelectItemStateChanged
         // TODO add your handling code here:
         if(this.lblEstado3.getText().equalsIgnoreCase("OFFLINE")){
@@ -644,6 +893,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.btnLogout1.setVisible(false);
         this.btnLogout2.setVisible(false);
         this.btnLogout3.setVisible(false);
+        
+        this.panelPosLogin1.setVisible(false);
+        this.panelPosLogin2.setVisible(false);
+        this.panelPosLogin3.setVisible(false);
         clicks = 0;
         si = 0;
         no=0;
@@ -709,19 +962,113 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         // TODO add your handling code here:
         LogoutUser(evt);
     }//GEN-LAST:event_btnLogout3ActionPerformed
-    public void LoginUser(ActionEvent evento) throws Exception{
+
+    private void btnComprarCartones1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarCartones1MouseClicked
+        try {
+            // TODO add your handling code here:
+            comprarCartones(evt);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnComprarCartones1MouseClicked
+
+    private void btnComprarCartones2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarCartones2MouseClicked
+        try {
+            // TODO add your handling code here:
+            comprarCartones(evt);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnComprarCartones2MouseClicked
+
+    private void btnComprarCartones3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarCartones3MouseClicked
+        try {
+            // TODO add your handling code here:
+            comprarCartones(evt);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnComprarCartones3MouseClicked
+
+    private void btnComprarCartones3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarCartones3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnComprarCartones3ActionPerformed
+
+    private void boxFichas1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxFichas1ItemStateChanged
+        // TODO add your handling code here:
+        String value = this.boxFichas1.getSelectedItem().toString();
+        int valor = CalcularValorFichas(Integer.parseInt(value));
+        this.lblValor1.setText(String.valueOf(valor));
+    }//GEN-LAST:event_boxFichas1ItemStateChanged
+
+    private void boxFichas2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxFichas2ItemStateChanged
+        // TODO add your handling code here:
+        String value = this.boxFichas2.getSelectedItem().toString();
+        int valor = CalcularValorFichas(Integer.parseInt(value));
+        this.lblValor2.setText(String.valueOf(valor));
+    }//GEN-LAST:event_boxFichas2ItemStateChanged
+
+    private void boxFichas3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxFichas3ItemStateChanged
+        // TODO add your handling code here:
+        String value = this.boxFichas3.getSelectedItem().toString();
+        int valor = CalcularValorFichas(Integer.parseInt(value));
+        this.lblValor3.setText(String.valueOf(valor));
+    }//GEN-LAST:event_boxFichas3ItemStateChanged
+    public void comprarCartones(MouseEvent evento) throws InterruptedException{
+        cJugador jugador = null;
         String cantidad = this.comboSelect.getSelectedItem().toString();
+        if(evento.getSource() == this.btnComprarCartones1){
+            jugador = this.BuscarJugadorEnJuego(this.lblPlayer1.getText());
+            jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones1.getSelectedItem()));
+            jugador.setReady(true);
+            this.lblReady1.setText("Jugador Listo!, Esperando...");
+            this.btnComprarCartones1.setVisible(false);
+            this.boxCartones1.setVisible(false);
+            this.lblSaldo1.setText(String.valueOf(jugador.getFichas() - Integer.parseInt(this.lblValor1.getText())));
+        }else if(evento.getSource() == this.btnComprarCartones2){
+            jugador = this.BuscarJugadorEnJuego(this.lblPlayer2.getText());
+            jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones2.getSelectedItem()));
+            jugador.setReady(true);
+            this.lblReady2.setText("Jugador Listo!, Esperando...");
+            this.btnComprarCartones2.setVisible(false);
+            this.boxCartones2.setVisible(false);
+            this.lblSaldo2.setText(String.valueOf(jugador.getFichas() - Integer.parseInt(this.lblValor2.getText())));
+        }else{
+            jugador = this.BuscarJugadorEnJuego(this.lblPlayer3.getText());
+            jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones3.getSelectedItem()));
+            jugador.setReady(true);
+            this.lblReady3.setText("Jugador Listo!, Esperando...");
+            this.btnComprarCartones3.setVisible(false);
+            this.boxCartones3.setVisible(false);
+            this.lblSaldo3.setText(String.valueOf(jugador.getFichas() - Integer.parseInt(this.lblValor3.getText())));
+        }
+        if(checkReadyAll(cantidad)){
+            CargarVentanasJugadores();
+        }
+    }
+    public cJugador BuscarJugadorEnJuego(String pUserName){
+        for (cJugador j : elJuego.getJugadores()) {
+                    if (j.getUserName().equalsIgnoreCase(pUserName)) {
+                        return j;
+                    }
+        }
+        return null;
+    }
+    public void LoginUser(ActionEvent evento) throws Exception{
+        cUsuario unUser = new cJugador();
+        
         String username, password;
         boolean yaLogeado = false;
         if(this.btnLogin1 == evento.getSource()){
             username = this.txtUserName1.getText();
             password = this.txtPassword1.getText();
             if(!"".equals(username) || !"".equalsIgnoreCase(password)){
-                cUsuario jugador1 = new cJugador();
+                cJugador jugador1 = new cJugador();
                 
-                jugador1.setUserName(username);
-                jugador1.setPassword(password);
-                jugador1 = empresa.buscarUsuario(jugador1);
+                unUser.setUserName(username);
+                unUser.setPassword(password);
+                jugador1 = (cJugador)empresa.buscarUsuario(unUser);
                 if(jugador1.getId() < 1){
                     JOptionPane.showMessageDialog(this, "Login Incorrecto, por Favor Verifique su Usuario y Contraseña", "Login", JOptionPane.INFORMATION_MESSAGE);
                 }else
@@ -732,11 +1079,16 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                     }
     }
                     if(!yaLogeado){
+                        
                         elJuego.getJugadores().add(jugador1);
                         this.panelLogin1.setVisible(false);
                         this.lblEstado1.setText("ONLINE");
                         this.lblPlayer1.setText(jugador1.getUserName());
                         this.btnLogout1.setVisible(true);
+                        this.panelPosLogin1.setVisible(true);
+                        this.lblSaldo1.setText(String.valueOf(jugador1.getFichas()));
+                        JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
+        
                         
                     }else{
                             JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
@@ -750,11 +1102,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             username = this.txtUserName2.getText();
             password = this.txtPassword2.getText();
             if(!"".equals(username) || !"".equalsIgnoreCase(password)){
-                cUsuario jugador2 = new cJugador();
+                cJugador jugador2 = new cJugador();
                 
-                jugador2.setUserName(username);
-                jugador2.setPassword(password);
-                jugador2 = empresa.buscarUsuario(jugador2);
+                unUser.setUserName(username);
+                unUser.setPassword(password);
+                jugador2 = (cJugador)empresa.buscarUsuario(unUser);
                 if(jugador2.getId() < 1){
                     JOptionPane.showMessageDialog(this, "Login Incorrecto, por Favor Verifique su Usuario y Contraseña", "Login", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -772,6 +1124,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.lblEstado2.setText("ONLINE");
                         this.lblPlayer2.setText(jugador2.getUserName());
                         this.btnLogout2.setVisible(true);
+                        this.panelPosLogin2.setVisible(true);
+                        this.lblSaldo2.setText(String.valueOf(jugador2.getFichas()));
+                        JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
+        
                         
                     }else{
                             JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
@@ -786,11 +1142,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             username = this.txtUserName3.getText();
             password = this.txtPassword3.getText();
             if(!"".equals(username) || !"".equalsIgnoreCase(password)){
-                cUsuario jugador3 = new cJugador();
+                cJugador jugador3 = new cJugador();
                 
-                jugador3.setUserName(username);
-                jugador3.setPassword(password);
-                jugador3 = empresa.buscarUsuario(jugador3);
+                unUser.setUserName(username);
+                unUser.setPassword(password);
+                jugador3 = (cJugador)empresa.buscarUsuario(unUser);
                 if(jugador3.getId() < 1){
                     JOptionPane.showMessageDialog(this, "Login Incorrecto, por Favor Verifique su Usuario y Contraseña", "Login", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -807,6 +1163,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.lblEstado3.setText("ONLINE");
                         this.lblPlayer3.setText(jugador3.getUserName());
                         this.btnLogout3.setVisible(true);
+                        this.panelPosLogin3.setVisible(true);
+                        this.lblSaldo3.setText(String.valueOf(jugador3.getFichas()));
+                        JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
                         
                     }else{
                             JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
@@ -817,50 +1176,63 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             }
             
         }
-        if(checkAllOnline(cantidad)){
-            CargarVentanasJugadores();
-        }
+        
     }
     public void LogoutUser(ActionEvent evento){
         
-        ArrayList<cUsuario> jugadores = elJuego.getJugadores();
+        ArrayList<cJugador> jugadores = elJuego.getJugadores();
         if(this.btnLogout1 == evento.getSource()){
-            for (cUsuario u : jugadores) {
+            for (cJugador u : jugadores) {
                 if (u.getUserName().equalsIgnoreCase(this.lblPlayer1.getText())) {
                     jugadores.remove(u);
                     this.panelLogin1.setVisible(true);
                     this.btnLogout1.setVisible(false);
                     this.lblEstado1.setText("OFFLINE");
                     this.lblPlayer1.setText("");
+                    this.panelPosLogin1.setVisible(false);
+                    this.btnComprarCartones1.setVisible(true);
+                    this.boxCartones1.setVisible(true);
+                    this.lblSaldo1.setText("0");
                     break;
                 }
             }
         }else if(this.btnLogout2 == evento.getSource()){
-            for (cUsuario u : jugadores) {
+            for (cJugador u : jugadores) {
                 if (u.getUserName().equalsIgnoreCase(this.lblPlayer2.getText())) {
                     jugadores.remove(u);
                     this.panelLogin2.setVisible(true);
                     this.btnLogout2.setVisible(false);
                     this.lblEstado2.setText("OFFLINE");
                     this.lblPlayer2.setText("");
+                    this.panelPosLogin2.setVisible(false);
+                    this.btnComprarCartones2.setVisible(true);
+                    this.boxCartones2.setVisible(true);
+                    this.lblSaldo2.setText("0");
                     break;
                 }
             }
         }else{
-            for (cUsuario u : jugadores) {
+            for (cJugador u : jugadores) {
                 if (u.getUserName().equalsIgnoreCase(this.lblPlayer3.getText())) {
                     jugadores.remove(u);
                     this.panelLogin3.setVisible(true);
                     this.btnLogout3.setVisible(false);
                     this.lblEstado3.setText("OFFLINE");
                     this.lblPlayer3.setText("");
+                    this.panelPosLogin3.setVisible(false);
+                    this.btnComprarCartones3.setVisible(true);
+                    this.boxCartones3.setVisible(true);
+                    this.lblSaldo3.setText("0");
                     break;
                 }
             }
         }
         
     }
-    
+    public int CalcularValorFichas(int cantidad){
+        int unidad = 2;
+        return cantidad * 2;
+    }
     public void CargarParametrosJuego(int pCantJugadores) throws cDatosException{
         cConfiguracion config = new cConfiguracion();
         try{
@@ -912,6 +1284,18 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelJuego;
+    private javax.swing.JComboBox boxCartones1;
+    private javax.swing.JComboBox boxCartones2;
+    private javax.swing.JComboBox boxCartones3;
+    private javax.swing.JComboBox boxFichas1;
+    private javax.swing.JComboBox boxFichas2;
+    private javax.swing.JComboBox boxFichas3;
+    private javax.swing.JButton btnComprar;
+    private javax.swing.JButton btnComprar1;
+    private javax.swing.JButton btnComprar2;
+    private javax.swing.JButton btnComprarCartones1;
+    private javax.swing.JButton btnComprarCartones2;
+    private javax.swing.JButton btnComprarCartones3;
     private javax.swing.JButton btnLogin1;
     private javax.swing.JButton btnLogin2;
     private javax.swing.JButton btnLogin3;
@@ -935,7 +1319,19 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -956,9 +1352,21 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel lblPlayer2;
     private javax.swing.JLabel lblPlayer3;
     private javax.swing.JLabel lblPozo;
+    private javax.swing.JLabel lblReady1;
+    private javax.swing.JLabel lblReady2;
+    private javax.swing.JLabel lblReady3;
+    private javax.swing.JLabel lblSaldo1;
+    private javax.swing.JLabel lblSaldo2;
+    private javax.swing.JLabel lblSaldo3;
+    private javax.swing.JLabel lblValor1;
+    private javax.swing.JLabel lblValor2;
+    private javax.swing.JLabel lblValor3;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;
     private javax.swing.JPanel panelLogin3;
+    private javax.swing.JPanel panelPosLogin1;
+    private javax.swing.JPanel panelPosLogin2;
+    private javax.swing.JPanel panelPosLogin3;
     private javax.swing.JPanel panelSeleccion;
     private javax.swing.JPasswordField txtPassword1;
     private javax.swing.JPasswordField txtPassword2;

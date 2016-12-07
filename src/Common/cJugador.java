@@ -15,15 +15,13 @@ import java.util.Date;
 public class cJugador extends cUsuario{
     public static cJugador unJugador;//singlenton
     private ArrayList<cCarton> Cartones;
-    
+    private int cantidadCartones;
     private boolean ready;
     private int fichas;
-    private int NroJugador;
-    public cJugador(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido, int pFichas, String pUserName, int pNroJugador){
+    public cJugador(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido, int pFichas, String pUserName){
         super(pId, pNombre, pApellido, pEmail, pPassword, pFechaNacido, pUserName);
         this.Cartones = new ArrayList<cCarton>();
         fichas = pFichas;
-        this.NroJugador = pNroJugador;
     }
     public cJugador(){
         super();
@@ -86,16 +84,16 @@ public class cJugador extends cUsuario{
     }
 
     /**
-     * @return the NroJugador
+     * @return the cantidadCartones
      */
-    public int getNroJugador() {
-        return NroJugador;
+    public int getCantidadCartones() {
+        return cantidadCartones;
     }
 
     /**
-     * @param NroJugador the NroJugador to set
+     * @param cantidadCartones the cantidadCartones to set
      */
-    public void setNroJugador(int NroJugador) {
-        this.NroJugador = NroJugador;
+    public void setCantidadCartones(int cantidadCartones) {
+        this.cantidadCartones = cantidadCartones;
     }
 }
