@@ -76,17 +76,23 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         PanelJuego = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblPozo = new javax.swing.JLabel();
-        btnGirar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableSorteo = new javax.swing.JTable();
         lblNum = new javax.swing.JLabel();
-        lblEncontro = new javax.swing.JLabel();
-        lblNoEncontro = new javax.swing.JLabel();
+        lblBolilla = new javax.swing.JLabel();
+        btnSortear = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         comboColores = new javax.swing.JComboBox();
         panelSeleccion = new javax.swing.JPanel();
         label1010 = new javax.swing.JLabel();
         label123 = new javax.swing.JLabel();
-        btnPlayGame = new javax.swing.JButton();
         comboSelect = new javax.swing.JComboBox();
         label12313 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -130,98 +136,60 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jPanel1.setLayout(null);
 
         PanelJuego.setOpaque(false);
+        PanelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("POZO:");
+        PanelJuego.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 11, -1, -1));
 
         lblPozo.setBackground(new java.awt.Color(255, 0, 51));
         lblPozo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblPozo.setOpaque(true);
-
-        btnGirar.setText("Sortear");
-        btnGirar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGirarActionPerformed(evt);
-            }
-        });
-
-        tableSorteo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10"
-            }
-        ));
-        tableSorteo.setToolTipText("");
-        jScrollPane1.setViewportView(tableSorteo);
+        PanelJuego.add(lblPozo, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 11, 39, 26));
 
         lblNum.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblNum.setForeground(new java.awt.Color(255, 255, 255));
+        PanelJuego.add(lblNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(648, 103, 40, 36));
 
-        lblEncontro.setForeground(new java.awt.Color(255, 255, 255));
-        lblEncontro.setText("jLabel4");
+        lblBolilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/amarilla.png"))); // NOI18N
+        PanelJuego.add(lblBolilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 294, 285));
 
-        lblNoEncontro.setForeground(new java.awt.Color(255, 255, 255));
-        lblNoEncontro.setText("jLabel4");
+        btnSortear.setText("Sortear");
+        PanelJuego.add(btnSortear, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 11, -1, -1));
 
-        javax.swing.GroupLayout PanelJuegoLayout = new javax.swing.GroupLayout(PanelJuego);
-        PanelJuego.setLayout(PanelJuegoLayout);
-        PanelJuegoLayout.setHorizontalGroup(
-            PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelJuegoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(PanelJuegoLayout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblPozo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnGirar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(lblEncontro)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblNoEncontro)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNum, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelJuegoLayout.setVerticalGroup(
-            PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelJuegoLayout.createSequentialGroup()
-                .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelJuegoLayout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(lblNum, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelJuegoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPozo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnGirar)
-                                .addComponent(lblEncontro)
-                                .addComponent(lblNoEncontro)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/1.png"))); // NOI18N
+        PanelJuego.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/6.png"))); // NOI18N
+        PanelJuego.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/19.png"))); // NOI18N
+        PanelJuego.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/100.png"))); // NOI18N
+        PanelJuego.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/27.png"))); // NOI18N
+        PanelJuego.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, -1, -1));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/20.png"))); // NOI18N
+        PanelJuego.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/28.png"))); // NOI18N
+        PanelJuego.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, -1, -1));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/43.png"))); // NOI18N
+        PanelJuego.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/33.png"))); // NOI18N
+        PanelJuego.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, -1, -1));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/50.png"))); // NOI18N
+        PanelJuego.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
 
         jPanel1.add(PanelJuego);
-        PanelJuego.setBounds(270, 320, 510, 300);
+        PanelJuego.setBounds(190, 230, 700, 420);
 
         comboColores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Negro", "Amarillo" }));
         comboColores.addItemListener(new java.awt.event.ItemListener() {
@@ -244,15 +212,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         label123.setForeground(new java.awt.Color(255, 255, 255));
         label123.setText("Player 2:");
         panelSeleccion.add(label123, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
-
-        btnPlayGame.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        btnPlayGame.setText("Play!");
-        btnPlayGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlayGameActionPerformed(evt);
-            }
-        });
-        panelSeleccion.add(btnPlayGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 189, 26));
 
         comboSelect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3" }));
         comboSelect.setToolTipText("");
@@ -494,7 +453,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelSeleccion.add(lblMensajeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 360, 30));
 
         jPanel1.add(panelSeleccion);
-        panelSeleccion.setBounds(160, 10, 730, 310);
+        panelSeleccion.setBounds(160, 10, 730, 220);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondomesa.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
@@ -514,12 +473,13 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // <editor-fold defaultstate="collapsed" desc=" Boton de Play ">
-       
-    private void btnPlayGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayGameActionPerformed
-        // TODO add your handling code here:
+    public void CargarVentanasJugadores(){
+        
+        
         ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
         dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
         vBingoGame ventanaJuego = new vBingoGame(Empresa, Observador);
+
         //Ventana Player 1
         vPlayer1 ventanaPlayer1 = new vPlayer1(Observador);
         vPlayer1 ventanaPlayer2 = new vPlayer1(Observador);
@@ -527,12 +487,12 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         //los agrego al observador
         Observador.addObserver(ventanaPlayer1);
         Observador.addObserver(ventanaPlayer2);
-        
+
         //centra la ventana
         ventanaJuego.setLocationRelativeTo(null);
         ventanaPlayer1.setLocationRelativeTo(null);
         ventanaPlayer2.setLocationRelativeTo(null);
-        
+
         ///
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Point middle = new Point(screenSize.width / 2, screenSize.height / 2);
@@ -550,32 +510,48 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         ventanaPlayer2.setSize(415, 655);
         ///
         //mostramos la ventana
-        ventanaPlayer1.setTitle("Jugador Numero 1");
-        ventanaPlayer2.setTitle("Jugador Numero 2");
+        ventanaPlayer1.setTitle(elJuego.getJugadores().get(0).getUserName());
+        ventanaPlayer2.setTitle(elJuego.getJugadores().get(1).getUserName());
         if(this.comboSelect.getSelectedIndex() == 1){
             ventanaPlayer3 = new vPlayer1(Observador);
             Observador.addObserver(ventanaPlayer3);
             ventanaPlayer3.setLocationRelativeTo(null);
             ///
-        Dimension screenSize3 = Toolkit.getDefaultToolkit().getScreenSize();
-        Point middle3 = new Point(screenSize3.width / 2, screenSize3.height / 2);
-        Point newLocation3 = new Point(middle3.x - (ventanaJuego.getWidth() / 2 + 100), 
-                                      middle3.y - (ventanaJuego.getHeight() / 2));
-        ventanaPlayer3.setLocation(newLocation3);
-        ventanaPlayer3.setSize(415, 655);
-        ventanaPlayer3.setTitle("Jugador Numero 3");
+            Dimension screenSize3 = Toolkit.getDefaultToolkit().getScreenSize();
+            Point middle3 = new Point(screenSize3.width / 2, screenSize3.height / 2);
+            Point newLocation3 = new Point(middle3.x - (ventanaJuego.getWidth() / 2 + 100), 
+                                          middle3.y - (ventanaJuego.getHeight() / 2));
+            ventanaPlayer3.setLocation(newLocation3);
+            ventanaPlayer3.setSize(415, 655);
+            ventanaPlayer3.setTitle(elJuego.getJugadores().get(2).getUserName());
         ///
         }
-        
+
         ventanaPlayer1.setVisible(true);
         ventanaPlayer2.setVisible(true);
         if(ventanaPlayer3 != null)
             ventanaPlayer3.setVisible(true);
-        cargarNumerosTablero();
         this.panelSeleccion.setVisible(false);
         this.PanelJuego.setVisible(true);
-    }//GEN-LAST:event_btnPlayGameActionPerformed
-     // </editor-fold>
+    }     // </editor-fold>
+    public boolean checkAllOnline(String cantidad){
+        boolean bandera = false;
+        switch(cantidad){
+            case "2":
+                if(this.lblEstado1.getText().equalsIgnoreCase("ONLINE") && this.lblEstado2.getText().equalsIgnoreCase("ONLINE")){
+                    bandera = true;
+                }
+                break;
+            case "3":
+                if(this.lblEstado1.getText().equalsIgnoreCase("ONLINE") && this.lblEstado2.getText().equalsIgnoreCase("ONLINE") && this.lblEstado3.getText().equalsIgnoreCase("ONLINE")){
+                    bandera = true;
+                }
+                break;
+            default:
+                break;
+        }
+        return bandera;
+    }
     // <editor-fold defaultstate="collapsed" desc=" Combo de Seleccion Jugadores ">
     
     private void comboSelectItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSelectItemStateChanged
@@ -642,8 +618,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.panelLogin2.setVisible(true);
         this.panelLogin3.setVisible(false);
         
-        this.btnPlayGame.setVisible(true);
-        this.tableSorteo.getTableHeader().setVisible(false);
+        
         this.PanelJuego.setVisible(false);
         
         this.lblEstado3.setVisible(false);
@@ -662,13 +637,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.observer.setChang(this.comboColores.getSelectedItem().toString());
     }//GEN-LAST:event_comboColoresItemStateChanged
     
-    private void btnGirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGirarActionPerformed
-        // TODO add your handling code here:
-        int numeroAleatorio = (int) (Math.random()*Numeros.length+1);
-        this.lblNum.setText(String.valueOf(clicks++));
-        ElegirNumero();
-    }//GEN-LAST:event_btnGirarActionPerformed
-
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
         try {
             // TODO add your handling code here:
@@ -724,6 +692,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         LogoutUser(evt);
     }//GEN-LAST:event_btnLogout3ActionPerformed
     public void LoginUser(ActionEvent evento) throws Exception{
+        String cantidad = this.comboSelect.getSelectedItem().toString();
         String username, password;
         boolean yaLogeado = false;
         if(this.btnLogin1 == evento.getSource()){
@@ -750,6 +719,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.lblEstado1.setText("ONLINE");
                         this.lblPlayer1.setText(jugador1.getUserName());
                         this.btnLogout1.setVisible(true);
+                        if(checkAllOnline(cantidad)){
+                            CargarVentanasJugadores();
+                        }
                     }else{
                             JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -784,6 +756,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.lblEstado2.setText("ONLINE");
                         this.lblPlayer2.setText(jugador2.getUserName());
                         this.btnLogout2.setVisible(true);
+                        if(checkAllOnline(cantidad)){
+                            CargarVentanasJugadores();
+                        }
                     }else{
                             JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -818,6 +793,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.lblEstado3.setText("ONLINE");
                         this.lblPlayer3.setText(jugador3.getUserName());
                         this.btnLogout3.setVisible(true);
+                        if(checkAllOnline(cantidad)){
+                            CargarVentanasJugadores();
+                        }
                     }else{
                             JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -867,43 +845,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         }
         
     }
-    private void cargarNumerosTablero(){
-        if(this.Numeros == null){
-            this.Numeros = new Integer[100]; 
-            DefaultTableModel tm = (DefaultTableModel) this.tableSorteo.getModel();
-            //Vacio las Rows
-            tm.setRowCount(0);
-            for(int i = 1; i < 92; i+=10){
-                tm.addRow(new Object[]{new Integer(i), new Integer(i+1), new Integer(i+2), new Integer(i+3), new Integer(i+4), new Integer(i+5)
-                , new Integer(i+6), new Integer(i+7), new Integer(i+8), new Integer(i+9)});
-                tableSorteo.setModel(tm);
-            }
-        }
-    }
-    public void ElegirNumero(){
-        int numeroAleatorio = (int) (Math.random()*Numeros.length+1);
-        boolean encontro = false;
-        DefaultTableModel tm = (DefaultTableModel) this.tableSorteo.getModel();
-        
-            for (int i = tm.getRowCount() - 1; i >= 0; --i) {
-                for (int j = tm.getColumnCount() - 1; j >= 0; --j) {
-                    if (tm.getValueAt(i, j).equals(numeroAleatorio)) {
-                        // what if value is not unique?
-                        int numero = (int)tm.getValueAt(i, j);
-                        tm.setValueAt("@", i, j);//"'"+numeroAleatorio +"'"
-                        encontro = true;
-                        this.lblEncontro.setText(String.valueOf(si++));
-                        break;
-                    }
-                }
-            }
-        if(!encontro){
-            ElegirNumero();
-            this.lblNoEncontro.setText(String.valueOf(no++));
-        }
-        
-        
-    }
+    
     public void CargarParametrosJuego(int pCantJugadores) throws cDatosException{
         cConfiguracion config = new cConfiguracion();
         try{
@@ -955,36 +897,43 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelJuego;
-    private javax.swing.JButton btnGirar;
     private javax.swing.JButton btnLogin1;
     private javax.swing.JButton btnLogin2;
     private javax.swing.JButton btnLogin3;
     private javax.swing.JButton btnLogout1;
     private javax.swing.JButton btnLogout2;
     private javax.swing.JButton btnLogout3;
-    private javax.swing.JButton btnPlayGame;
+    private javax.swing.JButton btnSortear;
     private javax.swing.JComboBox comboColores;
     private javax.swing.JComboBox comboSelect;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1010;
     private javax.swing.JLabel label123;
     private javax.swing.JLabel label12313;
-    private javax.swing.JLabel lblEncontro;
+    private javax.swing.JLabel lblBolilla;
     private javax.swing.JLabel lblEstado1;
     private javax.swing.JLabel lblEstado2;
     private javax.swing.JLabel lblEstado3;
     private javax.swing.JLabel lblMensajeCombo;
-    private javax.swing.JLabel lblNoEncontro;
     private javax.swing.JLabel lblNum;
     private javax.swing.JLabel lblPlayer1;
     private javax.swing.JLabel lblPlayer2;
@@ -994,7 +943,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JPanel panelLogin2;
     private javax.swing.JPanel panelLogin3;
     private javax.swing.JPanel panelSeleccion;
-    private javax.swing.JTable tableSorteo;
     private javax.swing.JPasswordField txtPassword1;
     private javax.swing.JPasswordField txtPassword2;
     private javax.swing.JPasswordField txtPassword3;

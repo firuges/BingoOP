@@ -18,10 +18,12 @@ public class cJugador extends cUsuario{
     
     private boolean ready;
     private int fichas;
-    public cJugador(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido, int pFichas, String pUserName){
+    private int NroJugador;
+    public cJugador(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Date pFechaNacido, int pFichas, String pUserName, int pNroJugador){
         super(pId, pNombre, pApellido, pEmail, pPassword, pFechaNacido, pUserName);
         this.Cartones = new ArrayList<cCarton>();
         fichas = pFichas;
+        this.NroJugador = pNroJugador;
     }
     public cJugador(){
         super();
@@ -81,5 +83,19 @@ public class cJugador extends cUsuario{
      */
     public void setReady(boolean ready) {
         this.ready = ready;
+    }
+
+    /**
+     * @return the NroJugador
+     */
+    public int getNroJugador() {
+        return NroJugador;
+    }
+
+    /**
+     * @param NroJugador the NroJugador to set
+     */
+    public void setNroJugador(int NroJugador) {
+        this.NroJugador = NroJugador;
     }
 }

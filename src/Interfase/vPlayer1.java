@@ -12,7 +12,9 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
-
+import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Maxi
@@ -68,8 +70,13 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         lblColor = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setPreferredSize(new java.awt.Dimension(409, 639));
         jPanel1.setLayout(null);
@@ -135,6 +142,11 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         btnComprarCartones.setBounds(270, 60, 73, 23);
 
         btnRetirarse.setText("Retirarse");
+        btnRetirarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRetirarseMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnRetirarse);
         btnRetirarse.setBounds(0, 0, 90, 23);
 
@@ -234,6 +246,28 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRetirarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRetirarseMouseClicked
+        // TODO add your handling code here:
+        cerrar();
+    }//GEN-LAST:event_btnRetirarseMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cerrar();
+    }//GEN-LAST:event_formWindowClosing
+    public void cerrar(){
+        Object [] opciones ={"Aceptar","Cancelar"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane,"En realidad desea salir de la Partida?","Mensaje de Confirmacion",
+        JOptionPane.YES_NO_OPTION,
+        JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
+        if (eleccion == JOptionPane.YES_OPTION)
+        {
+            dispose();
+            //System.exit(0);
+        }else{
+            
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -267,7 +301,47 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
             }
         });
     }
-
+    /*
+    //Como Recorrer una tabla buscando numeros
+    public void ElegirNumero(){
+        int numeroAleatorio = (int) (Math.random()*Numeros.length+1);
+        boolean encontro = false;
+        DefaultTableModel tm = (DefaultTableModel) this.tableSorteo.getModel();
+        
+            for (int i = tm.getRowCount() - 1; i >= 0; --i) {
+                for (int j = tm.getColumnCount() - 1; j >= 0; --j) {
+                    if (tm.getValueAt(i, j).equals(numeroAleatorio)) {
+                        // what if value is not unique?
+                        int numero = (int)tm.getValueAt(i, j);
+                        tm.setValueAt("@", i, j);//"'"+numeroAleatorio +"'"
+                        encontro = true;
+                        this.lblEncontro.setText(String.valueOf(si++));
+                        break;
+                    }
+                }
+            }
+        if(!encontro){
+            ElegirNumero();
+            this.lblNoEncontro.setText(String.valueOf(no++));
+        }
+        
+        
+    }*/
+    
+    /*
+    //Cargar Mumeros a una Tabla
+    if(this.Numeros == null){
+            this.Numeros = new Integer[100]; 
+            DefaultTableModel tm = (DefaultTableModel) this.tableSorteo.getModel();
+            //Vacio las Rows
+            tm.setRowCount(0);
+            for(int i = 1; i < 92; i+=10){
+                tm.addRow(new Object[]{new Integer(i), new Integer(i+1), new Integer(i+2), new Integer(i+3), new Integer(i+4), new Integer(i+5)
+                , new Integer(i+6), new Integer(i+7), new Integer(i+8), new Integer(i+9)});
+                tableSorteo.setModel(tm);
+            }
+        }
+    */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox boxCartones;
     private javax.swing.JButton btnComprar;
