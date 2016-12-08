@@ -15,7 +15,7 @@ public class cCarton {
     private int Id;
     private int Filas;
     private int Columnas;
-    private ArrayList[] numeros;
+    private int[][] numeros;
     private int contCompleto;
     /**
      * @return the Id
@@ -62,14 +62,14 @@ public class cCarton {
     /**
      * @return the numeros
      */
-    public ArrayList[] getNumeros() {
+    public int[][] getNumeros() {
         return numeros;
     }
 
     /**
      * @param numeros the numeros to set
      */
-    public void setNumeros(ArrayList[] numeros) {
+    public void setNumeros(int[][] numeros) {
         this.numeros = numeros;
     }
 

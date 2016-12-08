@@ -226,7 +226,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtUserName1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="firuges"/>
+                    <Property name="text" type="java.lang.String" value="elmaxi"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
@@ -310,7 +310,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtUserName2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="firu"/>
+                    <Property name="text" type="java.lang.String" value="eleze"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel7">
