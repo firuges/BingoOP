@@ -5,14 +5,20 @@
  */
 package Interfase;
 
+import Common.cCarton;
+import Common.cConfiguracion;
 import Common.cJuego;
 import Dominio.dEmpresa;
 import Patrones.Observer.ClaseObservador;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -25,17 +31,27 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private ClaseObservador observer;
     private String Accion;
     private cJuego elJuego;
+    private static int CantCartones;
+    private static ArrayList<cCarton> losCartones;
+    private static ArrayList<Integer> numerosInsertados;
+    cConfiguracion laConfig;
     /**
      * Creates new form vPlayer1
      */
     public vPlayer1() {
         initComponents();
     }
-    public vPlayer1 (dEmpresa pEmpresa , ClaseObservador Observador){
+    public vPlayer1 (dEmpresa pEmpresa , ClaseObservador Observador, int pCantidad) throws Exception{
         
         initComponents();
         laEmpresa = pEmpresa;
         observer = Observador;
+        this.CantCartones = pCantidad;
+        numerosInsertados = new ArrayList<Integer>();
+        losCartones = new ArrayList<cCarton>();
+        laConfig= laEmpresa.traerConfiguracion(2);
+        numerosInsertados.add(0);
+        
     }
     public vPlayer1 (ClaseObservador Observador){
         
@@ -69,6 +85,8 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         tableCarton1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableCarton2 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableCarton3 = new javax.swing.JTable();
         lblColor = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -90,6 +108,11 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         boxCartones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
         boxCartones.setSelectedIndex(1);
         boxCartones.setToolTipText("");
+        boxCartones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxCartonesActionPerformed(evt);
+            }
+        });
         jPanel1.add(boxCartones);
         boxCartones.setBounds(210, 60, 50, 23);
 
@@ -186,29 +209,33 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
 
         tableCarton1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(tableCarton1);
 
         tableCarton2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane2.setViewportView(tableCarton2);
+
+        tableCarton3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(tableCarton3);
 
         javax.swing.GroupLayout panelCartonesLayout = new javax.swing.GroupLayout(panelCartones);
         panelCartones.setLayout(panelCartonesLayout);
@@ -218,7 +245,8 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
                 .addContainerGap()
                 .addGroup(panelCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelCartonesLayout.setVerticalGroup(
@@ -226,13 +254,15 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
             .addGroup(panelCartonesLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jPanel1.add(panelCartones);
-        panelCartones.setBounds(10, 170, 390, 250);
+        panelCartones.setBounds(10, 110, 390, 380);
 
         lblColor.setText("jLabel2");
         jPanel1.add(lblColor);
@@ -242,7 +272,7 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoVerde.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(-6, -6, 420, 640);
+        jLabel1.setBounds(-6, -6, 420, 650);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -272,10 +302,118 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        
+        if(this.CantCartones == 1)
+        {
+            this.tableCarton1.setVisible(true);
+            this.tableCarton2.setVisible(false);
+            this.tableCarton3.setVisible(false);
+        }else if(this.CantCartones == 2)
+        {
+            this.tableCarton1.setVisible(true);
+            this.tableCarton2.setVisible(true);
+            this.tableCarton3.setVisible(false);
+        }else{
+            this.tableCarton1.setVisible(true);
+            this.tableCarton2.setVisible(true);
+            this.tableCarton3.setVisible(true);
+        }
+        try {
+            this.completarCartones();
+        } catch (Exception ex) {
+            Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.completarTablas();
     }//GEN-LAST:event_formWindowOpened
+private int devolverNumero() {
+        int random = ThreadLocalRandom.current().nextInt(0, observer.getNumeros() + 1);
+        if(!repetido(random, this.numerosInsertados)){
+            numerosInsertados.add(random);
+            return random;
+   }
+        else{
+            return devolverNumero();
+        }
+        
+    }
+private boolean repetido(int numero, ArrayList<Integer> numeros){
+        for (Integer numero1 : numeros) {
+            if (numero1 == numero) {
+                return true;
+            }
+        }
+    return false;
+    
+}
+private void completarCartones() throws Exception{
+    int columnas = laConfig.getColumnasCarton();
+    int filas = laConfig.getFilasCarton();
+    for(int i =0; i<CantCartones ; i++)
+    {
+        cCarton carton = new cCarton();
+        carton.setColumnas(columnas);
+        carton.setFilas(filas);
+        int numerosXCarton = columnas * filas;
+        int[][] losNumeros= new int[filas][columnas];
+             
+        for(int j = 0; j<filas; j++){
+            for(int k =0; k<columnas; k++){
+                losNumeros[j][k] = devolverNumero();
+            }
+            
+        }
+        carton.setNumeros(losNumeros);
+        carton.setContCompleto(numerosXCarton);
+        carton.setId(i+1);
+        this.losCartones.add(carton);
+    }
+    
+}
+private void completarTablas(){
+    for(int i = 0; i<CantCartones; i++){
+        if(i==0)
+        {
+            DefaultTableModel modeltbl = (DefaultTableModel) this.tableCarton1.getModel();
+            int columnas = laConfig.getColumnasCarton();
+            int filas = laConfig.getFilasCarton();
+            modeltbl.setColumnCount(columnas);
+            modeltbl.setRowCount(filas);
+            int[][] losnums = losCartones.get(0).getNumeros();
+            for(int k = 0; k<filas; k++){
+                for(int j =0; j<columnas; j++){
+                    tableCarton1.setValueAt(losnums[k][j], k, j);
+                }
+        }
+        
+        }else if (i==1){
+            DefaultTableModel modeltbl = (DefaultTableModel) this.tableCarton2.getModel();
+            int columnas = laConfig.getColumnasCarton();
+            int filas = laConfig.getFilasCarton();
+            modeltbl.setColumnCount(columnas);
+            modeltbl.setRowCount(filas);
+            int[][] losnums = losCartones.get(1).getNumeros();
+            for(int k = 0; k<filas; k++){
+                for(int j =0; j<columnas; j++){
+                    tableCarton2.setValueAt(losnums[k][j], k, j);
+                }
+        }
+        }
+        else{
+            DefaultTableModel modeltbl = (DefaultTableModel) this.tableCarton3.getModel();
+            int columnas = laConfig.getColumnasCarton();
+            int filas = laConfig.getFilasCarton();
+            modeltbl.setColumnCount(columnas);
+            modeltbl.setRowCount(filas);
+            int[][] losnums = losCartones.get(2).getNumeros();
+            for(int k = 0; k<filas; k++){
+                for(int j =0; j<columnas; j++){
+                    tableCarton3.setValueAt(losnums[k][j], k, j);
+                }
+        }
+        }
 
+    
+    }
+}
     private void boxFichas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxFichas1ActionPerformed
         // TODO add your handling code here:
         
@@ -287,6 +425,10 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         int valor = CalcularValorFichas(Integer.parseInt(value));
         this.lblValor1.setText(String.valueOf(valor));
     }//GEN-LAST:event_boxFichas1ItemStateChanged
+
+    private void boxCartonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxCartonesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxCartonesActionPerformed
     public void cerrar(){
         Object [] opciones ={"Aceptar","Cancelar"};
         int eleccion = JOptionPane.showOptionDialog(rootPane,"En realidad desea salir de la Partida?","Mensaje de Confirmacion",
@@ -395,11 +537,13 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblColor;
     private javax.swing.JLabel lblValor1;
     private javax.swing.JPanel panelCartones;
     private javax.swing.JTable tableCarton1;
     private javax.swing.JTable tableCarton2;
+    private javax.swing.JTable tableCarton3;
     // End of variables declaration//GEN-END:variables
 
     @Override

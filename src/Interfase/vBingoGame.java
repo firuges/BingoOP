@@ -5,7 +5,6 @@
  */
 package Interfase;
 
-import Common.Utilidades;
 import Common.cConfiguracion;
 import Common.cDatosException;
 import Common.cJuego;
@@ -19,14 +18,13 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import static java.lang.Thread.sleep;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -35,12 +33,16 @@ import javax.swing.table.DefaultTableModel;
 public class vBingoGame extends javax.swing.JFrame implements Observer{
     private dEmpresa empresa;
     private ClaseObservador observer;
+    private static int cant1;
+    private static int cant2;
+    private static int cant3;
     private vPlayer1 Iplayer1;
     private static cJuego elJuego;
     private Integer[] Numeros;
     public static int clicks;
     public static int si;
     public static int no;
+    private static int cantidadCartones = 0;
     
     /**
      * Creates new form BingoGame
@@ -48,12 +50,12 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     public vBingoGame() {
         initComponents();
     }
-    public vBingoGame(dEmpresa pEmp, ClaseObservador pObservador) {
+    public vBingoGame(dEmpresa pEmp, ClaseObservador pObservador) throws Exception {
         empresa = pEmp;
         observer = pObservador;
-        Iplayer1 = new vPlayer1(empresa, observer);
+  //      Iplayer1 = new vPlayer1(empresa, observer, cant1);
         
-        observer.addObserver(Iplayer1);
+       // observer.addObserver(Iplayer1);
         initComponents();
     }
     public vBingoGame(ClaseObservador pObservador) {
@@ -229,7 +231,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         jLabel4.setText("Usuario");
 
-        txtUserName1.setText("firuges");
+        txtUserName1.setText("elmaxi");
 
         jLabel6.setText("Password");
 
@@ -284,7 +286,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         jLabel8.setText("Usuario");
 
-        txtUserName2.setText("firu");
+        txtUserName2.setText("eleze");
 
         jLabel7.setText("Password");
 
@@ -727,7 +729,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // <editor-fold defaultstate="collapsed" desc=" Boton de Play ">
-    public void CargarVentanasJugadores() throws InterruptedException{
+    public void CargarVentanasJugadores() throws InterruptedException, cDatosException, Exception{
         boolean tirar = false;
         while (!tirar){
             MensajeDeInicioPartida();
@@ -738,10 +740,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
         dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
         vBingoGame ventanaJuego = new vBingoGame(Empresa, Observador);
-
+        this.CargarParametrosJuego();
         //Ventana Player 1
-        vPlayer1 ventanaPlayer1 = new vPlayer1(Observador);
-        vPlayer2 ventanaPlayer2 = new vPlayer2(Observador);
+        vPlayer1 ventanaPlayer1 = new vPlayer1(this.empresa, Observador, cant1);
+        vPlayer2 ventanaPlayer2 = new vPlayer2(this.empresa, Observador, cant2);
         vPlayer3 ventanaPlayer3 = null;
         //los agrego al observador
         Observador.addObserver(ventanaPlayer1);
@@ -773,7 +775,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         ventanaPlayer2.setTitle(this.lblPlayer2.getText());
         
         if(this.comboSelect.getSelectedIndex() == 1){
-            ventanaPlayer3 = new vPlayer3(Observador);
+            ventanaPlayer3 = new vPlayer3(this.empresa, Observador, cant3);
             Observador.addObserver(ventanaPlayer3);
             ventanaPlayer3.setLocationRelativeTo(null);
             ///
@@ -1028,6 +1030,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         if(evento.getSource() == this.btnComprarCartones1){
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer1.getText());
             jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones1.getSelectedItem()));
+            if(vBingoGame.cantidadCartones  < jugador.getCantidadCartones())
+            {
+                vBingoGame.cantidadCartones = jugador.getCantidadCartones();
+                cant1 = jugador.getCantidadCartones();
+            }
             jugador.setReady(true);
             this.lblReady1.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones1.setVisible(false);
@@ -1038,6 +1045,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer2.getText());
             jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones2.getSelectedItem()));
             jugador.setReady(true);
+            if(this.cantidadCartones  < jugador.getCantidadCartones())
+            {
+                this.cantidadCartones = jugador.getCantidadCartones();
+                cant2 = jugador.getCantidadCartones();
+            }
             this.lblReady2.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones2.setVisible(false);
             this.boxCartones2.setVisible(false);
@@ -1047,6 +1059,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer3.getText());
             jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones3.getSelectedItem()));
             jugador.setReady(true);
+            if(this.cantidadCartones  < jugador.getCantidadCartones())
+            {
+                this.cantidadCartones = jugador.getCantidadCartones();
+                cant3 = jugador.getCantidadCartones();
+            }
             this.lblReady3.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones3.setVisible(false);
             this.boxCartones3.setVisible(false);
@@ -1254,7 +1271,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         int unidad = 2;
         return cantidad * 2;
     }
-    public void CargarParametrosJuego(int pCantJugadores) throws cDatosException{
+    public void CargarParametrosJuego() throws cDatosException{
         cConfiguracion config = new cConfiguracion();
         try{
             config = empresa.traerConfiguracion(2);
@@ -1262,8 +1279,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             throw new cDatosException("ERROR al Traer Configuracion del Juego /vBingoGame: " + ex.getMessage());
         }
         /// Cantidad de fila * Columna y todo esto * Cantidad de Cartones en total
-        int CantNumeros = (config.getFilasCarton() * config.getColumnasCarton() ) * (config.getCartonesXJugador()*pCantJugadores);
+        int CantNumeros = (config.getFilasCarton() * config.getColumnasCarton() ) * (this.cantidadCartones);
         Numeros = new Integer[CantNumeros];
+       observer.setNumeros(CantNumeros);
+       
     }
     /**
      * @param args the command line arguments
