@@ -27,7 +27,7 @@ public class cUsuario {
     public String getNombre() {
         return Nombre;
     }
-
+    
     /**
      * @param Nombre the Nombre to set
      */
@@ -114,7 +114,9 @@ public class cUsuario {
     public String QueSoy(){
         return "Soy un Simple Usuario No Identificado";
     }
-
+    public void SetearFichas(int fichas){
+        
+    }
     /**
      * @return the id
      */

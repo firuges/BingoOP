@@ -45,45 +45,50 @@ public class vRegistro extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel6 = new javax.swing.JPanel();
+        txtPassword = new javax.swing.JPasswordField();
+        txtPassword1 = new javax.swing.JPasswordField();
         txtId = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitleId = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtPassword1 = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tableAltaCliente = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         lblCant2 = new javax.swing.JLabel();
-        btnModificar = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtApellido = new javax.swing.JTextField();
         FechaNacido = new com.toedter.calendar.JDateChooser();
-        jLabel11 = new javax.swing.JLabel();
+        lblTitleSaldo = new javax.swing.JLabel();
         lblSaldo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        comboFichas = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblValor = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
+        panelTable = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableAltaCliente = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Alta de Clientes"));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Registro de Jugadores"));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 170, -1));
+        jPanel6.add(txtPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 180, -1));
 
         txtId.setEditable(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -93,11 +98,15 @@ public class vRegistro extends javax.swing.JFrame {
         });
         jPanel6.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 32, -1));
 
-        jLabel1.setText("Id: ");
-        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 36, 49, -1));
+        lblTitleId.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        lblTitleId.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitleId.setText("Id: ");
+        jPanel6.add(lblTitleId, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 36, 49, -1));
 
+        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre:");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 95, 50, -1));
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 95, 70, -1));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,27 +115,145 @@ public class vRegistro extends javax.swing.JFrame {
         });
         jPanel6.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 115, 175, -1));
 
+        btnAgregar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnAgregar.setText("Registrarme");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel6.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 348, -1, -1));
+        jPanel6.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password:");
-        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 153, 72, -1));
-        jPanel6.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 174, 175, -1));
+        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 153, 90, -1));
 
+        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Repeat Pass:");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 153, 72, -1));
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 153, 120, -1));
 
-        txtPassword1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Fecha Nacimiento:");
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 204, -1, -1));
+        jPanel6.add(lblCant2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        btnReset.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPassword1ActionPerformed(evt);
+                btnResetActionPerformed(evt);
             }
         });
-        jPanel6.add(txtPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 174, 175, -1));
+        jPanel6.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, -1, -1));
+
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Email:");
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 204, 50, -1));
+
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 224, 175, -1));
+
+        jLabel7.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Apellido:");
+        jLabel7.setMaximumSize(new java.awt.Dimension(50, 14));
+        jLabel7.setMinimumSize(new java.awt.Dimension(50, 14));
+        jLabel7.setName(""); // NOI18N
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 95, 70, -1));
+
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 115, 180, -1));
+        jPanel6.add(FechaNacido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 224, -1, -1));
+
+        lblTitleSaldo.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        lblTitleSaldo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitleSaldo.setText("SALDO:");
+        jPanel6.add(lblTitleSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 20, 60, -1));
+
+        lblSaldo.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        lblSaldo.setForeground(new java.awt.Color(255, 255, 255));
+        lblSaldo.setText("0");
+        jPanel6.add(lblSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(204, 102, 0));
+        jPanel2.setForeground(new java.awt.Color(204, 102, 0));
+        jPanel2.setOpaque(false);
+
+        jLabel8.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Comprar Fichas: ");
+
+        comboFichas.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        comboFichas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "50", "100", "150", "200", "250" }));
+        comboFichas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboFichasItemStateChanged(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Valor: ");
+
+        lblValor.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        lblValor.setForeground(new java.awt.Color(255, 255, 255));
+        lblValor.setText("200");
+        lblValor.setFocusable(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel8)
+                .addGap(6, 6, 6)
+                .addComponent(comboFichas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addGap(11, 11, 11)
+                .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(comboFichas, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(lblValor))
+                .addGap(4, 4, 4))
+        );
+
+        jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 262, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Usuario:");
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 36, 80, -1));
+        jPanel6.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 61, 175, -1));
 
         tableAltaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,114 +270,28 @@ public class vRegistro extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tableAltaCliente);
 
-        jPanel6.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 377, 416, 143));
-
-        jLabel5.setText("Fecha Nacimiento:");
-        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 204, -1, -1));
-        jPanel6.add(lblCant2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-        jPanel6.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 313, -1, -1));
-
-        btnReset.setText("Reset");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
-            }
-        });
-        jPanel6.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 313, -1, -1));
-
-        jLabel6.setText("Email:");
-        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 204, 50, -1));
-
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-        jPanel6.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 224, 175, -1));
-
-        jLabel7.setText("Apellido");
-        jLabel7.setMaximumSize(new java.awt.Dimension(50, 14));
-        jLabel7.setMinimumSize(new java.awt.Dimension(50, 14));
-        jLabel7.setName(""); // NOI18N
-        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 95, 50, -1));
-
-        txtApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoActionPerformed(evt);
-            }
-        });
-        jPanel6.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 115, 175, -1));
-        jPanel6.add(FechaNacido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 224, -1, -1));
-
-        jLabel11.setText("SALDO:");
-        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 20, 40, -1));
-
-        lblSaldo.setText("jLabel12");
-        jPanel6.add(lblSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Comprar Fichas: ");
-
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "50", "100", "150", "200", "250" }));
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Valor: ");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("200");
-        jLabel10.setFocusable(false);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel8)
-                .addGap(6, 6, 6)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+        javax.swing.GroupLayout panelTableLayout = new javax.swing.GroupLayout(panelTable);
+        panelTable.setLayout(panelTableLayout);
+        panelTableLayout.setHorizontalGroup(
+            panelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(4, 4, 4))
+        panelTableLayout.setVerticalGroup(
+            panelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTableLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
-        jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 262, -1, -1));
+        jPanel6.add(panelTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 440, 120));
 
-        jLabel12.setText("Usuario");
-        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 36, -1, -1));
-        jPanel6.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 61, 175, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondo.jpg"))); // NOI18N
+        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 440));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -279,10 +320,6 @@ public class vRegistro extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void txtPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassword1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassword1ActionPerformed
 
     private void tableAltaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableAltaClienteMouseClicked
         // TODO add your handling code here:
@@ -322,7 +359,7 @@ public class vRegistro extends javax.swing.JFrame {
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         LimpiarCampos();
-        this.ChangeBoton(false);
+        //this.ChangeBoton(false);
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -342,7 +379,20 @@ public class vRegistro extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(vRegistro.class.getName()).log(Level.SEVERE, null, ex);
         }
+        visualizarModoPerfil(false);
+        this.panelTable.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
+
+    private void comboFichasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboFichasItemStateChanged
+        // TODO add your handling code here:
+        String value = this.comboFichas.getSelectedItem().toString();
+        int valor = CalcularValorFichas(Integer.parseInt(value));
+        this.lblValor.setText(String.valueOf(valor));
+    }//GEN-LAST:event_comboFichasItemStateChanged
+    public int CalcularValorFichas(int cantidad){
+        int unidad = 2;
+        return cantidad * 2;
+    }
     private void ChangeBoton(boolean bool)
     {
         if(bool == false){
@@ -354,6 +404,13 @@ public class vRegistro extends javax.swing.JFrame {
         }
         
     }
+    private void visualizarModoPerfil(boolean bool){
+        this.lblTitleSaldo.setVisible(bool);
+        this.lblSaldo.setVisible(bool);
+        this.btnModificar.setVisible(bool);
+        this.txtId.setVisible(bool);
+        this.lblTitleId.setVisible(bool);
+    }
     private void AgregarNuevoUsuario() throws Exception{
         cUsuario user = null;
          //**************************/
@@ -364,30 +421,38 @@ public class vRegistro extends javax.swing.JFrame {
             //Verifica el Ingreso de los Datos Requeridos
             if(Utilidades.passLengthTrust(this.txtPassword.getText(), this.txtPassword1.getText())){
                 if(Utilidades.pass1pass2Trust(this.txtPassword.getText(), this.txtPassword1.getText())){
-                    if(Utilidades.camposCompletos(this.txtNombre.getText(), this.txtApellido.getText(), this.txtEmail.getText(), this.txtPassword.getText(), this.txtPassword1.getText())){
+                    if(Utilidades.camposCompletos(this.txtNombre.getText(), this.txtApellido.getText(), this.txtEmail.getText(), this.txtPassword.getText(), this.txtPassword1.getText(), this.txtUserName.getText())){
                         if(Utilidades.validarFecha(Utilidades.FormatearFechaToString(this.FechaNacido.getDate()))){
-                        String ID = this.txtId.getText();
-                        Date Fecha = this.FechaNacido.getDate();
-                        //**************************/
+                            if(Utilidades.validateEmail(this.txtEmail.getText())){
+                                String ID = this.txtId.getText();
+                                Date Fecha = this.FechaNacido.getDate();
+                                //**************************/
+
+                                user = fu.getFactoryInstance(String.valueOf(Enums.Gerarquia.JUGADOR));
+                                 //**************************/
+                                user.setId(0);
+                                user.setNombre(this.txtNombre.getText());
+                                user.setApellido(this.txtApellido.getText());
+                                user.setEmail(this.txtEmail.getText());
+                                user.setPassword(this.txtPassword.getText());
+                                user.setUserName(this.txtUserName.getText());
+                                user.setFechanacido(Fecha);
+                                if(user.QueSoy().equalsIgnoreCase("JUGADOR")){
+                                    user.SetearFichas(Integer.parseInt(String.valueOf(this.comboFichas.getSelectedItem())));
+                                }
+                                boolean Agregado = laEmpresa.agregarUsuario(user);
+                                if(Agregado){
+                                    this.cargarUsuarios();
+                                    this.LimpiarCampos();
+                                    //this.miObservador.setChang("Se Agrego Nuevo Cliente.");
+                                    JOptionPane.showMessageDialog(this, "Se dado de alta correctamente", "Registro", JOptionPane.INFORMATION_MESSAGE);
+                                }else{
+                                    JOptionPane.showMessageDialog(this, "Ocurrio un Error al Agregar Usuario nuevo", "Registro", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                            }else{
+                                JOptionPane.showMessageDialog(this, "La Sintaxis Usada en el Email no es correcta", "Registro", JOptionPane.INFORMATION_MESSAGE);
+                            }
                         
-                        user = fu.getFactoryInstance(String.valueOf(Enums.Gerarquia.JUGADOR));
-                         //**************************/
-                        user.setId(0);
-                        user.setNombre(this.txtNombre.getText());
-                        user.setApellido(this.txtApellido.getText());
-                        user.setEmail(this.txtEmail.getText());
-                        user.setPassword(this.txtPassword.getText());
-                        user.setUserName(this.txtUserName.getText());
-                        user.setFechanacido(Fecha);
-                        boolean Agregado = laEmpresa.agregarUsuario(user);
-                        if(Agregado){
-                            this.cargarUsuarios();
-                            this.LimpiarCampos();
-                            //this.miObservador.setChang("Se Agrego Nuevo Cliente.");
-                            JOptionPane.showMessageDialog(this, "Se dado de alta correctamente", "Registro", JOptionPane.INFORMATION_MESSAGE);
-                        }else{
-                            JOptionPane.showMessageDialog(this, "Ocurrio un Error al Agregar Usuario nuevo", "Registro", JOptionPane.INFORMATION_MESSAGE);
-                        }
                         
                     }
 
@@ -447,6 +512,7 @@ public class vRegistro extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.toString(), "Tipo", JOptionPane.ERROR_MESSAGE);
         }
+        this.tableAltaCliente.setVisible(false);
     }
     public void CargarUsuario(cUsuario pUser){
         this.txtId.setText(String.valueOf(pUser.getId()));
@@ -458,6 +524,7 @@ public class vRegistro extends javax.swing.JFrame {
     }
     private void LimpiarCampos(){
         this.txtId.setText("");
+        this.txtUserName.setText("");
         this.txtNombre.setText("");
         this.txtApellido.setText("");
         this.txtPassword.setText("");
@@ -507,10 +574,8 @@ public class vRegistro extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnReset;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox comboFichas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -525,13 +590,17 @@ public class vRegistro extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCant2;
     private javax.swing.JLabel lblSaldo;
+    private javax.swing.JLabel lblTitleId;
+    private javax.swing.JLabel lblTitleSaldo;
+    private javax.swing.JLabel lblValor;
+    private javax.swing.JPanel panelTable;
     javax.swing.JTable tableAltaCliente;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtPassword1;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JPasswordField txtPassword1;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

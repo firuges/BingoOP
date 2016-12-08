@@ -70,8 +70,8 @@ public class pUsuario extends pPersistencia {
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
-               String insertSql="INSERT INTO usuarios(unombre,uapellido,uemail,upassword,utipouser, ufecha, uusername)" +
-               "VALUES('" + pJugador.getNombre() + "' ,'" + pJugador.getApellido()+ "' ,'" + pJugador.getEmail()+ "' ,'" + pJugador.getPassword() + "' ,'" + pJugador.QueSoy() + "', '"+Utilidades.FormatearFechaToStringSQL(pJugador.getFechanacido())+"', '" + pJugador.getUserName()+"')";
+               String insertSql="INSERT INTO usuarios(unombre,uapellido,uemail,upassword,utipouser, ufecha, uusername, fichas)" +
+               "VALUES('" + pJugador.getNombre() + "' ,'" + pJugador.getApellido()+ "' ,'" + pJugador.getEmail()+ "' ,'" + pJugador.getPassword() + "' ,'" + pJugador.QueSoy() + "', '"+Utilidades.FormatearFechaToStringSQL(pJugador.getFechanacido())+"', '"+pJugador.getUserName()+"', '" + pJugador.getFichas()+"')";
 
 
                 // esto es solo para mostrar el sql que se va a ejecutar
@@ -93,13 +93,13 @@ public class pUsuario extends pPersistencia {
             Statement st= super.getDistribuidora().createStatement();
                     // arma la sentencia sql
                     String updateSql="UPDATE usuarios SET " +
-                    "unombre='" + unUser.getNombre() + "'" +
-                    "uapellido='" + unUser.getApellido() + "'" +
-                    "uemail='" + unUser.getEmail()+ "'" +
-                    "upassword='" + unUser.getPassword()+ "'"+
-                    "utipouser='" + unUser.QueSoy()+ "'" +
-                    "ufecha='" + Utilidades.FormatearFechaToStringSQL(unUser.getFechanacido())+ "'" +
-                    "uusername='" + unUser.getUserName()+ "'" +
+                    "unombre='" + unUser.getNombre() + "'," +
+                    "uapellido='" + unUser.getApellido() + "'," +
+                    "uemail='" + unUser.getEmail()+ "'," +
+                    "upassword='" + unUser.getPassword()+ "',"+
+                    "utipouser='" + unUser.QueSoy()+ "'," +
+                    "ufecha='" + Utilidades.FormatearFechaToStringSQL(unUser.getFechanacido())+ "'," +
+                    "uusername='" + unUser.getUserName()+ "'," +
                     " WHERE idusuario=" +  unUser.getId();
                     System.out.println(updateSql);
                     // ejecuta la sentencia

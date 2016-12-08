@@ -26,9 +26,9 @@ public class pConfiguracion extends pPersistencia{
             Statement st= super.getDistribuidora().createStatement();
                     // arma la sentencia sql
                     String updateSql="UPDATE jconfig SET " +
-                    "filas=" + laConfig.getFilasCarton()+ "" +
-                    "columnas=" + laConfig.getColumnasCarton()+ "" +
-                    "cartones=" + laConfig.getCartonesXJugador()+ "'" +
+                    "filas=" + laConfig.getFilasCarton()+ "," +
+                    "columnas=" + laConfig.getColumnasCarton()+ "," +
+                    "cartones=" + laConfig.getCartonesXJugador()+ "," +
                     "valor=" + laConfig.getValorCarton() +
                     " WHERE id= 2" ;
                     System.out.println(updateSql);

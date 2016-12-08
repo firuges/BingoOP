@@ -119,18 +119,14 @@ public class dEmpresa {
 // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc=" Configuracion ">
     public cConfiguracion traerConfiguracion(int pId) throws Exception {
-        cConfiguracion laConfig = new cConfiguracion();
         if (pId != 0) {
             try {
-                laConfig = empresaConfiguracion.traer(pId);
+                return empresaConfiguracion.traer(pId);
             } catch (Exception ex) {
                 throw new cDatosException("Error al buscar Configuracion:" + ex.getMessage());
             }
             
-        }
-        if (laConfig != null) {
-            return laConfig;
-        } else {
+        }else{
             return null;
         }
     }

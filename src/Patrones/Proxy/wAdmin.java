@@ -18,7 +18,7 @@ public class wAdmin implements IWall{
     @Override
     public void ejecutarProxy()
     {
-        vAdministrator ventanaPrincipal = new vAdministrator(empresa);
+        vAdministrator ventanaPrincipal = new vAdministrator(Dominio.dEmpresa.getInstancia());
         //centra la ventana en la pantalla
         ventanaPrincipal.setLocationRelativeTo(null);
         ventanaPrincipal.setVisible(true);
