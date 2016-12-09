@@ -6,6 +6,7 @@
 package Patrones.Observer;
 
 import Common.cJuego;
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -15,8 +16,10 @@ import java.util.Observable;
 public class ClaseObservador extends Observable{
     private String accion;
     private cJuego elJuego;
+    private ArrayList<Integer> sorteados;
+    private Integer Sorteado;
 	public ClaseObservador(){
-		
+		sorteados = new ArrayList();
 	}
         
 	// <editor-fold defaultstate="collapsed" desc=" Inctancia ">
@@ -29,7 +32,7 @@ public class ClaseObservador extends Observable{
         return instancia;
     }
 // </editor-fold>
-	public void setChang(String action) {
+	public void setCambios(String action) {
             setAccion(action);
 		setChanged();
 	    notifyObservers();
@@ -61,5 +64,33 @@ public class ClaseObservador extends Observable{
      */
     public void setElJuego(cJuego elJuego) {
         this.elJuego = elJuego;
+    }
+
+    /**
+     * @return the sorteados
+     */
+    public ArrayList<Integer> getSorteados() {
+        return sorteados;
+    }
+
+    /**
+     * @param sorteados the sorteados to set
+     */
+    public void setSorteados(ArrayList<Integer> sorteados) {
+        this.sorteados = sorteados;
+    }
+
+    /**
+     * @return the numeros
+     */
+    public Integer getNumeros() {
+        return Sorteado;
+    }
+
+    /**
+     * @param numeros the numeros to set
+     */
+    public void setNumeros(Integer numeros) {
+        this.Sorteado = numeros;
     }
 }

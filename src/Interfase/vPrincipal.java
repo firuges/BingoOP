@@ -10,6 +10,8 @@ import Patrones.Observer.ClaseObservador;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -163,14 +165,20 @@ public class vPrincipal extends javax.swing.JFrame {
         
         ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
         dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
-        vBingoGame ventanaJuego = new vBingoGame(Empresa, Observador);
-        vPlayer1 ventanaPlayer1 = new vPlayer1(Observador);
-        Observador.addObserver(ventanaJuego);
-        
-        ventanaJuego.setLocation(300, 150);
+        vBingoGame ventanaJuego;
+        try {
+            ventanaJuego = new vBingoGame(Empresa, Observador);
+            Observador.addObserver(ventanaJuego); ventanaJuego.setLocation(300, 150);
         
         ventanaJuego.setTitle("Ventana del Juego");
         ventanaJuego.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(vPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        vPlayer1 ventanaPlayer1 = new vPlayer1(Observador);
+        
+        
+       
     }//GEN-LAST:event_btnJugarActionPerformed
 
     private void MenuItemSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuItemSalirMouseClicked

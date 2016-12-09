@@ -7,13 +7,24 @@ package Common;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
  * @author PERSONAL
  */
 public class Utilidades {
-
+    private static final String PATTERN_EMAIL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+ 
+    /**
+     * Validate given email with regular expression.
+     * 
+     * @param email
+     *            email for validation
+     * @return true valid email, otherwise false
+     */
     public static boolean isNumeric(String cadena) {
         try {
             Integer.parseInt(cadena);
@@ -46,8 +57,8 @@ public class Utilidades {
         }
         return false;
     }
-    public static boolean camposCompletos(String nombre, String apellido, String Email, String Password, String Password2){
-        if(nombre.equals("") ||apellido.equals("") ||Email.equals("") ||Password.equals("") ||Password2.equals("")){
+    public static boolean camposCompletos(String nombre, String apellido, String Email, String Password, String Password2, String UserName){
+        if(nombre.equalsIgnoreCase("") ||apellido.equalsIgnoreCase("") ||Email.equalsIgnoreCase("") ||Password.equalsIgnoreCase("") ||Password2.equalsIgnoreCase("")|| UserName.equalsIgnoreCase("")){
             return false;
         }
          return true;
@@ -69,5 +80,16 @@ public class Utilidades {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
         String FechaString = formatoFecha.format(fecha);
         return FechaString;
+    }
+    
+    public static boolean validateEmail(String email) {
+ 
+        // Compiles the given regular expression into a pattern.
+        Pattern pattern = Pattern.compile(PATTERN_EMAIL);
+ 
+        // Match the given input against this pattern
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+ 
     }
 }

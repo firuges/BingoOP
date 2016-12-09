@@ -67,7 +67,7 @@ public class vLogin extends javax.swing.JFrame {
         txtPassword.setBounds(180, 390, 210, 30);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/email-logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/userIcono.png"))); // NOI18N
         jPanel4.add(jLabel1);
         jLabel1.setBounds(110, 280, 50, 60);
 
@@ -118,6 +118,15 @@ public class vLogin extends javax.swing.JFrame {
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
         cUsuario unUser = new cUsuario();
         unUser.setUserName(this.txtEmail.getText());
         unUser.setPassword(this.txtPassword.getText());
@@ -128,14 +137,7 @@ public class vLogin extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(vLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnLoginMouseClicked
-
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

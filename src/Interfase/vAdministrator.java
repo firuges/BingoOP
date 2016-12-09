@@ -47,21 +47,31 @@ public class vAdministrator extends javax.swing.JFrame {
         jValor = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnRestablecer = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
 
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Configuracion de la Partida", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Configuracion de la Partida", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 18), java.awt.Color.white)); // NOI18N
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setOpaque(false);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Filas Por Carton", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
 
-        jFilas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3", "4", "5" }));
+        jFilas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jFilas.setSelectedIndex(1);
+        jFilas.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -82,7 +92,8 @@ public class vAdministrator extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Columnas por Carton", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
 
-        jColumnas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        jColumnas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jColumnas.setToolTipText("");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -172,8 +183,9 @@ public class vAdministrator extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRestablecer))
+                        .addGap(32, 32, 32)
+                        .addComponent(btnRestablecer)
+                        .addGap(42, 42, 42))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -200,11 +212,21 @@ public class vAdministrator extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnRestablecer))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 11, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, -6, 570, 360));
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("ABM");
+        fileMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileMenuActionPerformed(evt);
+            }
+        });
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Salir");
@@ -219,28 +241,11 @@ public class vAdministrator extends javax.swing.JFrame {
 
         setJMenuBar(menuBar);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -249,16 +254,16 @@ public class vAdministrator extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowOpened
     private void CargarConfiguracion(){
-     cConfiguracion laConfig;
+     cConfiguracion laConfig = new cConfiguracion();
         try {
             JComboBox comboFilas = this.jFilas;
             JComboBox comboColumnas = this.jColumnas;
             JComboBox comboCartones = this.jCartones;
             laConfig = empresa.traerConfiguracion(2);
             this.jValor.setText(""+ laConfig.getValorCarton());
-            comboFilas.setSelectedItem(laConfig.getFilasCarton());
-            comboColumnas.setSelectedItem(laConfig.getColumnasCarton());
-            comboCartones.setSelectedItem(laConfig.getCartonesXJugador());
+            this.jFilas.setSelectedItem(String.valueOf(laConfig.getFilasCarton()));
+            this.jColumnas.setSelectedItem(String.valueOf(laConfig.getColumnasCarton()));
+            this.jCartones.setSelectedItem(String.valueOf(laConfig.getCartonesXJugador()));
         } catch (Exception ex) {
             Logger.getLogger(vAdministrator.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -279,11 +284,11 @@ public class vAdministrator extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
-        cConfiguracion laConfig = null;
+        cConfiguracion laConfig = new cConfiguracion();
         laConfig.setId(2);
-        laConfig.setFilasCarton((int) this.jFilas.getItemAt(this.jFilas.getSelectedIndex()));
-        laConfig.setColumnasCarton((int) this.jColumnas.getItemAt(this.jColumnas.getSelectedIndex()));
-        laConfig.setCartonesXJugador((int) this.jCartones.getItemAt(this.jColumnas.getSelectedIndex()));
+        laConfig.setFilasCarton(Integer.parseInt(String.valueOf(this.jFilas.getSelectedItem())));
+        laConfig.setColumnasCarton(Integer.parseInt(String.valueOf(this.jColumnas.getSelectedItem())));
+        laConfig.setCartonesXJugador(Integer.parseInt(String.valueOf(this.jCartones.getSelectedItem())));
         laConfig.setValorCarton(Integer.parseInt(this.jValor.getText()));
         try {
             empresa.modificarConfiguracion(laConfig);
@@ -291,6 +296,16 @@ public class vAdministrator extends javax.swing.JFrame {
             Logger.getLogger(vAdministrator.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void fileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileMenuActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_fileMenuActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -335,6 +350,7 @@ public class vAdministrator extends javax.swing.JFrame {
     private javax.swing.JComboBox jCartones;
     private javax.swing.JComboBox jColumnas;
     private javax.swing.JComboBox jFilas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -67,7 +67,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="160" y="10" width="730" height="570"/>
+              <AbsoluteConstraints x="160" y="10" width="730" height="590"/>
             </Constraint>
           </Constraints>
 
@@ -226,7 +226,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtUserName1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="firuges"/>
+                    <Property name="text" type="java.lang.String" value="elmaxi"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
@@ -310,7 +310,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtUserName2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="firu"/>
+                    <Property name="text" type="java.lang.String" value="eleze"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel7">
@@ -331,7 +331,7 @@
                 </Component>
                 <Component class="javax.swing.JPasswordField" name="txtPassword2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="elfacha"/>
+                    <Property name="text" type="java.lang.String" value="ezelopez"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1168,6 +1168,13 @@
             <Property name="useNullLayout" type="boolean" value="false"/>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblBolillaSorteada">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="520" y="270" width="70" height="70"/>
+                </Constraint>
+              </Constraints>
+            </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1231,6 +1238,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sortear"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSortearMouseClicked"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="500" y="170" width="-1" height="-1"/>

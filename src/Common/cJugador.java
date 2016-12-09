@@ -27,7 +27,10 @@ public class cJugador extends cUsuario{
         super();
         this.Cartones = new ArrayList<cCarton>();
     }
-    
+    @Override
+    public void SetearFichas(int fichas){
+        this.setFichas(fichas);
+    }
     public static cJugador  getInstance()
     {
         if(unJugador != null){
@@ -96,4 +99,5 @@ public class cJugador extends cUsuario{
     public void setCantidadCartones(int cantidadCartones) {
         this.cantidadCartones = cantidadCartones;
     }
+    
 }
