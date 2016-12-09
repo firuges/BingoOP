@@ -17,9 +17,9 @@ public class ClaseObservador extends Observable{
     private String accion;
     private cJuego elJuego;
     private ArrayList<Integer> sorteados;
-    private Integer numeros;
+    private Integer Sorteado;
 	public ClaseObservador(){
-		
+		sorteados = new ArrayList();
 	}
         
 	// <editor-fold defaultstate="collapsed" desc=" Inctancia ">
@@ -32,7 +32,7 @@ public class ClaseObservador extends Observable{
         return instancia;
     }
 // </editor-fold>
-	public void setChang(String action) {
+	public void setCambios(String action) {
             setAccion(action);
 		setChanged();
 	    notifyObservers();
@@ -84,13 +84,13 @@ public class ClaseObservador extends Observable{
      * @return the numeros
      */
     public Integer getNumeros() {
-        return numeros;
+        return Sorteado;
     }
 
     /**
      * @param numeros the numeros to set
      */
     public void setNumeros(Integer numeros) {
-        this.numeros = numeros;
+        this.Sorteado = numeros;
     }
 }

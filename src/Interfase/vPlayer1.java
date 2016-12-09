@@ -8,17 +8,22 @@ package Interfase;
 import Common.cCarton;
 import Common.cConfiguracion;
 import Common.cJuego;
+import Common.cJugador;
 import Dominio.dEmpresa;
 import Patrones.Observer.ClaseObservador;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -28,12 +33,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private dEmpresa laEmpresa;
-    private ClaseObservador observer;
+    private  ClaseObservador observer;
     private String Accion;
     private cJuego elJuego;
-    private static int CantCartones;
-    private static ArrayList<cCarton> losCartones;
-    private static ArrayList<Integer> numerosInsertados;
+    private  int CantCartones;
+    private  ArrayList<Integer> numerosInsertados;
     cConfiguracion laConfig;
     /**
      * Creates new form vPlayer1
@@ -41,14 +45,12 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     public vPlayer1() {
         initComponents();
     }
-    public vPlayer1 (dEmpresa pEmpresa , ClaseObservador Observador, int pCantidad) throws Exception{
+    public vPlayer1 (dEmpresa pEmpresa , ClaseObservador Observador) throws Exception{
         
         initComponents();
         laEmpresa = pEmpresa;
         observer = Observador;
-        this.CantCartones = pCantidad;
         numerosInsertados = new ArrayList<Integer>();
-        losCartones = new ArrayList<cCarton>();
         laConfig= laEmpresa.traerConfiguracion(2);
         numerosInsertados.add(0);
         
@@ -68,27 +70,22 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        boxCartones = new javax.swing.JComboBox();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        boxFichas1 = new javax.swing.JComboBox();
-        jLabel9 = new javax.swing.JLabel();
-        lblValor1 = new javax.swing.JLabel();
-        btnComprar = new javax.swing.JButton();
-        btnComprarCartones = new javax.swing.JButton();
+        lblBolilla = new javax.swing.JLabel();
+        lblPodio = new javax.swing.JLabel();
         btnRetirarse = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblSaldo = new javax.swing.JLabel();
+        lblTitleSaldo = new javax.swing.JLabel();
         panelCartones = new javax.swing.JPanel();
+        panelTable1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCarton1 = new javax.swing.JTable();
+        panelTable2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableCarton2 = new javax.swing.JTable();
+        panelTable3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableCarton3 = new javax.swing.JTable();
-        lblColor = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -104,80 +101,13 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         jPanel1.setPreferredSize(new java.awt.Dimension(409, 639));
         jPanel1.setLayout(null);
 
-        boxCartones.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        boxCartones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
-        boxCartones.setSelectedIndex(1);
-        boxCartones.setToolTipText("");
-        boxCartones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boxCartonesActionPerformed(evt);
-            }
-        });
-        jPanel1.add(boxCartones);
-        boxCartones.setBounds(210, 60, 50, 23);
+        lblBolilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/14.png"))); // NOI18N
+        jPanel1.add(lblBolilla);
+        lblBolilla.setBounds(180, 80, 60, 50);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Comprar Fichas: ");
-
-        boxFichas1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        boxFichas1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "50", "100", "150", "200", "250" }));
-        boxFichas1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                boxFichas1ItemStateChanged(evt);
-            }
-        });
-        boxFichas1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boxFichas1ActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Valor: ");
-
-        lblValor1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblValor1.setText("100");
-        lblValor1.setFocusable(false);
-
-        btnComprar.setText("Comprar");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel8)
-                .addGap(6, 6, 6)
-                .addComponent(boxFichas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9)
-                .addGap(11, 11, 11)
-                .addComponent(lblValor1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnComprar)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(boxFichas1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblValor1)
-                        .addComponent(btnComprar)))
-                .addGap(1, 1, 1))
-        );
-
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(10, 590, 390, 40);
-
-        btnComprarCartones.setText("Comprar");
-        jPanel1.add(btnComprarCartones);
-        btnComprarCartones.setBounds(270, 60, 73, 23);
+        lblPodio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/podio.png"))); // NOI18N
+        jPanel1.add(lblPodio);
+        lblPodio.setBounds(130, 70, 150, 130);
 
         btnRetirarse.setText("Retirarse");
         btnRetirarse.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -188,22 +118,16 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         jPanel1.add(btnRetirarse);
         btnRetirarse.setBounds(0, 0, 90, 23);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Cantidad de Cartones: ");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(60, 60, 150, 20);
+        lblSaldo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblSaldo.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(lblSaldo);
+        lblSaldo.setBounds(350, 10, 50, 30);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(350, 10, 50, 30);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Saldo Disponible:");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(220, 20, 120, 17);
+        lblTitleSaldo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTitleSaldo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitleSaldo.setText("Saldo Disponible:");
+        jPanel1.add(lblTitleSaldo);
+        lblTitleSaldo.setBounds(220, 10, 120, 17);
 
         panelCartones.setOpaque(false);
 
@@ -217,6 +141,17 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         ));
         jScrollPane1.setViewportView(tableCarton1);
 
+        javax.swing.GroupLayout panelTable1Layout = new javax.swing.GroupLayout(panelTable1);
+        panelTable1.setLayout(panelTable1Layout);
+        panelTable1Layout.setHorizontalGroup(
+            panelTable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        panelTable1Layout.setVerticalGroup(
+            panelTable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+        );
+
         tableCarton2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -226,6 +161,17 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
             }
         ));
         jScrollPane2.setViewportView(tableCarton2);
+
+        javax.swing.GroupLayout panelTable2Layout = new javax.swing.GroupLayout(panelTable2);
+        panelTable2.setLayout(panelTable2Layout);
+        panelTable2Layout.setHorizontalGroup(
+            panelTable2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        panelTable2Layout.setVerticalGroup(
+            panelTable2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+        );
 
         tableCarton3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -237,6 +183,17 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         ));
         jScrollPane3.setViewportView(tableCarton3);
 
+        javax.swing.GroupLayout panelTable3Layout = new javax.swing.GroupLayout(panelTable3);
+        panelTable3.setLayout(panelTable3Layout);
+        panelTable3Layout.setHorizontalGroup(
+            panelTable3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+        );
+        panelTable3Layout.setVerticalGroup(
+            panelTable3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout panelCartonesLayout = new javax.swing.GroupLayout(panelCartones);
         panelCartones.setLayout(panelCartonesLayout);
         panelCartonesLayout.setHorizontalGroup(
@@ -244,35 +201,31 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
             .addGroup(panelCartonesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(panelTable3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelTable2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelTable1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelCartonesLayout.setVerticalGroup(
             panelCartonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCartonesLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addComponent(panelTable1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelTable2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelTable3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jPanel1.add(panelCartones);
-        panelCartones.setBounds(10, 110, 390, 380);
+        panelCartones.setBounds(10, 180, 390, 380);
 
-        lblColor.setText("jLabel2");
-        jPanel1.add(lblColor);
-        lblColor.setBounds(10, 610, 34, 14);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoVerde.jpg"))); // NOI18N
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(-6, -6, 420, 650);
+        Fondo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Fondo.setForeground(new java.awt.Color(255, 255, 255));
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoVerde.jpg"))); // NOI18N
+        jPanel1.add(Fondo);
+        Fondo.setBounds(-6, -6, 420, 650);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -302,30 +255,32 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(this.CantCartones == 1)
+        elJuego = observer.getElJuego();
+        cJugador j = this.BuscarJugadorEnJuego(this.getTitle());
+        if(j.getCantidadCartones() == 1)
         {
-            this.tableCarton1.setVisible(true);
-            this.tableCarton2.setVisible(false);
-            this.tableCarton3.setVisible(false);
-        }else if(this.CantCartones == 2)
+            this.panelTable1.setVisible(true);
+            this.panelTable2.setVisible(false);
+            this.panelTable3.setVisible(false);
+        }else if(j.getCantidadCartones() == 2)
         {
-            this.tableCarton1.setVisible(true);
-            this.tableCarton2.setVisible(true);
-            this.tableCarton3.setVisible(false);
+            this.panelTable1.setVisible(true);
+            this.panelTable2.setVisible(true);
+            this.panelTable3.setVisible(false);
         }else{
-            this.tableCarton1.setVisible(true);
-            this.tableCarton2.setVisible(true);
-            this.tableCarton3.setVisible(true);
+            this.panelTable1.setVisible(true);
+            this.panelTable2.setVisible(true);
+            this.panelTable3.setVisible(true);
         }
         try {
             this.completarCartones();
-        } catch (Exception ex) {
-            Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.completarTablas();
+            } catch (Exception ex) {
+                Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_formWindowOpened
-private int devolverNumero() {
+    private int devolverNumero() {
         int random = ThreadLocalRandom.current().nextInt(0, observer.getNumeros() + 1);
+        String nombre = this.getTitle();
         if(!repetido(random, this.numerosInsertados)){
             numerosInsertados.add(random);
             return random;
@@ -335,101 +290,99 @@ private int devolverNumero() {
         }
         
     }
-private boolean repetido(int numero, ArrayList<Integer> numeros){
-        for (Integer numero1 : numeros) {
-            if (numero1 == numero) {
+    private boolean repetido(int numero, ArrayList<Integer> numeros){
+            if(numeros.contains(numero))
                 return true;
-            }
-        }
-    return false;
-    
-}
-private void completarCartones() throws Exception{
-    int columnas = laConfig.getColumnasCarton();
-    int filas = laConfig.getFilasCarton();
-    for(int i =0; i<CantCartones ; i++)
-    {
-        cCarton carton = new cCarton();
-        carton.setColumnas(columnas);
-        carton.setFilas(filas);
-        int numerosXCarton = columnas * filas;
-        int[][] losNumeros= new int[filas][columnas];
-             
-        for(int j = 0; j<filas; j++){
-            for(int k =0; k<columnas; k++){
-                losNumeros[j][k] = devolverNumero();
-            }
-            
-        }
-        carton.setNumeros(losNumeros);
-        carton.setContCompleto(numerosXCarton);
-        carton.setId(i+1);
-        this.losCartones.add(carton);
+            /*for (Integer numero1 : numeros) {
+                if (numero1 == numero) {
+                    return true;
+                }
+            }*/
+        return false;
+
     }
-    
-}
-private void completarTablas(){
-    for(int i = 0; i<CantCartones; i++){
-        if(i==0)
+    public cJugador BuscarJugadorEnJuego(String pUserName){
+        for (cJugador j : elJuego.getJugadores()) {
+                    if (j.getUserName().equalsIgnoreCase(pUserName)) {
+                        return j;
+                    }
+        }
+        return null;
+    }
+    private void completarCartones() throws Exception{
+        int columnas = laConfig.getColumnasCarton();
+        int filas = laConfig.getFilasCarton();
+        elJuego = observer.getElJuego();
+        cJugador jugador = BuscarJugadorEnJuego(this.getTitle());
+        
+        for(int i =0; i<jugador.getCantidadCartones() ; i++)
         {
-            DefaultTableModel modeltbl = (DefaultTableModel) this.tableCarton1.getModel();
-            int columnas = laConfig.getColumnasCarton();
-            int filas = laConfig.getFilasCarton();
-            modeltbl.setColumnCount(columnas);
-            modeltbl.setRowCount(filas);
-            int[][] losnums = losCartones.get(0).getNumeros();
-            for(int k = 0; k<filas; k++){
-                for(int j =0; j<columnas; j++){
-                    tableCarton1.setValueAt(losnums[k][j], k, j);
-                }
-        }
-        
-        }else if (i==1){
-            DefaultTableModel modeltbl = (DefaultTableModel) this.tableCarton2.getModel();
-            int columnas = laConfig.getColumnasCarton();
-            int filas = laConfig.getFilasCarton();
-            modeltbl.setColumnCount(columnas);
-            modeltbl.setRowCount(filas);
-            int[][] losnums = losCartones.get(1).getNumeros();
-            for(int k = 0; k<filas; k++){
-                for(int j =0; j<columnas; j++){
-                    tableCarton2.setValueAt(losnums[k][j], k, j);
-                }
-        }
-        }
-        else{
-            DefaultTableModel modeltbl = (DefaultTableModel) this.tableCarton3.getModel();
-            int columnas = laConfig.getColumnasCarton();
-            int filas = laConfig.getFilasCarton();
-            modeltbl.setColumnCount(columnas);
-            modeltbl.setRowCount(filas);
-            int[][] losnums = losCartones.get(2).getNumeros();
-            for(int k = 0; k<filas; k++){
-                for(int j =0; j<columnas; j++){
-                    tableCarton3.setValueAt(losnums[k][j], k, j);
-                }
-        }
-        }
+            cCarton carton = new cCarton();
+            carton.setColumnas(columnas);
+            carton.setFilas(filas);
+            int numerosXCarton = columnas * filas;
+            int[][] losNumeros= new int[filas][columnas];
 
-    
+            for(int j = 0; j<filas; j++){
+                for(int k =0; k<columnas; k++){
+                    losNumeros[j][k] = devolverNumero();
+                }
+
+            }
+            carton.setNumeros(losNumeros);
+            carton.setContCompleto(numerosXCarton);
+            carton.setId(i+1);
+            jugador.getCartones().add(carton);
+        }
+        completarTablas(jugador);
     }
-}
-    private void boxFichas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxFichas1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_boxFichas1ActionPerformed
+    
+    private void completarTablas(cJugador jugador){
+        for(int i = 0; i<jugador.getCantidadCartones(); i++){
+            if(i==0)
+            {
+                DefaultTableModel modeltbl = (DefaultTableModel) this.tableCarton1.getModel();
+                int columnas = laConfig.getColumnasCarton();
+                int filas = laConfig.getFilasCarton();
+                modeltbl.setColumnCount(columnas);
+                modeltbl.setRowCount(filas);
+                int[][] losnums = jugador.getCartones().get(0).getNumeros();
+                for(int k = 0; k<filas; k++){
+                    for(int j =0; j<columnas; j++){
+                        tableCarton1.setValueAt(losnums[k][j], k, j);
+                    }
+            }
 
-    private void boxFichas1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxFichas1ItemStateChanged
-        // TODO add your handling code here:
-        String value = this.boxFichas1.getSelectedItem().toString();
-        int valor = CalcularValorFichas(Integer.parseInt(value));
-        this.lblValor1.setText(String.valueOf(valor));
-    }//GEN-LAST:event_boxFichas1ItemStateChanged
+            }else if (i==1){
+                DefaultTableModel modeltbl = (DefaultTableModel) this.tableCarton2.getModel();
+                int columnas = laConfig.getColumnasCarton();
+                int filas = laConfig.getFilasCarton();
+                modeltbl.setColumnCount(columnas);
+                modeltbl.setRowCount(filas);
+                int[][] losnums = jugador.getCartones().get(1).getNumeros();
+                for(int k = 0; k<filas; k++){
+                    for(int j =0; j<columnas; j++){
+                        tableCarton2.setValueAt(losnums[k][j], k, j);
+                    }
+            }
+            }
+            else{
+                DefaultTableModel modeltbl = (DefaultTableModel) this.tableCarton3.getModel();
+                int columnas = laConfig.getColumnasCarton();
+                int filas = laConfig.getFilasCarton();
+                modeltbl.setColumnCount(columnas);
+                modeltbl.setRowCount(filas);
+                int[][] losnums = jugador.getCartones().get(2).getNumeros();
+                for(int k = 0; k<filas; k++){
+                    for(int j =0; j<columnas; j++){
+                        tableCarton3.setValueAt(losnums[k][j], k, j);
+                    }
+            }
+            }
 
-    private void boxCartonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxCartonesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boxCartonesActionPerformed
-    public void cerrar(){
+
+        }
+    }    public void cerrar(){
         Object [] opciones ={"Aceptar","Cancelar"};
         int eleccion = JOptionPane.showOptionDialog(rootPane,"En realidad desea salir de la Partida?","Mensaje de Confirmacion",
         JOptionPane.YES_NO_OPTION,
@@ -480,6 +433,7 @@ private void completarTablas(){
             }
         });
     }
+    
     /*
     //Como Recorrer una tabla buscando numeros
     public void ElegirNumero(){
@@ -522,25 +476,20 @@ private void completarTablas(){
         }
     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox boxCartones;
-    private javax.swing.JComboBox boxFichas1;
-    private javax.swing.JButton btnComprar;
-    private javax.swing.JButton btnComprarCartones;
+    private javax.swing.JLabel Fondo;
     private javax.swing.JButton btnRetirarse;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblColor;
-    private javax.swing.JLabel lblValor1;
+    private javax.swing.JLabel lblBolilla;
+    private javax.swing.JLabel lblPodio;
+    private javax.swing.JLabel lblSaldo;
+    private javax.swing.JLabel lblTitleSaldo;
     private javax.swing.JPanel panelCartones;
+    private javax.swing.JPanel panelTable1;
+    private javax.swing.JPanel panelTable2;
+    private javax.swing.JPanel panelTable3;
     private javax.swing.JTable tableCarton1;
     private javax.swing.JTable tableCarton2;
     private javax.swing.JTable tableCarton3;
@@ -549,13 +498,25 @@ private void completarTablas(){
     @Override
     public void update(Observable o, Object arg) {
         Accion = observer.getAccion();
-        if(Accion.equalsIgnoreCase("ESPERANDO")){
+        if(Accion.equalsIgnoreCase("COMPLETAR")){
+            
+        }else if(Accion.equalsIgnoreCase("SORTEADO")){
+            
+            int bolaSorteada = observer.getSorteados().get(observer.getSorteados().size() -1);
+            try{
+                ImageIcon bola = new ImageIcon(getClass().getResource("/Images/Miniaturas/" + bolaSorteada +".png"));
+            this.lblBolilla.setIcon(bola);
+            }catch(Exception ex){
+                System.out.println("Bola No encontrada "+ bolaSorteada );
+            }
+            
+            /*try {
+                ImageIcon lcImage= new ImageIcon(ImageIO.read(getClass().getResource("/Images/Miniaturas/" + bolaSorteada +".png")));
+            } catch (IOException ex) {
+                Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
             
         }
-        this.lblColor.setText(Accion);
-        /*String accion = observer.getAccion();
-        acciones.add(accion);
-        cargar();*/
     }
     
 }
