@@ -15,7 +15,7 @@ public class cJuego {
     private int Id;
     private ArrayList<cJugador> Jugadores;
     private int Pozo;
-    private int[] Bolillero;
+    private ArrayList<Integer> Bolillero;
     private int numeroSorteado;
     private boolean juegoActivo;
     
@@ -24,6 +24,7 @@ public class cJuego {
         numeroSorteado = -1;
         Pozo = 0;
         Jugadores = new ArrayList();
+        Bolillero = new ArrayList();
     }
     /**
      * @return the Id
@@ -70,16 +71,7 @@ public class cJuego {
     /**
      * @return the Bolillero
      */
-    public int[] getBolillero() {
-        return Bolillero;
-    }
-
-    /**
-     * @param Bolillero the Bolillero to set
-     */
-    public void setBolillero(int[] Bolillero) {
-        this.Bolillero = Bolillero;
-    }
+    
 
     /**
      * @return the numeroSorteado
@@ -107,6 +99,20 @@ public class cJuego {
      */
     public void setJuegoActivo(boolean juegoActivo) {
         this.juegoActivo = juegoActivo;
+    }
+
+    /**
+     * @return the Bolillero
+     */
+    public ArrayList<Integer> getBolillero() {
+        return Bolillero;
+    }
+
+    /**
+     * @param Bolillero the Bolillero to set
+     */
+    public void setBolillero(ArrayList<Integer> Bolillero) {
+        this.Bolillero = Bolillero;
     }
     
     

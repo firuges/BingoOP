@@ -16,6 +16,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -27,6 +28,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import sun.util.calendar.CalendarDate;
 /**
  *
  * @author Maxi
@@ -139,6 +141,8 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
 
             }
         ));
+        tableCarton1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tableCarton1.setName(""); // NOI18N
         jScrollPane1.setViewportView(tableCarton1);
 
         javax.swing.GroupLayout panelTable1Layout = new javax.swing.GroupLayout(panelTable1);
@@ -279,6 +283,7 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
             }
     }//GEN-LAST:event_formWindowOpened
     private int devolverNumero() {
+        //un random de 0 a 100
         int random = ThreadLocalRandom.current().nextInt(0, observer.getNumeros() + 1);
         String nombre = this.getTitle();
         if(!repetido(random, this.numerosInsertados)){
@@ -293,11 +298,6 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private boolean repetido(int numero, ArrayList<Integer> numeros){
             if(numeros.contains(numero))
                 return true;
-            /*for (Integer numero1 : numeros) {
-                if (numero1 == numero) {
-                    return true;
-                }
-            }*/
         return false;
 
     }
@@ -312,6 +312,7 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private void completarCartones() throws Exception{
         int columnas = laConfig.getColumnasCarton();
         int filas = laConfig.getFilasCarton();
+        int NumeroAgregar = -1;
         elJuego = observer.getElJuego();
         cJugador jugador = BuscarJugadorEnJuego(this.getTitle());
         
@@ -325,7 +326,12 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
 
             for(int j = 0; j<filas; j++){
                 for(int k =0; k<columnas; k++){
-                    losNumeros[j][k] = devolverNumero();
+                    NumeroAgregar= devolverNumero();
+                    losNumeros[j][k] = NumeroAgregar;
+                    //si el bolillero no tiene ya el numero lo agrego!
+                    if(!observer.getElJuego().getBolillero().contains(NumeroAgregar)){
+                        observer.getElJuego().getBolillero().add(NumeroAgregar);
+                    }
                 }
 
             }
@@ -434,32 +440,47 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         });
     }
     
-    /*
+    
     //Como Recorrer una tabla buscando numeros
-    public void ElegirNumero(){
-        int numeroAleatorio = (int) (Math.random()*Numeros.length+1);
+    public void MarcarNumero(int numero){
         boolean encontro = false;
-        DefaultTableModel tm = (DefaultTableModel) this.tableSorteo.getModel();
-        
-            for (int i = tm.getRowCount() - 1; i >= 0; --i) {
-                for (int j = tm.getColumnCount() - 1; j >= 0; --j) {
-                    if (tm.getValueAt(i, j).equals(numeroAleatorio)) {
+        cJugador j = this.BuscarJugadorEnJuego(this.getTitle());
+        int cantidadCartones = j.getCantidadCartones();
+        int i = 0;
+        DefaultTableModel tm  = null;
+        //recorrere todos los cartones
+        while(i < cantidadCartones){
+            if(i == 0)
+                tm = (DefaultTableModel) this.tableCarton1.getModel();
+            else if(i == 1)
+                tm = (DefaultTableModel) this.tableCarton2.getModel();
+            else
+                tm = (DefaultTableModel) this.tableCarton3.getModel();
+            
+            for (int s = tm.getRowCount() - 1; s >= 0; --s) {
+                for (int k = tm.getColumnCount() - 1; k >= 0; --k) {
+                    if (tm.getValueAt(s, k).equals(numero)) {
                         // what if value is not unique?
-                        int numero = (int)tm.getValueAt(i, j);
-                        tm.setValueAt("@", i, j);//"'"+numeroAleatorio +"'"
-                        encontro = true;
-                        this.lblEncontro.setText(String.valueOf(si++));
+                        int num = (int)tm.getValueAt(s, k);
+                        tm.setValueAt("<html><font color=red><b>"+num +"</b></font></html>", s, k);
+                        //cuando llegue a 0 se completo el carton
+                        j.getCartones().get(i).setContCompleto(j.getCartones().get(i).getContCompleto()-1);
+                        if(j.getCartones().get(i).getContCompleto() == 0){
+                            LocalDateTime hoy = LocalDateTime.now();
+                            System.out.println(j.getUserName() + " JUGADOR COMPLETO CARTON!: Hora:" + hoy);
+                        }
                         break;
                     }
                 }
             }
-        if(!encontro){
-            ElegirNumero();
-            this.lblNoEncontro.setText(String.valueOf(no++));
+            i++;
         }
         
         
-    }*/
+            
+        
+        
+    }
     
     /*
     //Cargar Mumeros a una Tabla
@@ -505,6 +526,7 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
             int bolaSorteada = observer.getSorteados().get(observer.getSorteados().size() -1);
             try{
                 ImageIcon bola = new ImageIcon(getClass().getResource("/Images/Miniaturas/" + bolaSorteada +".png"));
+                MarcarNumero(bolaSorteada);
             this.lblBolilla.setIcon(bola);
             }catch(Exception ex){
                 System.out.println("Bola No encontrada "+ bolaSorteada );
