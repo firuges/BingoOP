@@ -25,6 +25,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 
@@ -161,6 +162,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel20 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        jScrollPaneBolas = new javax.swing.JScrollPane();
         jLabel2 = new javax.swing.JLabel();
 
         setResizable(false);
@@ -643,7 +645,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelSeleccion.add(lblMensajeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 360, 30));
 
         jPanel1.add(panelSeleccion);
-        panelSeleccion.setBounds(160, 10, 730, 590);
+        panelSeleccion.setBounds(160, 10, 730, 400);
 
         PanelJuego.setOpaque(false);
         PanelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -709,6 +711,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/43.png"))); // NOI18N
         PanelJuego.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 310, -1, -1));
+        PanelJuego.add(jScrollPaneBolas, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, 660, 160));
 
         jPanel1.add(PanelJuego);
         PanelJuego.setBounds(0, 10, 1070, 640);
@@ -797,7 +800,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.PanelJuego.setVisible(true);
         
         //
-        
+        Juego.setJuegoActivo(true);
         Observador.setElJuego(Juego);
         //le indico que en las ventanas del observer realize esta accion
         this.observer.setCambios("COMPLETAR");
@@ -1037,12 +1040,12 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         
         cJuego juego = this.observer.getElJuego();
         int cantNumeros = observer.getNumeros();
-        int random = ThreadLocalRandom.current().nextInt(0, observer.getElJuego().getBolillero().size() + 1);
+        int random = ThreadLocalRandom.current().nextInt(0, observer.getElJuego().getBolillero().size());
         int numero = observer.getElJuego().getBolillero().get(random);
         if(observer.getElJuego().getBolillero().size() >= observer.getSorteados().size()){
             while(observer.getSorteados().contains(numero)){
                 System.out.println(numero + " Ya Fue Sorteada");
-                random = ThreadLocalRandom.current().nextInt(0, observer.getElJuego().getBolillero().size() + 1);
+                random = ThreadLocalRandom.current().nextInt(0, observer.getElJuego().getBolillero().size());
                 numero = observer.getElJuego().getBolillero().get(random);
             }
             System.out.println(numero + " SORTEADA!");
@@ -1137,7 +1140,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.panelPosLogin1.setVisible(true);
                         this.lblSaldo1.setText(String.valueOf(jugador1.getFichas()));
                         this.lblReady1.setText("Por Favor Compra tus Cartones");
-                        JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
         
                         
                     }else{
@@ -1177,7 +1179,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.panelPosLogin2.setVisible(true);
                         this.lblSaldo2.setText(String.valueOf(jugador2.getFichas()));
                         this.lblReady2.setText("Por Favor Compra tus Cartones");
-                        JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
+                        
         
                         
                     }else{
@@ -1217,7 +1219,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.panelPosLogin3.setVisible(true);
                         this.lblSaldo3.setText(String.valueOf(jugador3.getFichas()));
                         this.lblReady3.setText("Por Favor Compra tus Cartones");
-                        JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
+                        
                         
                     }else{
                             JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
@@ -1398,6 +1400,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPaneBolas;
     private javax.swing.JLabel label1010;
     private javax.swing.JLabel label123;
     private javax.swing.JLabel label12313;
@@ -1454,6 +1457,15 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             }*/
             ImageIcon bola = new ImageIcon(getClass().getResource("/Images/Miniaturas/" + bolaSorteada +".png"));
             this.lblBolillaSorteada.setIcon(bola);
-        }
+            
+            JLabel label = new JLabel();
+            label.setIcon(bola);
+            this.jScrollPaneBolas.add(label);
+            this.jScrollPaneBolas.validate();
+            this.jScrollPaneBolas.updateUI();
+            
+            
+         }
+        
     }
 }

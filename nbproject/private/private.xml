@@ -5,7 +5,7 @@
             <url>src/Interfase/vBingoGame.java</url>
             <bookmark id="2">
                 <name/>
-                <line>1104</line>
+                <line>1107</line>
                 <key/>
             </bookmark>
         </file>
@@ -16,7 +16,6 @@
             <file>file:/C:/BingoOP/src/Interfase/vBingoGame.java</file>
             <file>file:/C:/BingoOP/src/Patrones/Observer/ClaseObservador.java</file>
             <file>file:/C:/BingoOP/src/Interfase/vPlayer1.java</file>
-            <file>file:/C:/BingoOP/src/Common/cCarton.java</file>
             <file>file:/C:/BingoOP/src/Common/cJuego.java</file>
         </group>
     </open-files>

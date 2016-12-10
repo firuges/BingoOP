@@ -24,8 +24,12 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import sun.util.calendar.CalendarDate;
@@ -72,6 +76,7 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        lblMensaje = new javax.swing.JLabel();
         lblBolilla = new javax.swing.JLabel();
         lblPodio = new javax.swing.JLabel();
         btnRetirarse = new javax.swing.JButton();
@@ -102,14 +107,14 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
 
         jPanel1.setPreferredSize(new java.awt.Dimension(409, 639));
         jPanel1.setLayout(null);
-
-        lblBolilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/14.png"))); // NOI18N
+        jPanel1.add(lblMensaje);
+        lblMensaje.setBounds(100, 40, 210, 90);
         jPanel1.add(lblBolilla);
-        lblBolilla.setBounds(180, 80, 60, 50);
+        lblBolilla.setBounds(170, 150, 60, 50);
 
         lblPodio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/podio.png"))); // NOI18N
         jPanel1.add(lblPodio);
-        lblPodio.setBounds(130, 70, 150, 130);
+        lblPodio.setBounds(130, 160, 150, 90);
 
         btnRetirarse.setText("Retirarse");
         btnRetirarse.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -223,7 +228,7 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         );
 
         jPanel1.add(panelCartones);
-        panelCartones.setBounds(10, 180, 390, 380);
+        panelCartones.setBounds(10, 250, 390, 380);
 
         Fondo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Fondo.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,6 +266,7 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         elJuego = observer.getElJuego();
         cJugador j = this.BuscarJugadorEnJuego(this.getTitle());
+        
         if(j.getCantidadCartones() == 1)
         {
             this.panelTable1.setVisible(true);
@@ -281,6 +287,8 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
             } catch (Exception ex) {
                 Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
             }
+        int saldo = calcularSaldoAmostrar(j);
+        this.lblSaldo.setText(String.valueOf(saldo));
     }//GEN-LAST:event_formWindowOpened
     private int devolverNumero() {
         //un random de 0 a 100
@@ -308,6 +316,18 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
                     }
         }
         return null;
+    }
+    private int calcularSaldoAmostrar(cJugador j){
+        int saldo = 0;
+        cConfiguracion c;
+        try {
+            c = laEmpresa.traerConfiguracion(2);
+            saldo = j.getFichas() - j.getCartones().size() * c.getValorCarton();
+        } catch (Exception ex) {
+            Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return saldo;
     }
     private void completarCartones() throws Exception{
         int columnas = laConfig.getColumnasCarton();
@@ -468,6 +488,9 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
                         if(j.getCartones().get(i).getContCompleto() == 0){
                             LocalDateTime hoy = LocalDateTime.now();
                             System.out.println(j.getUserName() + " JUGADOR COMPLETO CARTON!: Hora:" + hoy);
+                            //Seteo el GANADOR
+                            observer.getElJuego().setGanador(j);
+                            observer.setCambios("FIN");
                         }
                         break;
                     }
@@ -475,13 +498,11 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
             }
             i++;
         }
-        
-        
-            
-        
-        
     }
     
+    public void FinDePartida(cJugador j){
+        
+    }
     /*
     //Cargar Mumeros a una Tabla
     if(this.Numeros == null){
@@ -504,6 +525,7 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblBolilla;
+    private javax.swing.JLabel lblMensaje;
     private javax.swing.JLabel lblPodio;
     private javax.swing.JLabel lblSaldo;
     private javax.swing.JLabel lblTitleSaldo;
@@ -537,6 +559,15 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
             } catch (IOException ex) {
                 Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
             }*/
+            
+        }else if(Accion.equalsIgnoreCase("FIN")){
+            cJugador j = observer.getElJuego().getGanador();
+            if(this.getTitle().equalsIgnoreCase(j.getUserName())){
+                ImageIcon ganaste = new ImageIcon(getClass().getResource("/Images/ganaste.gif"));
+                this.lblMensaje.setIcon(ganaste);
+            }
+            FinDePartida(j);
+            
             
         }
     }

@@ -18,13 +18,14 @@ public class cJuego {
     private ArrayList<Integer> Bolillero;
     private int numeroSorteado;
     private boolean juegoActivo;
-    
+    private cJugador Ganador;
      public cJuego(){
         juegoActivo = false;
         numeroSorteado = -1;
         Pozo = 0;
         Jugadores = new ArrayList();
         Bolillero = new ArrayList();
+        Ganador = new cJugador();
     }
     /**
      * @return the Id
@@ -113,6 +114,20 @@ public class cJuego {
      */
     public void setBolillero(ArrayList<Integer> Bolillero) {
         this.Bolillero = Bolillero;
+    }
+
+    /**
+     * @return the Ganador
+     */
+    public cJugador getGanador() {
+        return Ganador;
+    }
+
+    /**
+     * @param Ganador the Ganador to set
+     */
+    public void setGanador(cJugador Ganador) {
+        this.Ganador = Ganador;
     }
     
     
