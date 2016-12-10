@@ -37,7 +37,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private ClaseObservador observer;
     private static cJuego Juego;
     private Integer[] Numeros;
-    private static int cantidadCartones = 0;
+    private static int cantidadCartones;
     private String Accion;
     /**
      * Creates new form BingoGame
@@ -907,6 +907,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.panelPosLogin2.setVisible(false);
         this.panelPosLogin3.setVisible(false);
         Juego = new cJuego();
+        cantidadCartones = 0;
     }//GEN-LAST:event_formWindowOpened
     // </editor-fold>
     private void comboColoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboColoresItemStateChanged
@@ -1036,21 +1037,22 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         
         cJuego juego = this.observer.getElJuego();
         int cantNumeros = observer.getNumeros();
-        int random = ThreadLocalRandom.current().nextInt(0, observer.getNumeros() + 1);
-        if(observer.getNumeros() >= observer.getSorteados().size()){
-            while(observer.getSorteados().contains(random)){
-                System.out.println(random + " Ya Fue Sorteada");
-                random = ThreadLocalRandom.current().nextInt(0, observer.getNumeros() + 1);
-            
+        int random = ThreadLocalRandom.current().nextInt(0, observer.getElJuego().getBolillero().size() + 1);
+        int numero = observer.getElJuego().getBolillero().get(random);
+        if(observer.getElJuego().getBolillero().size() >= observer.getSorteados().size()){
+            while(observer.getSorteados().contains(numero)){
+                System.out.println(numero + " Ya Fue Sorteada");
+                random = ThreadLocalRandom.current().nextInt(0, observer.getElJuego().getBolillero().size() + 1);
+                numero = observer.getElJuego().getBolillero().get(random);
             }
-            System.out.println(random + " SORTEADA!");
+            System.out.println(numero + " SORTEADA!");
 
 
-            observer.getSorteados().add(random);
+            observer.getSorteados().add(numero);
             observer.setCambios("SORTEADO");
             
         }else{
-            System.out.println(random + " Listo! ya se Sortearon todos los numeros!!");
+            System.out.println(numero + " Listo! ya se Sortearon todos los numeros!!");
         }
         
     }
@@ -1061,10 +1063,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         if(evento.getSource() == this.btnComprarCartones1){
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer1.getText());
             jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones1.getSelectedItem()));
-            if(vBingoGame.cantidadCartones  < jugador.getCantidadCartones())
-            {
-                vBingoGame.cantidadCartones = jugador.getCantidadCartones();
-            }
+            cantidadCartones = cantidadCartones+ jugador.getCantidadCartones();
+            
             jugador.setReady(true);
             this.lblReady1.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones1.setVisible(false);
@@ -1075,10 +1075,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer2.getText());
             jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones2.getSelectedItem()));
             jugador.setReady(true);
-            if(this.cantidadCartones  < jugador.getCantidadCartones())
-            {
-                this.cantidadCartones = jugador.getCantidadCartones();
-            }
+            cantidadCartones = cantidadCartones+ jugador.getCantidadCartones();
             this.lblReady2.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones2.setVisible(false);
             this.boxCartones2.setVisible(false);
@@ -1088,10 +1085,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer3.getText());
             jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones3.getSelectedItem()));
             jugador.setReady(true);
-            if(this.cantidadCartones  < jugador.getCantidadCartones())
-            {
-                this.cantidadCartones = jugador.getCantidadCartones();
-            }
+            cantidadCartones = cantidadCartones+ jugador.getCantidadCartones();
             this.lblReady3.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones3.setVisible(false);
             this.boxCartones3.setVisible(false);
