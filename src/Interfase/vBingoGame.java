@@ -37,7 +37,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private dEmpresa empresa;
     private ClaseObservador observer;
     private Integer[] Numeros;
-    private int cantidadCartones;
     private String Accion;
     /**
      * Creates new form BingoGame
@@ -907,7 +906,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.panelPosLogin2.setVisible(false);
         this.panelPosLogin3.setVisible(false);
         
-        cantidadCartones = 0;
+        observer.getElJuego().setCantidadCartones(0);
     }//GEN-LAST:event_formWindowOpened
     // </editor-fold>
     private void comboColoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboColoresItemStateChanged
@@ -1035,7 +1034,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_btnSortearMouseClicked
     private void calcularPozo() throws Exception{
         cConfiguracion config = this.empresa.traerConfiguracion(2);
-        int pozo = (cantidadCartones * config.getValorCarton()) * 2;
+        int pozo = (observer.getElJuego().getCantidadCartones() * config.getValorCarton()) * 2;
         observer.getElJuego().setPozo(pozo);
         observer.setCambios("POZO");
     }
@@ -1069,7 +1068,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         if(evento.getSource() == this.btnComprarCartones1){
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer1.getText());
             jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones1.getSelectedItem()));
-            cantidadCartones = cantidadCartones+ jugador.getCantidadCartones();
+            observer.getElJuego().setCantidadCartones(observer.getElJuego().getCantidadCartones()+jugador.getCantidadCartones());
             
             jugador.setReady(true);
             this.lblReady1.setText("Jugador Listo!, Esperando...");
@@ -1081,7 +1080,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer2.getText());
             jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones2.getSelectedItem()));
             jugador.setReady(true);
-            cantidadCartones = cantidadCartones+ jugador.getCantidadCartones();
+            observer.getElJuego().setCantidadCartones(observer.getElJuego().getCantidadCartones()+jugador.getCantidadCartones());
             this.lblReady2.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones2.setVisible(false);
             this.boxCartones2.setVisible(false);
@@ -1091,7 +1090,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer3.getText());
             jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones3.getSelectedItem()));
             jugador.setReady(true);
-            cantidadCartones = cantidadCartones+ jugador.getCantidadCartones();
+            observer.getElJuego().setCantidadCartones(observer.getElJuego().getCantidadCartones()+jugador.getCantidadCartones());
+            
             this.lblReady3.setText("Jugador Listo!, Esperando...");
             this.btnComprarCartones3.setVisible(false);
             this.boxCartones3.setVisible(false);
@@ -1306,7 +1306,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             throw new cDatosException("ERROR al Traer Configuracion del Juego /vBingoGame: " + ex.getMessage());
         }
         /// Cantidad de fila * Columna y todo esto * Cantidad de Cartones en total
-        int CantNumeros = (config.getFilasCarton() * config.getColumnasCarton() ) * (this.cantidadCartones);
+        int CantNumeros = (config.getFilasCarton() * config.getColumnasCarton() ) * (observer.getElJuego().getCantidadCartones());
         Numeros = new Integer[CantNumeros];
         observer.setNumeros(CantNumeros);
        
@@ -1407,7 +1407,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.observer.setNumeros(-1);
         cJuego juego = new cJuego();
         this.observer.setElJuego(juego);
-        cantidadCartones = 0;
+        observer.getElJuego().setCantidadCartones(0);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelJuego;

@@ -18,6 +18,7 @@ public class ClaseObservador extends Observable{
     private cJuego elJuego;
     private ArrayList<Integer> sorteados;
     private Integer Sorteado;
+    
 	public ClaseObservador(){
 		sorteados = new ArrayList();
                 elJuego = new cJuego();
