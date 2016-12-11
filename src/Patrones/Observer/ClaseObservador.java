@@ -20,6 +20,7 @@ public class ClaseObservador extends Observable{
     private Integer Sorteado;
 	public ClaseObservador(){
 		sorteados = new ArrayList();
+                elJuego = new cJuego();
 	}
         
 	// <editor-fold defaultstate="collapsed" desc=" Inctancia ">

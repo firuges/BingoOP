@@ -86,31 +86,73 @@ public class pUsuario extends pPersistencia {
       }
            @Override
    public void modificar(java.lang.Object o) throws Exception {
+        
+        cUsuario unUser = (cUsuario)o;
+        if(unUser.QueSoy().equals(String.valueOf(Enums.Gerarquia.ADMIN))){
+        try {
+            cAdmin unAdmin = (cAdmin)o;
+            modificarADMIN(unAdmin);
+
+        } catch (Exception ex) {
+            throw new cDatosException("ERROR al Ingresar un Admin /pUsuario/agregar():" + ex.getMessage());
+
+        }
+        }else{
+            cJugador unJugador = (cJugador)o;
+            modificarJugador(unJugador);
+        }
+    }
+    private void modificarADMIN(cAdmin pAdmin) throws Exception{
         try{
-            cUsuario unUser = (cUsuario)o;
+            
             super.abrirConexion();
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
                     // arma la sentencia sql
                     String updateSql="UPDATE usuarios SET " +
-                    "unombre='" + unUser.getNombre() + "'," +
-                    "uapellido='" + unUser.getApellido() + "'," +
-                    "uemail='" + unUser.getEmail()+ "'," +
-                    "upassword='" + unUser.getPassword()+ "',"+
-                    "utipouser='" + unUser.QueSoy()+ "'," +
-                    "ufecha='" + Utilidades.FormatearFechaToStringSQL(unUser.getFechanacido())+ "'," +
-                    "uusername='" + unUser.getUserName()+ "'," +
-                    " WHERE idusuario=" +  unUser.getId();
+                    "unombre='" + pAdmin.getNombre() + "'," +
+                    "uapellido='" + pAdmin.getApellido() + "'," +
+                    "uemail='" + pAdmin.getEmail()+ "'," +
+                    "upassword='" + pAdmin.getPassword()+ "',"+
+                    "utipouser='" + pAdmin.QueSoy()+ "'," +
+                    "ufecha='" + Utilidades.FormatearFechaToStringSQL(pAdmin.getFechanacido())+ "'," +
+                    "uusername='" + pAdmin.getUserName()+ "'," +
+                    " WHERE idusuario=" +  pAdmin.getId();
                     System.out.println(updateSql);
                     // ejecuta la sentencia
                     st.executeUpdate(updateSql);
                     super.cerrarConexion();
         }catch(SQLException e){
-            throw new cDatosException("ERROR AL INTENTAR MODIFICAR USUARIO:" + e.getMessage());
+            throw new cDatosException("ERROR AL INTENTAR MODIFICAR Admin:" + e.getMessage());
            
         }
     }
-
+    private void modificarJugador(cJugador jugador) throws Exception{
+        try{
+            
+            super.abrirConexion();
+            // Creo una nueva sentecia para ser ejecutada
+            Statement st= super.getDistribuidora().createStatement();
+                    // arma la sentencia sql
+                    String updateSql="UPDATE usuarios SET " +
+                    "unombre='" + jugador.getNombre() + "'," +
+                    "uapellido='" + jugador.getApellido() + "'," +
+                    "uemail='" + jugador.getEmail()+ "'," +
+                    "upassword='" + jugador.getPassword()+ "',"+
+                    "utipouser='" + jugador.QueSoy()+ "'," +
+                    "ufecha='" + Utilidades.FormatearFechaToStringSQL(jugador.getFechanacido())+ "'," +
+                    "uusername='" + jugador.getUserName()+ "'," +
+                    "fichas=" + jugador.getFichas()+
+                    " WHERE idusuario=" +  jugador.getId();
+                    System.out.println(updateSql);
+                    // ejecuta la sentencia
+                    st.executeUpdate(updateSql);
+                    super.cerrarConexion();
+        }catch(SQLException e){
+            throw new cDatosException("ERROR AL INTENTAR MODIFICAR Jugador:" + e.getMessage());
+           
+        }
+    }
       @Override
    public void eliminar(java.lang.Object o) throws Exception {
         try{
@@ -141,43 +183,78 @@ public class pUsuario extends pPersistencia {
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
             String selectSql="SELECT * FROM usuarios ";
-            
             selectSql=selectSql + " WHERE uusername= '" + unUser.getUserName()+ "'&& upassword= '" +unUser.getPassword() + "'";
+            String selectSql2="SELECT * FROM usuarios ";
+            selectSql=selectSql2 + " WHERE uusername= '" + unUser.getUserName()+ "'";
 
             
             // esto es solo para mostrar el sql que se va a ejecutar
             System.out.println(selectSql);
             // ejecuta la sentencia
-            ResultSet rs=st.executeQuery(selectSql);
+            if(unUser.getPassword()!= ""){
+                ResultSet rs=st.executeQuery(selectSql);
+                unUser = null;
             
-            unUser = null;
-            
-            while(rs.next()){
-                unUser = new cUsuario();
-                int num;
-                // recorre el Resultset y crea un objeto con los datos de
-                // cada linea.
-                num = rs.getInt("idusuario");
-                unUser.setId(num);
-                unUser.setNombre(rs.getString("unombre"));
-                unUser.setApellido(rs.getString("uapellido"));
-                unUser.setEmail(rs.getString("uemail"));
-                unUser.setPassword(rs.getString("upassword"));
-                String Fecha = Utilidades.FormatearFechaToString(rs.getDate("ufecha"));
-                unUser.setFechanacido(Utilidades.FormatearFechaToDate(Fecha));
-                String gerar = rs.getString("utipouser");
-                
-                unUser.setUserName(rs.getString("uusername"));
-                if(gerar.equals(String.valueOf(Enums.Gerarquia.ADMIN))){
-                    unAdmin = new cAdmin(unUser.getId(),unUser.getNombre(),unUser.getApellido(),unUser.getEmail(),unUser.getPassword(),unUser.getFechanacido(),unUser.getUserName());
+                while(rs.next()){
+                    unUser = new cUsuario();
+                    int num;
+                    // recorre el Resultset y crea un objeto con los datos de
+                    // cada linea.
+                    num = rs.getInt("idusuario");
+                    unUser.setId(num);
+                    unUser.setNombre(rs.getString("unombre"));
+                    unUser.setApellido(rs.getString("uapellido"));
+                    unUser.setEmail(rs.getString("uemail"));
+                    unUser.setPassword(rs.getString("upassword"));
+                    String Fecha = Utilidades.FormatearFechaToString(rs.getDate("ufecha"));
+                    unUser.setFechanacido(Utilidades.FormatearFechaToDate(Fecha));
+                    String gerar = rs.getString("utipouser");
 
-                }else{
-                    int fichas = rs.getInt("fichas");
-                    unJugador = new cJugador(unUser.getId(),unUser.getNombre(), unUser.getApellido(),unUser.getEmail(),unUser.getPassword(),unUser.getFechanacido(),fichas,unUser.getUserName());
+                    unUser.setUserName(rs.getString("uusername"));
+                    if(gerar.equals(String.valueOf(Enums.Gerarquia.ADMIN))){
+                        unAdmin = new cAdmin(unUser.getId(),unUser.getNombre(),unUser.getApellido(),unUser.getEmail(),unUser.getPassword(),unUser.getFechanacido(),unUser.getUserName());
+
+                    }else{
+                        int fichas = rs.getInt("fichas");
+                        unJugador = new cJugador(unUser.getId(),unUser.getNombre(), unUser.getApellido(),unUser.getEmail(),unUser.getPassword(),unUser.getFechanacido(),fichas,unUser.getUserName());
+
+                    }
 
                 }
-                
+            }else{
+                ResultSet rs=st.executeQuery(selectSql2);
+                unUser = null;
+            
+                while(rs.next()){
+                    unUser = new cUsuario();
+                    int num;
+                    // recorre el Resultset y crea un objeto con los datos de
+                    // cada linea.
+                    num = rs.getInt("idusuario");
+                    unUser.setId(num);
+                    unUser.setNombre(rs.getString("unombre"));
+                    unUser.setApellido(rs.getString("uapellido"));
+                    unUser.setEmail(rs.getString("uemail"));
+                    unUser.setPassword(rs.getString("upassword"));
+                    String Fecha = Utilidades.FormatearFechaToString(rs.getDate("ufecha"));
+                    unUser.setFechanacido(Utilidades.FormatearFechaToDate(Fecha));
+                    String gerar = rs.getString("utipouser");
+
+                    unUser.setUserName(rs.getString("uusername"));
+                    if(gerar.equals(String.valueOf(Enums.Gerarquia.ADMIN))){
+                        unAdmin = new cAdmin(unUser.getId(),unUser.getNombre(),unUser.getApellido(),unUser.getEmail(),unUser.getPassword(),unUser.getFechanacido(),unUser.getUserName());
+
+                    }else{
+                        int fichas = rs.getInt("fichas");
+                        unJugador = new cJugador(unUser.getId(),unUser.getNombre(), unUser.getApellido(),unUser.getEmail(),unUser.getPassword(),unUser.getFechanacido(),fichas,unUser.getUserName());
+
+                    }
+
+                }
             }
+            
+            
+            
             super.cerrarConexion();
             // devuelve el objeto encontrado
             if(unAdmin != null){
