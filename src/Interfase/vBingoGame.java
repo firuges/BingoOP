@@ -160,10 +160,14 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel20 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        txtNumSorteados = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -671,6 +675,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 btnSortearMouseClicked(evt);
             }
         });
+        btnSortear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSortearActionPerformed(evt);
+            }
+        });
         PanelJuego.add(btnSortear, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, -1, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/1.png"))); // NOI18N
@@ -709,6 +718,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/43.png"))); // NOI18N
         PanelJuego.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 310, -1, -1));
 
+        txtNumSorteados.setFont(new java.awt.Font("Snap ITC", 0, 22)); // NOI18N
+        txtNumSorteados.setForeground(new java.awt.Color(255, 255, 255));
+        PanelJuego.add(txtNumSorteados, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 710, 60));
+
         jPanel1.add(PanelJuego);
         PanelJuego.setBounds(0, 10, 1070, 640);
 
@@ -739,6 +752,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         }
         
         ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
+       ArrayList<Integer> bolillero = new ArrayList<Integer>();
+      //  Observador.getElJuego().setBolillero(bolillero);
+        cJuego elJuego = Observador.getElJuego();
+        elJuego.setBolillero(bolillero);
+        Observador.setElJuego(elJuego);
         dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
         vBingoGame ventanaJuego = new vBingoGame();
         this.CargarParametrosJuego();
@@ -882,6 +900,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     // <editor-fold defaultstate="collapsed" desc=" Al Abrir Ventana WindowsOpened ">
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        
         this.label1010.setVisible(true);
         this.label123.setVisible(true);
         this.label12313.setVisible(false);
@@ -1030,8 +1049,22 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
     private void btnSortearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSortearMouseClicked
         // TODO add your handling code here:
-        SortearBolilla();
+        if(observer.getElJuego().getGanador().getNombre() == null){
+            SortearBolilla();
+        }
+        else{
+             JOptionPane.showMessageDialog(this, "Ya hay un ganador del Bingo! Juego Terminado!", "Juego", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSortearMouseClicked
+
+    private void btnSortearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortearActionPerformed
+         // TODO add your handling code here:
+    }//GEN-LAST:event_btnSortearActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        this.txtNumSorteados.setText("");
+    }//GEN-LAST:event_formWindowActivated
     private void calcularPozo() throws Exception{
         cConfiguracion config = this.empresa.traerConfiguracion(2);
         int pozo = (observer.getElJuego().getCantidadCartones() * config.getValorCarton()) * 2;
@@ -1051,7 +1084,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 numero = observer.getElJuego().getBolillero().get(random);
             }
             System.out.println(numero + " SORTEADA!");
-
+            this.txtNumSorteados.setText(numero + " - "+txtNumSorteados.getText());
 
             observer.getSorteados().add(numero);
             observer.setCambios("SORTEADO");
@@ -1496,6 +1529,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JPanel panelPosLogin2;
     private javax.swing.JPanel panelPosLogin3;
     private javax.swing.JPanel panelSeleccion;
+    private javax.swing.JLabel txtNumSorteados;
     private javax.swing.JPasswordField txtPassword1;
     private javax.swing.JPasswordField txtPassword2;
     private javax.swing.JPasswordField txtPassword3;

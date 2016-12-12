@@ -17,6 +17,7 @@ public class cCarton {
     private int Columnas;
     private int[][] numeros;
     private int contCompleto;
+    private ArrayList<Integer> numerosAcertados;
     /**
      * @return the Id
      */
@@ -85,5 +86,19 @@ public class cCarton {
      */
     public void setContCompleto(int contCompleto) {
         this.contCompleto = contCompleto;
+    }
+
+    /**
+     * @return the numerosAcertados
+     */
+    public ArrayList<Integer> getNumerosAcertados() {
+        return numerosAcertados;
+    }
+
+    /**
+     * @param numerosAcertados the numerosAcertados to set
+     */
+    public void setNumerosAcertados(ArrayList<Integer> numerosAcertados) {
+        this.numerosAcertados = numerosAcertados;
     }
 }

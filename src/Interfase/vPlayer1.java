@@ -45,7 +45,10 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     private  int CantCartones;
     private  ArrayList<Integer> numerosInsertados;
     cConfiguracion laConfig;
-    private static boolean borrarBolillero;
+    private void borrarBolillero(boolean bool){
+        if(bool = true){
+        observer.getElJuego().getBolillero().clear();
+    }}
     /**
      * Creates new form vPlayer1
      */
@@ -305,7 +308,8 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        borrarBolillero = true;
+        borrarBolillero(true);
+       
         CargarJuego();
     }//GEN-LAST:event_formWindowOpened
 
@@ -430,6 +434,8 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
             carton.setNumeros(losNumeros);
             carton.setContCompleto(numerosXCarton);
             carton.setId(i+1);
+            ArrayList<Integer> numeros = new ArrayList<Integer>();
+            carton.setNumerosAcertados(numeros);
             jugador.getCartones().add(carton);
         }
         completarTablas(jugador);
@@ -556,8 +562,13 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
                         int num = (int)tm.getValueAt(s, k);
                         tm.setValueAt("<html><font color=red><b>"+num +"</b></font></html>", s, k);
                         //cuando llegue a 0 se completo el carton
-                        j.getCartones().get(i).setContCompleto(j.getCartones().get(i).getContCompleto()-1);
-                        if(j.getCartones().get(i).getContCompleto() == 0){
+                        //j.getCartones().get(i).setContCompleto(j.getCartones().get(i).getContCompleto()-1);
+                        if(!j.getCartones().get(i).getNumerosAcertados().contains(num)){
+                            j.getCartones().get(i).getNumerosAcertados().add(num);
+                        }
+                        //if(j.getCartones().get(i).getContCompleto() == 0){
+                        if(j.getCartones().get(i).getNumerosAcertados().size() == j.getCartones().get(i).getContCompleto()){
+                            System.out.println("cant acertados: " + j.getCartones().get(i).getNumerosAcertados());
                             LocalDateTime hoy = LocalDateTime.now();
                             System.out.println(j.getUserName() + " JUGADOR COMPLETO CARTON!: Hora:" + hoy);
                             //Seteo el GANADOR
