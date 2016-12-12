@@ -22,6 +22,7 @@ import org.omg.PortableServer.POAManagerPackage.State;
 public class vPrincipal extends javax.swing.JFrame {
     private dEmpresa empresa;
     public static vBingoGame ventanaBingo;
+    public static int cont;
     /**
      * Creates new form vPrincipal
      */
@@ -72,6 +73,11 @@ public class vPrincipal extends javax.swing.JFrame {
         jMenu6.setText("jMenu6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(null);
@@ -103,7 +109,7 @@ public class vPrincipal extends javax.swing.JFrame {
         jMenu7.add(menuItemRegistro);
         jMenu7.add(jSeparator3);
 
-        MenuItemAdministracion.setText("Login");
+        MenuItemAdministracion.setText("Ingreso Administrativo");
         MenuItemAdministracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuItemAdministracionActionPerformed(evt);
@@ -166,18 +172,24 @@ public class vPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(ventanaBingo!= null){
             ventanaBingo = null;
+            
         }
-        ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
-        dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
-        try {
+        if(cont == 0){
+            ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
+            dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
+            try {
             ventanaBingo = new vBingoGame(Empresa, Observador);
             Observador.addObserver(ventanaBingo); ventanaBingo.setLocation(300, 150);
-        
-        ventanaBingo.setTitle("Ventana del Juego");
-        ventanaBingo.setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(vPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+
+            ventanaBingo.setTitle("Ventana del Juego");
+            ventanaBingo.setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(vPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            cont++;
         }
+        
+        
         
         
        
@@ -192,6 +204,11 @@ public class vPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_MenuItemSalirActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        cont = 0;
+    }//GEN-LAST:event_formWindowOpened
     
     /**
      * @param args the command line arguments

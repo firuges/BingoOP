@@ -24,16 +24,9 @@ import java.util.Observer;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
-import sun.util.calendar.CalendarDate;
 /**
  *
  * @author Maxi
@@ -494,11 +487,23 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
         JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
         if (eleccion == JOptionPane.YES_OPTION)
         {
-            dispose();
+            cJugador jugador = this.BuscarJugadorEnJuego(this.getTitle());
+            if(CantidadJugadoresJugando() == 2){
+                observer.getElJuego().getJugadores().remove(jugador);
+                jugador = observer.getElJuego().getJugadores().get(0);
+                observer.getElJuego().setGanador(jugador);
+                observer.setCambios("FIN");
+            }else{
+                observer.getElJuego().getJugadores().remove(jugador);
+                dispose();
+            }
             //System.exit(0);
         }else{
             
         }
+    }
+    public int CantidadJugadoresJugando(){
+        return observer.getElJuego().getJugadores().size();
     }
     public int CalcularValorFichas(int cantidad){
         int unidad = 2;
@@ -585,28 +590,32 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     
     public void FinDePartida(){
         cJugador j = this.BuscarJugadorEnJuego(this.getTitle());
-        if(observer.getElJuego().getGanador().getUserName().equalsIgnoreCase(j.getUserName())){
-            try {
-                int pozo = Integer.parseInt(this.lblPozo.getText());
-                j.setFichas(Integer.parseInt(this.lblSaldo.getText())+ pozo);
-                this.laEmpresa.modificarUsuario(j);
-                j.setReady(false);
-                
-            } catch (Exception ex) {
-                Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }else{
-            try {
-                //al jugador perdedor se le debita en este momento el saldo
-                j.setFichas(Integer.parseInt(this.lblSaldo.getText()));
-                this.laEmpresa.modificarUsuario(j);
-                j.setReady(false);
-                
-            } catch (Exception ex) {
-                Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
+        if(j != null){
+            if(observer.getElJuego().getGanador().getUserName().equalsIgnoreCase(j.getUserName())){
+                    try {
+                        int pozo = Integer.parseInt(this.lblPozo.getText());
+                        j.setFichas(Integer.parseInt(this.lblSaldo.getText())+ pozo);
+                        this.laEmpresa.modificarUsuario(j);
+                        j.setReady(false);
+
+                    } catch (Exception ex) {
+                        Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+            }else{
+                    try {
+                        //al jugador perdedor se le debita en este momento el saldo
+                        j.setFichas(Integer.parseInt(this.lblSaldo.getText()));
+                        this.laEmpresa.modificarUsuario(j);
+                        j.setReady(false);
+
+                    } catch (Exception ex) {
+                        Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
             }
         }
-        this.lblSaldo.setText(String.valueOf(j.getFichas()));
+        
+        
+        
         this.lblPozo.setText("0");
         this.panelJugarDeNuevo.setVisible(true);
         this.lblPodio.setVisible(false);
@@ -669,7 +678,6 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
                 this.lblMensaje.setIcon(ganaste);
             }
             FinDePartida();
-            
             
         }else if(Accion.equalsIgnoreCase("POZO")){
              this.lblPozo.setText(String.valueOf(observer.getElJuego().getPozo()));
