@@ -100,7 +100,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         boxFichas1 = new javax.swing.JComboBox();
         jLabel23 = new javax.swing.JLabel();
         lblValor1 = new javax.swing.JLabel();
-        btnComprar = new javax.swing.JButton();
+        btnComprar1 = new javax.swing.JButton();
         lblTituloCantCartones1 = new javax.swing.JLabel();
         boxCartones1 = new javax.swing.JComboBox();
         btnComprarCartones1 = new javax.swing.JButton();
@@ -112,7 +112,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         boxFichas2 = new javax.swing.JComboBox();
         jLabel28 = new javax.swing.JLabel();
         lblValor2 = new javax.swing.JLabel();
-        btnComprar1 = new javax.swing.JButton();
+        btnComprar2 = new javax.swing.JButton();
         lblTituloCantCartones2 = new javax.swing.JLabel();
         boxCartones2 = new javax.swing.JComboBox();
         btnComprarCartones2 = new javax.swing.JButton();
@@ -124,7 +124,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         boxFichas3 = new javax.swing.JComboBox();
         jLabel33 = new javax.swing.JLabel();
         lblValor3 = new javax.swing.JLabel();
-        btnComprar2 = new javax.swing.JButton();
+        btnComprar3 = new javax.swing.JButton();
         lblTituloCantCartones3 = new javax.swing.JLabel();
         boxCartones3 = new javax.swing.JComboBox();
         btnComprarCartones3 = new javax.swing.JButton();
@@ -167,6 +167,12 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -421,8 +427,13 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         lblValor1.setFocusable(false);
         panelPosLogin1.add(lblValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
-        btnComprar.setText("Comprar");
-        panelPosLogin1.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        btnComprar1.setText("Comprar");
+        btnComprar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprar1ActionPerformed(evt);
+            }
+        });
+        panelPosLogin1.add(btnComprar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         lblTituloCantCartones1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTituloCantCartones1.setForeground(new java.awt.Color(255, 255, 255));
@@ -485,8 +496,13 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         lblValor2.setFocusable(false);
         panelPosLogin2.add(lblValor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
-        btnComprar1.setText("Comprar");
-        panelPosLogin2.add(btnComprar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        btnComprar2.setText("Comprar");
+        btnComprar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprar2ActionPerformed(evt);
+            }
+        });
+        panelPosLogin2.add(btnComprar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         lblTituloCantCartones2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTituloCantCartones2.setForeground(new java.awt.Color(255, 255, 255));
@@ -549,8 +565,13 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         lblValor3.setFocusable(false);
         panelPosLogin3.add(lblValor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
-        btnComprar2.setText("Comprar");
-        panelPosLogin3.add(btnComprar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        btnComprar3.setText("Comprar");
+        btnComprar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprar3ActionPerformed(evt);
+            }
+        });
+        panelPosLogin3.add(btnComprar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         lblTituloCantCartones3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTituloCantCartones3.setForeground(new java.awt.Color(255, 255, 255));
@@ -1065,6 +1086,74 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         // TODO add your handling code here:
         this.txtNumSorteados.setText("");
     }//GEN-LAST:event_formWindowActivated
+
+    private void btnComprar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprar1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            ComprarFichas(evt);
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnComprar1ActionPerformed
+
+    private void btnComprar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprar2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            ComprarFichas(evt);
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnComprar2ActionPerformed
+
+    private void btnComprar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprar3ActionPerformed
+        try {
+            // TODO add your handling code here:
+            ComprarFichas(evt);
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnComprar3ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        vPrincipal.ventanaBingo = null;
+    }//GEN-LAST:event_formWindowClosing
+    private void ComprarFichas(ActionEvent evt) throws Exception{
+        cJugador j = null;
+        boolean modificado = false;
+        String ValorComprado;
+        if(evt.getSource() == this.btnComprar1){
+            j = this.BuscarJugadorEnJuego(this.lblPlayer1.getText());
+            ValorComprado = String.valueOf(this.boxFichas1.getSelectedItem());
+            j.setFichas(Integer.valueOf(String.valueOf(j.getFichas() + Integer.valueOf(ValorComprado))));
+            modificado = this.empresa.modificarUsuario(j);
+        }else if(evt.getSource() == this.btnComprar2){
+            j = this.BuscarJugadorEnJuego(this.lblPlayer2.getText());
+            ValorComprado = String.valueOf(this.boxFichas2.getSelectedItem());
+            j.setFichas(Integer.valueOf(String.valueOf(j.getFichas() + Integer.valueOf(ValorComprado))));
+            modificado = this.empresa.modificarUsuario(j);
+        }else{//boton 3
+            j = this.BuscarJugadorEnJuego(this.lblPlayer3.getText());
+            ValorComprado = String.valueOf(this.boxFichas3.getSelectedItem());
+            j.setFichas(Integer.valueOf(String.valueOf(j.getFichas() + Integer.valueOf(ValorComprado))));
+            modificado = this.empresa.modificarUsuario(j);
+        }
+        if(modificado){
+            if(j.getUserName().equalsIgnoreCase(this.lblPlayer1.getText())){
+                this.lblSaldo1.setText(String.valueOf(j.getFichas()));
+            }else if(j.getUserName().equalsIgnoreCase(this.lblPlayer2.getText())){
+                this.lblSaldo2.setText(String.valueOf(j.getFichas()));
+            }else{
+                this.lblSaldo3.setText(String.valueOf(j.getFichas()));
+            }
+        }
+        
+    }
     private void calcularPozo() throws Exception{
         cConfiguracion config = this.empresa.traerConfiguracion(2);
         int pozo = (observer.getElJuego().getCantidadCartones() * config.getValorCarton()) * 2;
@@ -1450,9 +1539,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JComboBox boxFichas1;
     private javax.swing.JComboBox boxFichas2;
     private javax.swing.JComboBox boxFichas3;
-    private javax.swing.JButton btnComprar;
     private javax.swing.JButton btnComprar1;
     private javax.swing.JButton btnComprar2;
+    private javax.swing.JButton btnComprar3;
     private javax.swing.JButton btnComprarCartones1;
     private javax.swing.JButton btnComprarCartones2;
     private javax.swing.JButton btnComprarCartones3;

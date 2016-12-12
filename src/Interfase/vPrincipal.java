@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import org.omg.PortableServer.POAManagerPackage.State;
 
 /**
  *
@@ -20,6 +21,7 @@ import javax.swing.JFrame;
  */
 public class vPrincipal extends javax.swing.JFrame {
     private dEmpresa empresa;
+    public static vBingoGame ventanaBingo;
     /**
      * Creates new form vPrincipal
      */
@@ -162,20 +164,20 @@ public class vPrincipal extends javax.swing.JFrame {
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
-        
+        if(ventanaBingo!= null){
+            ventanaBingo = null;
+        }
         ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
         dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
-        vBingoGame ventanaJuego;
         try {
-            ventanaJuego = new vBingoGame(Empresa, Observador);
-            Observador.addObserver(ventanaJuego); ventanaJuego.setLocation(300, 150);
+            ventanaBingo = new vBingoGame(Empresa, Observador);
+            Observador.addObserver(ventanaBingo); ventanaBingo.setLocation(300, 150);
         
-        ventanaJuego.setTitle("Ventana del Juego");
-        ventanaJuego.setVisible(true);
+        ventanaBingo.setTitle("Ventana del Juego");
+        ventanaBingo.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(vPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        vPlayer1 ventanaPlayer1 = new vPlayer1(Observador);
         
         
        
