@@ -441,8 +441,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelPosLogin1.add(lblTituloCantCartones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         boxCartones1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        boxCartones1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
-        boxCartones1.setSelectedIndex(1);
         boxCartones1.setToolTipText("");
         panelPosLogin1.add(boxCartones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
@@ -510,8 +508,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelPosLogin2.add(lblTituloCantCartones2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         boxCartones2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        boxCartones2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
-        boxCartones2.setSelectedIndex(1);
         boxCartones2.setToolTipText("");
         panelPosLogin2.add(boxCartones2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
@@ -579,8 +575,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelPosLogin3.add(lblTituloCantCartones3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         boxCartones3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        boxCartones3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
-        boxCartones3.setSelectedIndex(1);
         boxCartones3.setToolTipText("");
         panelPosLogin3.add(boxCartones3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
@@ -947,6 +941,20 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.panelPosLogin3.setVisible(false);
         
         observer.getElJuego().setCantidadCartones(0);
+        cConfiguracion config;
+        try {
+            config = empresa.traerConfiguracion(2);
+            int cantidad = config.getCartonesXJugador();
+            for(int i =0; i< cantidad; i++){
+                this.boxCartones1.addItem(i+1);
+                this.boxCartones3.addItem(i+1);
+                this.boxCartones2.addItem(i+1);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+//this.boxCartones1.
     }//GEN-LAST:event_formWindowOpened
     // </editor-fold>
     private void comboColoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboColoresItemStateChanged
@@ -1189,7 +1197,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         String cantidad = this.comboSelect.getSelectedItem().toString();
         if(evento.getSource() == this.btnComprarCartones1){
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer1.getText());
-            jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones1.getSelectedItem()));
+            jugador.setCantidadCartones(Integer.parseInt(this.boxCartones1.getSelectedItem().toString()));
             observer.getElJuego().setCantidadCartones(observer.getElJuego().getCantidadCartones()+jugador.getCantidadCartones());
             
             jugador.setReady(true);
@@ -1200,7 +1208,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.lblSaldo1.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones1.getSelectedItem().toString())));
         }else if(evento.getSource() == this.btnComprarCartones2){
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer2.getText());
-            jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones2.getSelectedItem()));
+            jugador.setCantidadCartones(Integer.parseInt(this.boxCartones2.getSelectedItem().toString()));
             jugador.setReady(true);
             observer.getElJuego().setCantidadCartones(observer.getElJuego().getCantidadCartones()+jugador.getCantidadCartones());
             this.lblReady2.setText("Jugador Listo!, Esperando...");
@@ -1210,7 +1218,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.lblSaldo2.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones2.getSelectedItem().toString())));
         }else{
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer3.getText());
-            jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones3.getSelectedItem()));
+            jugador.setCantidadCartones(Integer.parseInt( this.boxCartones3.getSelectedItem().toString()));
             jugador.setReady(true);
             observer.getElJuego().setCantidadCartones(observer.getElJuego().getCantidadCartones()+jugador.getCantidadCartones());
             
