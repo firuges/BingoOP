@@ -1510,8 +1510,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.btnComprarCartones2.setVisible(true);
             this.boxCartones2.setVisible(true);
             this.lblTituloCantCartones2.setVisible(true);
-            this.lblSaldo1.setText(String.valueOf(j.getFichas()));
-            this.lblReady1.setText("Por Favor Compra tus Cartones");
+            this.lblSaldo2.setText(String.valueOf(j.getFichas()));
+            this.lblReady2.setText("Por Favor Compra tus Cartones");
             observer.getElJuego().getJugadores().add(j);
         }
         
@@ -1526,8 +1526,8 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             this.btnComprarCartones3.setVisible(true);
             this.boxCartones3.setVisible(true);
             this.lblTituloCantCartones3.setVisible(true);
-            this.lblSaldo1.setText(String.valueOf(j.getFichas()));
-            this.lblReady1.setText("Por Favor Compra tus Cartones");
+            this.lblSaldo3.setText(String.valueOf(j.getFichas()));
+            this.lblReady3.setText("Por Favor Compra tus Cartones");
             observer.getElJuego().getJugadores().add(j);
         }
         
