@@ -9,6 +9,7 @@ import Dominio.dEmpresa;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -273,8 +274,15 @@ public class vAdministrator extends javax.swing.JFrame {
 
     private void btnRestablecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestablecerActionPerformed
         try {
-            cConfiguracion laConfig = empresa.traerConfiguracion(1);
-            this.CargarConfiguracion();
+            if(vPrincipal.ventanaBingo != null){
+                JOptionPane.showMessageDialog(this, "Error al Restablecer debido a que la ventana del juego esta activa", "Configuracion", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                cConfiguracion laConfig = empresa.traerConfiguracion(1);
+            
+                JOptionPane.showMessageDialog(this, "Se regreso a la configuracion por Defecto con Exito", "Configuracion", JOptionPane.INFORMATION_MESSAGE);
+                this.CargarConfiguracion();
+            }
+            
         } catch (Exception ex) {
             Logger.getLogger(vAdministrator.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -282,17 +290,22 @@ public class vAdministrator extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRestablecerActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
-        cConfiguracion laConfig = new cConfiguracion();
-        laConfig.setId(2);
-        laConfig.setFilasCarton(Integer.parseInt(String.valueOf(this.jFilas.getSelectedItem())));
-        laConfig.setColumnasCarton(Integer.parseInt(String.valueOf(this.jColumnas.getSelectedItem())));
-        laConfig.setCartonesXJugador(Integer.parseInt(String.valueOf(this.jCartones.getSelectedItem())));
-        laConfig.setValorCarton(Integer.parseInt(this.jValor.getText()));
-        try {
-            empresa.modificarConfiguracion(laConfig);
-        } catch (Exception ex) {
-            Logger.getLogger(vAdministrator.class.getName()).log(Level.SEVERE, null, ex);
+        if(vPrincipal.ventanaBingo != null){
+                JOptionPane.showMessageDialog(this, "Error al Restablecer debido a que la ventana del juego esta activa", "Configuracion", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            cConfiguracion laConfig = new cConfiguracion();
+            laConfig.setId(2);
+            laConfig.setFilasCarton(Integer.parseInt(String.valueOf(this.jFilas.getSelectedItem())));
+            laConfig.setColumnasCarton(Integer.parseInt(String.valueOf(this.jColumnas.getSelectedItem())));
+            laConfig.setCartonesXJugador(Integer.parseInt(String.valueOf(this.jCartones.getSelectedItem())));
+            laConfig.setValorCarton(Integer.parseInt(this.jValor.getText()));
+            try {
+                empresa.modificarConfiguracion(laConfig);
+                JOptionPane.showMessageDialog(this, "Modificado con Exito!", "Configuracion", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                Logger.getLogger(vAdministrator.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 

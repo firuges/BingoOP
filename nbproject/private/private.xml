@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>src/Interfase/vBingoGame.java</url>
+            <bookmark id="2">
+                <name/>
+                <line>1107</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/BingoOP/src/Interfase/vAdministrator.java</file>
+            <file>file:/C:/BingoOP/src/Interfase/vPrincipal.java</file>
             <file>file:/C:/BingoOP/src/Interfase/vBingoGame.java</file>
+            <file>file:/C:/BingoOP/src/Patrones/Observer/ClaseObservador.java</file>
             <file>file:/C:/BingoOP/src/Interfase/vPlayer1.java</file>
-            <file>file:/C:/BingoOP/src/Interfase/vLogin.java</file>
             <file>file:/C:/BingoOP/src/Common/cJuego.java</file>
         </group>
     </open-files>

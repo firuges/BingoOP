@@ -25,6 +25,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 
@@ -35,9 +36,7 @@ import javax.swing.JOptionPane;
 public class vBingoGame extends javax.swing.JFrame implements Observer{
     private dEmpresa empresa;
     private ClaseObservador observer;
-    private static cJuego Juego;
     private Integer[] Numeros;
-    private static int cantidadCartones;
     private String Accion;
     /**
      * Creates new form BingoGame
@@ -101,7 +100,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         boxFichas1 = new javax.swing.JComboBox();
         jLabel23 = new javax.swing.JLabel();
         lblValor1 = new javax.swing.JLabel();
-        btnComprar = new javax.swing.JButton();
+        btnComprar1 = new javax.swing.JButton();
         lblTituloCantCartones1 = new javax.swing.JLabel();
         boxCartones1 = new javax.swing.JComboBox();
         btnComprarCartones1 = new javax.swing.JButton();
@@ -113,7 +112,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         boxFichas2 = new javax.swing.JComboBox();
         jLabel28 = new javax.swing.JLabel();
         lblValor2 = new javax.swing.JLabel();
-        btnComprar1 = new javax.swing.JButton();
+        btnComprar2 = new javax.swing.JButton();
         lblTituloCantCartones2 = new javax.swing.JLabel();
         boxCartones2 = new javax.swing.JComboBox();
         btnComprarCartones2 = new javax.swing.JButton();
@@ -125,7 +124,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         boxFichas3 = new javax.swing.JComboBox();
         jLabel33 = new javax.swing.JLabel();
         lblValor3 = new javax.swing.JLabel();
-        btnComprar2 = new javax.swing.JButton();
+        btnComprar3 = new javax.swing.JButton();
         lblTituloCantCartones3 = new javax.swing.JLabel();
         boxCartones3 = new javax.swing.JComboBox();
         btnComprarCartones3 = new javax.swing.JButton();
@@ -143,7 +142,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         lblPlayer3 = new javax.swing.JLabel();
         lblMensajeCombo = new javax.swing.JLabel();
         PanelJuego = new javax.swing.JPanel();
-        lblBolillaSorteada = new javax.swing.JLabel();
+        lblNumSorter = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblPozo = new javax.swing.JLabel();
         lblNum = new javax.swing.JLabel();
@@ -161,10 +160,20 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel20 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        txtNumSorteados = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -418,8 +427,13 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         lblValor1.setFocusable(false);
         panelPosLogin1.add(lblValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
-        btnComprar.setText("Comprar");
-        panelPosLogin1.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        btnComprar1.setText("Comprar");
+        btnComprar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprar1ActionPerformed(evt);
+            }
+        });
+        panelPosLogin1.add(btnComprar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         lblTituloCantCartones1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTituloCantCartones1.setForeground(new java.awt.Color(255, 255, 255));
@@ -427,8 +441,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelPosLogin1.add(lblTituloCantCartones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         boxCartones1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        boxCartones1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
-        boxCartones1.setSelectedIndex(1);
         boxCartones1.setToolTipText("");
         panelPosLogin1.add(boxCartones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
@@ -482,8 +494,13 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         lblValor2.setFocusable(false);
         panelPosLogin2.add(lblValor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
-        btnComprar1.setText("Comprar");
-        panelPosLogin2.add(btnComprar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        btnComprar2.setText("Comprar");
+        btnComprar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprar2ActionPerformed(evt);
+            }
+        });
+        panelPosLogin2.add(btnComprar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         lblTituloCantCartones2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTituloCantCartones2.setForeground(new java.awt.Color(255, 255, 255));
@@ -491,8 +508,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelPosLogin2.add(lblTituloCantCartones2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         boxCartones2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        boxCartones2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
-        boxCartones2.setSelectedIndex(1);
         boxCartones2.setToolTipText("");
         panelPosLogin2.add(boxCartones2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
@@ -546,8 +561,13 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         lblValor3.setFocusable(false);
         panelPosLogin3.add(lblValor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
-        btnComprar2.setText("Comprar");
-        panelPosLogin3.add(btnComprar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        btnComprar3.setText("Comprar");
+        btnComprar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprar3ActionPerformed(evt);
+            }
+        });
+        panelPosLogin3.add(btnComprar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         lblTituloCantCartones3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTituloCantCartones3.setForeground(new java.awt.Color(255, 255, 255));
@@ -555,8 +575,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelPosLogin3.add(lblTituloCantCartones3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         boxCartones3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        boxCartones3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
-        boxCartones3.setSelectedIndex(1);
         boxCartones3.setToolTipText("");
         panelPosLogin3.add(boxCartones3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
@@ -643,11 +661,14 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         panelSeleccion.add(lblMensajeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 360, 30));
 
         jPanel1.add(panelSeleccion);
-        panelSeleccion.setBounds(160, 10, 730, 590);
+        panelSeleccion.setBounds(160, 10, 730, 370);
 
         PanelJuego.setOpaque(false);
         PanelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PanelJuego.add(lblBolillaSorteada, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 70, 70));
+
+        lblNumSorter.setFont(new java.awt.Font("Arial", 0, 55)); // NOI18N
+        lblNumSorter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PanelJuego.add(lblNumSorter, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 100, 90));
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -670,6 +691,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         btnSortear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSortearMouseClicked(evt);
+            }
+        });
+        btnSortear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSortearActionPerformed(evt);
             }
         });
         PanelJuego.add(btnSortear, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, -1, -1));
@@ -710,6 +736,10 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Miniaturas/43.png"))); // NOI18N
         PanelJuego.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 310, -1, -1));
 
+        txtNumSorteados.setFont(new java.awt.Font("Snap ITC", 0, 22)); // NOI18N
+        txtNumSorteados.setForeground(new java.awt.Color(255, 255, 255));
+        PanelJuego.add(txtNumSorteados, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 710, 60));
+
         jPanel1.add(PanelJuego);
         PanelJuego.setBounds(0, 10, 1070, 640);
 
@@ -730,7 +760,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    // <editor-fold defaultstate="collapsed" desc=" Boton de Play ">
+    // <editor-fold defaultstate="collapsed" desc=" Comenzar ">
     public void CargarVentanasJugadores() throws InterruptedException, cDatosException, Exception{
         boolean tirar = false;
         while (!tirar){
@@ -740,6 +770,11 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         }
         
         ClaseObservador Observador = Patrones.Observer.ClaseObservador.getInstancia();
+       ArrayList<Integer> bolillero = new ArrayList<Integer>();
+      //  Observador.getElJuego().setBolillero(bolillero);
+        cJuego elJuego = Observador.getElJuego();
+        elJuego.setBolillero(bolillero);
+        Observador.setElJuego(elJuego);
         dEmpresa Empresa = Dominio.dEmpresa.getInstancia();
         vBingoGame ventanaJuego = new vBingoGame();
         this.CargarParametrosJuego();
@@ -797,16 +832,16 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.PanelJuego.setVisible(true);
         
         //
-        
-        Observador.setElJuego(Juego);
+        calcularPozo();
+        observer.getElJuego().setPozo(Integer.parseInt(this.lblPozo.getText()));
+        observer.getElJuego().setJuegoActivo(true);
         //le indico que en las ventanas del observer realize esta accion
-        this.observer.setCambios("COMPLETAR");
     }     // </editor-fold>
     public boolean checkReadyAll(String cantidad){
         boolean bandera = true;
         int cant = Integer.parseInt(cantidad);
         int contador = 0;
-        for(cJugador u: Juego.getJugadores()){
+        for(cJugador u: observer.getElJuego().getJugadores()){
             if(!u.isReady()){
                 bandera = false;
             }
@@ -883,6 +918,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     // <editor-fold defaultstate="collapsed" desc=" Al Abrir Ventana WindowsOpened ">
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        
         this.label1010.setVisible(true);
         this.label123.setVisible(true);
         this.label12313.setVisible(false);
@@ -906,8 +942,22 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         this.panelPosLogin1.setVisible(false);
         this.panelPosLogin2.setVisible(false);
         this.panelPosLogin3.setVisible(false);
-        Juego = new cJuego();
-        cantidadCartones = 0;
+        
+        observer.getElJuego().setCantidadCartones(0);
+        cConfiguracion config;
+        try {
+            config = empresa.traerConfiguracion(2);
+            int cantidad = config.getCartonesXJugador();
+            for(int i =0; i< cantidad; i++){
+                this.boxCartones1.addItem(i+1);
+                this.boxCartones3.addItem(i+1);
+                this.boxCartones2.addItem(i+1);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+//this.boxCartones1.
     }//GEN-LAST:event_formWindowOpened
     // </editor-fold>
     private void comboColoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboColoresItemStateChanged
@@ -1031,22 +1081,112 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
 
     private void btnSortearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSortearMouseClicked
         // TODO add your handling code here:
-        SortearBolilla();
+        if(observer.getElJuego().getGanador().getNombre() == null){
+            SortearBolilla();
+        }
+        else{
+             JOptionPane.showMessageDialog(this, "Ya hay un ganador del Bingo! Juego Terminado!", "Juego", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSortearMouseClicked
+
+    private void btnSortearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortearActionPerformed
+         // TODO add your handling code here:
+    }//GEN-LAST:event_btnSortearActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        this.txtNumSorteados.setText("");
+    }//GEN-LAST:event_formWindowActivated
+
+    private void btnComprar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprar1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            ComprarFichas(evt);
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnComprar1ActionPerformed
+
+    private void btnComprar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprar2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            ComprarFichas(evt);
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnComprar2ActionPerformed
+
+    private void btnComprar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprar3ActionPerformed
+        try {
+            // TODO add your handling code here:
+            ComprarFichas(evt);
+        } catch (Exception ex) {
+            Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnComprar3ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        vPrincipal.ventanaBingo = null;
+        this.observer.getElJuego().getJugadores().clear();
+        vPrincipal.cont = 0;
+    }//GEN-LAST:event_formWindowClosing
+    private void ComprarFichas(ActionEvent evt) throws Exception{
+        cJugador j = null;
+        boolean modificado = false;
+        String ValorComprado;
+        if(evt.getSource() == this.btnComprar1){
+            j = this.BuscarJugadorEnJuego(this.lblPlayer1.getText());
+            ValorComprado = String.valueOf(this.boxFichas1.getSelectedItem());
+            j.setFichas(Integer.valueOf(String.valueOf(j.getFichas() + Integer.valueOf(ValorComprado))));
+            modificado = this.empresa.modificarUsuario(j);
+        }else if(evt.getSource() == this.btnComprar2){
+            j = this.BuscarJugadorEnJuego(this.lblPlayer2.getText());
+            ValorComprado = String.valueOf(this.boxFichas2.getSelectedItem());
+            j.setFichas(Integer.valueOf(String.valueOf(j.getFichas() + Integer.valueOf(ValorComprado))));
+            modificado = this.empresa.modificarUsuario(j);
+        }else{//boton 3
+            j = this.BuscarJugadorEnJuego(this.lblPlayer3.getText());
+            ValorComprado = String.valueOf(this.boxFichas3.getSelectedItem());
+            j.setFichas(Integer.valueOf(String.valueOf(j.getFichas() + Integer.valueOf(ValorComprado))));
+            modificado = this.empresa.modificarUsuario(j);
+        }
+        if(modificado){
+            if(j.getUserName().equalsIgnoreCase(this.lblPlayer1.getText())){
+                this.lblSaldo1.setText(String.valueOf(j.getFichas()));
+            }else if(j.getUserName().equalsIgnoreCase(this.lblPlayer2.getText())){
+                this.lblSaldo2.setText(String.valueOf(j.getFichas()));
+            }else{
+                this.lblSaldo3.setText(String.valueOf(j.getFichas()));
+            }
+        }
+        
+    }
+    private void calcularPozo() throws Exception{
+        cConfiguracion config = this.empresa.traerConfiguracion(2);
+        int pozo = (observer.getElJuego().getCantidadCartones() * config.getValorCarton()) * 2;
+        observer.getElJuego().setPozo(pozo);
+        observer.setCambios("POZO");
+    }
     public void SortearBolilla(){
         
         cJuego juego = this.observer.getElJuego();
         int cantNumeros = observer.getNumeros();
-        int random = ThreadLocalRandom.current().nextInt(0, observer.getElJuego().getBolillero().size() + 1);
+        int random = ThreadLocalRandom.current().nextInt(0, observer.getElJuego().getBolillero().size());
         int numero = observer.getElJuego().getBolillero().get(random);
         if(observer.getElJuego().getBolillero().size() >= observer.getSorteados().size()){
             while(observer.getSorteados().contains(numero)){
                 System.out.println(numero + " Ya Fue Sorteada");
-                random = ThreadLocalRandom.current().nextInt(0, observer.getElJuego().getBolillero().size() + 1);
+                random = ThreadLocalRandom.current().nextInt(0, observer.getElJuego().getBolillero().size());
                 numero = observer.getElJuego().getBolillero().get(random);
             }
             System.out.println(numero + " SORTEADA!");
-
+            this.txtNumSorteados.setText(numero + " - "+txtNumSorteados.getText());
 
             observer.getSorteados().add(numero);
             observer.setCambios("SORTEADO");
@@ -1060,49 +1200,76 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         cConfiguracion laConfig = empresa.traerConfiguracion(2);
         cJugador jugador = null;
         String cantidad = this.comboSelect.getSelectedItem().toString();
+        int totalCarton;
         if(evento.getSource() == this.btnComprarCartones1){
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer1.getText());
-            jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones1.getSelectedItem()));
-            cantidadCartones = cantidadCartones+ jugador.getCantidadCartones();
+            totalCarton = calcularValorTotalCartones(Integer.valueOf(this.boxCartones1.getSelectedItem().toString()));
+            if(totalCarton < jugador.getFichas()){
+                jugador.setCantidadCartones(Integer.parseInt(this.boxCartones1.getSelectedItem().toString()));
+                observer.getElJuego().setCantidadCartones(observer.getElJuego().getCantidadCartones()+jugador.getCantidadCartones());
+
+                jugador.setReady(true);
+                this.lblReady1.setText("Jugador Listo!, Esperando...");
+                this.btnComprarCartones1.setVisible(false);
+                this.boxCartones1.setVisible(false);
+                this.lblTituloCantCartones1.setVisible(false);
+                this.lblSaldo1.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones1.getSelectedItem().toString())));
+            }else{
+                JOptionPane.showMessageDialog(this, "Compra mas Fichas para poder jugar", "Game", JOptionPane.INFORMATION_MESSAGE);
+            }
             
-            jugador.setReady(true);
-            this.lblReady1.setText("Jugador Listo!, Esperando...");
-            this.btnComprarCartones1.setVisible(false);
-            this.boxCartones1.setVisible(false);
-            this.lblTituloCantCartones1.setVisible(false);
-            this.lblSaldo1.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones1.getSelectedItem().toString())));
         }else if(evento.getSource() == this.btnComprarCartones2){
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer2.getText());
-            jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones2.getSelectedItem()));
-            jugador.setReady(true);
-            cantidadCartones = cantidadCartones+ jugador.getCantidadCartones();
-            this.lblReady2.setText("Jugador Listo!, Esperando...");
-            this.btnComprarCartones2.setVisible(false);
-            this.boxCartones2.setVisible(false);
-            this.lblTituloCantCartones2.setVisible(false);
-            this.lblSaldo2.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones2.getSelectedItem().toString())));
+            totalCarton = calcularValorTotalCartones(Integer.valueOf(this.boxCartones1.getSelectedItem().toString()));
+            if(totalCarton < jugador.getFichas()){
+                jugador.setCantidadCartones(Integer.parseInt(this.boxCartones2.getSelectedItem().toString()));
+                jugador.setReady(true);
+                observer.getElJuego().setCantidadCartones(observer.getElJuego().getCantidadCartones()+jugador.getCantidadCartones());
+                this.lblReady2.setText("Jugador Listo!, Esperando...");
+                this.btnComprarCartones2.setVisible(false);
+                this.boxCartones2.setVisible(false);
+                this.lblTituloCantCartones2.setVisible(false);
+                this.lblSaldo2.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones2.getSelectedItem().toString())));
+            }else{
+                JOptionPane.showMessageDialog(this, "Compra mas Fichas para poder jugar", "Game", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
         }else{
             jugador = this.BuscarJugadorEnJuego(this.lblPlayer3.getText());
-            jugador.setCantidadCartones(Integer.parseInt((String) this.boxCartones3.getSelectedItem()));
-            jugador.setReady(true);
-            cantidadCartones = cantidadCartones+ jugador.getCantidadCartones();
-            this.lblReady3.setText("Jugador Listo!, Esperando...");
-            this.btnComprarCartones3.setVisible(false);
-            this.boxCartones3.setVisible(false);
-            this.lblTituloCantCartones3.setVisible(false);
-            this.lblSaldo3.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones3.getSelectedItem().toString())));
+            totalCarton = calcularValorTotalCartones(Integer.valueOf(this.boxCartones1.getSelectedItem().toString()));
+            if(totalCarton < jugador.getFichas()){
+                jugador.setCantidadCartones(Integer.parseInt( this.boxCartones3.getSelectedItem().toString()));
+                jugador.setReady(true);
+                observer.getElJuego().setCantidadCartones(observer.getElJuego().getCantidadCartones()+jugador.getCantidadCartones());
+
+                this.lblReady3.setText("Jugador Listo!, Esperando...");
+                this.btnComprarCartones3.setVisible(false);
+                this.boxCartones3.setVisible(false);
+                this.lblTituloCantCartones3.setVisible(false);
+                this.lblSaldo3.setText(String.valueOf(jugador.getFichas() - laConfig.getValorCarton()* Integer.valueOf(this.boxCartones3.getSelectedItem().toString())));
+            }else{
+                JOptionPane.showMessageDialog(this, "Compra mas Fichas para poder jugar", "Game", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
         if(checkReadyAll(cantidad)){
             CargarVentanasJugadores();
         }
     }
     public cJugador BuscarJugadorEnJuego(String pUserName){
-        for (cJugador j : Juego.getJugadores()) {
+        for (cJugador j : observer.getElJuego().getJugadores()) {
                     if (j.getUserName().equalsIgnoreCase(pUserName)) {
                         return j;
                     }
         }
         return null;
+    }
+    public int calcularValorTotalCartones(int cant) throws Exception{
+        cConfiguracion config = empresa.traerConfiguracion(2);
+        if(config != null){
+            return cant * config.getValorCarton();
+        }else{
+            return -1;
+        }
     }
     public void LoginUser(ActionEvent evento) throws Exception{
         cUsuario unUser = new cJugador();
@@ -1122,14 +1289,14 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                     JOptionPane.showMessageDialog(this, "Login Incorrecto, por Favor Verifique su Usuario y Contraseña", "Login", JOptionPane.INFORMATION_MESSAGE);
                 }else
                 {
-                    for (cUsuario u : Juego.getJugadores()) {
+                    for (cUsuario u : observer.getElJuego().getJugadores()) {
                     if (u.getEmail().equalsIgnoreCase(jugador1.getEmail())) {
                         yaLogeado = true;
                     }
     }
                     if(!yaLogeado){
                         
-                        Juego.getJugadores().add(jugador1);
+                        observer.getElJuego().getJugadores().add(jugador1);
                         this.panelLogin1.setVisible(false);
                         this.lblEstado1.setText("ONLINE");
                         this.lblPlayer1.setText(jugador1.getUserName());
@@ -1137,7 +1304,6 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.panelPosLogin1.setVisible(true);
                         this.lblSaldo1.setText(String.valueOf(jugador1.getFichas()));
                         this.lblReady1.setText("Por Favor Compra tus Cartones");
-                        JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
         
                         
                     }else{
@@ -1163,13 +1329,13 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 else
                 {
                     
-                    for (cUsuario u : Juego.getJugadores()) {
+                    for (cUsuario u : observer.getElJuego().getJugadores()) {
                     if (u.getEmail().equalsIgnoreCase(jugador2.getEmail())) {
                         yaLogeado = true;
                     }
     }
                     if(!yaLogeado){
-                        Juego.getJugadores().add(jugador2);
+                        observer.getElJuego().getJugadores().add(jugador2);
                         this.panelLogin2.setVisible(false);
                         this.lblEstado2.setText("ONLINE");
                         this.lblPlayer2.setText(jugador2.getUserName());
@@ -1177,7 +1343,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.panelPosLogin2.setVisible(true);
                         this.lblSaldo2.setText(String.valueOf(jugador2.getFichas()));
                         this.lblReady2.setText("Por Favor Compra tus Cartones");
-                        JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
+                        
         
                         
                     }else{
@@ -1203,13 +1369,13 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                 }
                 else
                 {
-                    for (cUsuario u : Juego.getJugadores()) {
+                    for (cUsuario u : observer.getElJuego().getJugadores()) {
                     if (u.getEmail().equalsIgnoreCase(jugador3.getUserName())) {
                         yaLogeado = true;
                     }
     }
                     if(!yaLogeado){
-                        Juego.getJugadores().add(jugador3);
+                        observer.getElJuego().getJugadores().add(jugador3);
                         this.panelLogin3.setVisible(false);
                         this.lblEstado3.setText("ONLINE");
                         this.lblPlayer3.setText(jugador3.getUserName());
@@ -1217,7 +1383,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
                         this.panelPosLogin3.setVisible(true);
                         this.lblSaldo3.setText(String.valueOf(jugador3.getFichas()));
                         this.lblReady3.setText("Por Favor Compra tus Cartones");
-                        JOptionPane.showMessageDialog(this, "Por Favor, Compra Cartones para comenzar", "Game", JOptionPane.INFORMATION_MESSAGE);
+                        
                         
                     }else{
                             JOptionPane.showMessageDialog(this, "Ese Jugador ya esta conectado", "Login", JOptionPane.INFORMATION_MESSAGE);
@@ -1232,7 +1398,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     }
     public void LogoutUser(ActionEvent evento){
         
-        ArrayList<cJugador> jugadores = Juego.getJugadores();
+        ArrayList<cJugador> jugadores = observer.getElJuego().getJugadores();
         if(this.btnLogout1 == evento.getSource()){
             for (cJugador u : jugadores) {
                 if (u.getUserName().equalsIgnoreCase(this.lblPlayer1.getText())) {
@@ -1301,7 +1467,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             throw new cDatosException("ERROR al Traer Configuracion del Juego /vBingoGame: " + ex.getMessage());
         }
         /// Cantidad de fila * Columna y todo esto * Cantidad de Cartones en total
-        int CantNumeros = (config.getFilasCarton() * config.getColumnasCarton() ) * (this.cantidadCartones);
+        int CantNumeros = (config.getFilasCarton() * config.getColumnasCarton() ) * (observer.getElJuego().getCantidadCartones());
         Numeros = new Integer[CantNumeros];
         observer.setNumeros(CantNumeros);
        
@@ -1343,7 +1509,68 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
             }
         });
     }
-
+    private void limpiarAcero() throws Exception{
+        
+        this.PanelJuego.setVisible(false);
+        this.panelSeleccion.setVisible(true);
+        cUsuario unUser = new cJugador();
+        this.lblNumSorter.setText("");
+        
+        if(this.lblEstado1.getText().equalsIgnoreCase("ONLINE")){
+            //jugador 1
+            unUser.setUserName(this.lblPlayer1.getText());
+            cJugador j = new cJugador();
+            j = (cJugador)empresa.buscarUsuario(unUser);
+            this.panelLogin1.setVisible(false);
+            this.btnLogout1.setVisible(true);
+            this.panelPosLogin1.setVisible(true);
+            this.btnComprarCartones1.setVisible(true);
+            this.boxCartones1.setVisible(true);
+            this.lblTituloCantCartones1.setVisible(true);
+            this.lblSaldo1.setText(String.valueOf(j.getFichas()));
+            this.lblReady1.setText("Por Favor Compra tus Cartones");
+            observer.getElJuego().getJugadores().add(j);
+        }
+        if(this.lblEstado2.getText().equalsIgnoreCase("ONLINE")){
+            //jugador 2
+            unUser.setUserName(this.lblPlayer2.getText());
+            cJugador j = new cJugador();
+            j = (cJugador)empresa.buscarUsuario(unUser);
+            this.panelLogin2.setVisible(false);
+            this.btnLogout2.setVisible(true);
+            this.panelPosLogin2.setVisible(true);
+            this.btnComprarCartones2.setVisible(true);
+            this.boxCartones2.setVisible(true);
+            this.lblTituloCantCartones2.setVisible(true);
+            this.lblSaldo2.setText(String.valueOf(j.getFichas()));
+            this.lblReady2.setText("Por Favor Compra tus Cartones");
+            observer.getElJuego().getJugadores().add(j);
+        }
+        
+        if(this.lblEstado3.getText().equalsIgnoreCase("ONLINE")){
+            //jugador 3
+            unUser.setUserName(this.lblPlayer3.getText());
+            cJugador j = new cJugador();
+            j = (cJugador)empresa.buscarUsuario(unUser);
+            this.panelLogin3.setVisible(false);
+            this.btnLogout3.setVisible(true);
+            this.panelPosLogin3.setVisible(true);
+            this.btnComprarCartones3.setVisible(true);
+            this.boxCartones3.setVisible(true);
+            this.lblTituloCantCartones3.setVisible(true);
+            this.lblSaldo3.setText(String.valueOf(j.getFichas()));
+            this.lblReady3.setText("Por Favor Compra tus Cartones");
+            observer.getElJuego().getJugadores().add(j);
+        }
+        
+    }
+    public void limpiarObserver(){
+        this.observer.getSorteados().clear();
+        this.observer.setNumeros(-1);
+        cJuego juego = new cJuego();
+        this.observer.setElJuego(juego);
+        observer.getElJuego().setCantidadCartones(0);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelJuego;
     private javax.swing.JComboBox boxCartones1;
@@ -1352,9 +1579,9 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JComboBox boxFichas1;
     private javax.swing.JComboBox boxFichas2;
     private javax.swing.JComboBox boxFichas3;
-    private javax.swing.JButton btnComprar;
     private javax.swing.JButton btnComprar1;
     private javax.swing.JButton btnComprar2;
+    private javax.swing.JButton btnComprar3;
     private javax.swing.JButton btnComprarCartones1;
     private javax.swing.JButton btnComprarCartones2;
     private javax.swing.JButton btnComprarCartones3;
@@ -1402,12 +1629,12 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel label123;
     private javax.swing.JLabel label12313;
     private javax.swing.JLabel lblBolilla;
-    private javax.swing.JLabel lblBolillaSorteada;
     private javax.swing.JLabel lblEstado1;
     private javax.swing.JLabel lblEstado2;
     private javax.swing.JLabel lblEstado3;
     private javax.swing.JLabel lblMensajeCombo;
     private javax.swing.JLabel lblNum;
+    private javax.swing.JLabel lblNumSorter;
     private javax.swing.JLabel lblPlayer1;
     private javax.swing.JLabel lblPlayer2;
     private javax.swing.JLabel lblPlayer3;
@@ -1431,6 +1658,7 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
     private javax.swing.JPanel panelPosLogin2;
     private javax.swing.JPanel panelPosLogin3;
     private javax.swing.JPanel panelSeleccion;
+    private javax.swing.JLabel txtNumSorteados;
     private javax.swing.JPasswordField txtPassword1;
     private javax.swing.JPasswordField txtPassword2;
     private javax.swing.JPasswordField txtPassword3;
@@ -1447,13 +1675,36 @@ public class vBingoGame extends javax.swing.JFrame implements Observer{
         }else if(Accion.equalsIgnoreCase("SORTEADO")){
             
             int bolaSorteada = observer.getSorteados().get(observer.getSorteados().size() -1);
-            /*try {
-                ImageIcon lcImage= new ImageIcon(ImageIO.read(getClass().getResource("/Images/Miniaturas/" + bolaSorteada +".png")));
-            } catch (IOException ex) {
-                Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
-            ImageIcon bola = new ImageIcon(getClass().getResource("/Images/Miniaturas/" + bolaSorteada +".png"));
-            this.lblBolillaSorteada.setIcon(bola);
+            this.lblNumSorter.setText(String.valueOf(bolaSorteada));
+            
+            int random = ThreadLocalRandom.current().nextInt(0, 8);
+            System.out.println("Ramdom a mostrar " + random);
+            ImageIcon bola = new ImageIcon(getClass().getResource("/Images/Miniaturas/Grandes/" + random +".png"));
+            this.lblBolilla.setIcon(bola);
+            
+            
+            
+            
+         }
+         else if(Accion.equalsIgnoreCase("POZO")){
+             this.lblPozo.setText(String.valueOf(observer.getElJuego().getPozo()));
+         }else if(Accion.equalsIgnoreCase("CERRARTODO")){
+             limpiarObserver();
+            try {
+                limpiarAcero();
+            } catch (Exception ex) {
+                Logger.getLogger(vBingoGame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         }else if(Accion.equalsIgnoreCase("FIN")){
+             if(observer.getSorteados().size() > 0){
+                 int bolaSorteada = observer.getSorteados().get(observer.getSorteados().size() -1);
+                 this.lblNumSorter.setText(String.valueOf(bolaSorteada));
+                 int random = ThreadLocalRandom.current().nextInt(0, 8);
+                System.out.println("Ramdom a mostrar " + random);
+                ImageIcon bola = new ImageIcon(getClass().getResource("/Images/Miniaturas/Grandes/" + random +".png"));
+                this.lblBolilla.setIcon(bola);
+             }
+            
         }
     }
 }

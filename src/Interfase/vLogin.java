@@ -39,12 +39,12 @@ public class vLogin extends javax.swing.JFrame {
 
         jPanel4 = new javax.swing.JPanel();
         txtEmail = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblMensajeLogin = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(51, 153, 255));
 
@@ -53,18 +53,13 @@ public class vLogin extends javax.swing.JFrame {
 
         txtEmail.setBackground(new java.awt.Color(255, 255, 204));
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 51, 0)));
-        jPanel4.add(txtEmail);
-        txtEmail.setBounds(180, 300, 210, 30);
-
-        txtPassword.setBackground(new java.awt.Color(255, 255, 204));
-        txtPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 51, 0)));
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
-        jPanel4.add(txtPassword);
-        txtPassword.setBounds(180, 390, 210, 30);
+        jPanel4.add(txtEmail);
+        txtEmail.setBounds(190, 300, 210, 30);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/userIcono.png"))); // NOI18N
@@ -100,6 +95,11 @@ public class vLogin extends javax.swing.JFrame {
         jPanel4.add(jLabel3);
         jLabel3.setBounds(0, 0, 550, 290);
 
+        txtPassword.setBackground(new java.awt.Color(255, 255, 204));
+        txtPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 51, 0)));
+        jPanel4.add(txtPassword);
+        txtPassword.setBounds(190, 380, 210, 30);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,10 +121,6 @@ public class vLogin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnLoginMouseClicked
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         cUsuario unUser = new cUsuario();
@@ -139,6 +135,10 @@ public class vLogin extends javax.swing.JFrame {
         }
         dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,6 +183,6 @@ public class vLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblMensajeLogin;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
