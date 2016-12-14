@@ -291,13 +291,30 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRetirarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRetirarseMouseClicked
-        // TODO add your handling code here:
-        cerrar();
+        try {
+            // TODO add your handling code here:
+            if(observer.getElJuego().getGanador().getId() > 0){
+                JOptionPane.showMessageDialog(this, "Presiona el boton aceptar, para poder continuar", "Boton Abandono", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                cerrar();
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnRetirarseMouseClicked
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        cerrar();
+        try {
+            // TODO add your handling code here:
+            if(observer.getElJuego().getGanador().getId()> 0){
+                JOptionPane.showMessageDialog(this, "Presiona el boton aceptar, para poder continuar", "Boton Abandono", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                cerrar();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(vPlayer1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -480,20 +497,34 @@ public class vPlayer1 extends javax.swing.JFrame implements Observer{
 
         }
     }    
-    public void cerrar(){
+    public void cerrar() throws Exception{
         Object [] opciones ={"Aceptar","Cancelar"};
         int eleccion = JOptionPane.showOptionDialog(rootPane,"En realidad desea salir de la Partida?","Mensaje de Confirmacion",
         JOptionPane.YES_NO_OPTION,
         JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
         if (eleccion == JOptionPane.YES_OPTION)
         {
-            cJugador jugador = this.BuscarJugadorEnJuego(this.getTitle());
+            cConfiguracion config = this.laEmpresa.traerConfiguracion(2);
+            cJugador jugador = this.BuscarJugadorEnJuego(String.valueOf(this.getTitle()));
             if(CantidadJugadoresJugando() == 2){
+                
+                int pozo = observer.getElJuego().getPozo();
+                int valorCartonesJugador = jugador.getCartones().size() * config.getValorCarton();
+                jugador.setFichas(Integer.parseInt(this.lblSaldo.getText()));
+                this.laEmpresa.modificarUsuario(jugador);
                 observer.getElJuego().getJugadores().remove(jugador);
                 jugador = observer.getElJuego().getJugadores().get(0);
                 observer.getElJuego().setGanador(jugador);
+                observer.getElJuego().setPozo(observer.getElJuego().getPozo()-valorCartonesJugador);
+                observer.setCambios("POZO");
                 observer.setCambios("FIN");
             }else{
+                int pozo = observer.getElJuego().getPozo();
+                int valorCartonesJugador = jugador.getCartones().size() * config.getValorCarton();
+                jugador.setFichas(Integer.parseInt(this.lblSaldo.getText()));
+                this.laEmpresa.modificarUsuario(jugador);
+                observer.getElJuego().setPozo(observer.getElJuego().getPozo()-valorCartonesJugador);
+                observer.setCambios("POZO");
                 observer.getElJuego().getJugadores().remove(jugador);
                 dispose();
             }
